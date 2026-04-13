@@ -1,987 +1,1647 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafaHerbal | Premium Ayurvedic Manufacturing & Export</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safa Herbal — Premium Herbal & Ayurvedic Exports from India</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --gold-dark: #A07840;
+      --green-deep: #1B3A2D;
+      --green-mid: #2E5F47;
+      --green-soft: #4A8B67;
+      --cream: #FAF7F2;
+      --cream-dark: #F0EAE0;
+      --white: #FFFFFF;
+      --charcoal: #1A1A1A;
+      --gray-soft: #6B7280;
+    }
 
-    <style>
-        :root {
-            --gold: #C9A84C;
-            --gold-light: #F5D87A;
-            --gold-pale: #FFF8E7;
-            --green: #1E4D2B;
-            --green-mid: #2D6A3F;
-            --green-light: #4CAF72;
-            --dark: #080C08;
-            --dark2: #0D130D;
-            --cream: #F5EDD8;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--charcoal); overflow-x: hidden; }
 
-        * { box-sizing: border-box; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
 
-        html { scroll-behavior: smooth; }
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-        body {
-            background-color: var(--dark);
-            color: #E8E0D0;
-            font-family: 'DM Sans', sans-serif;
-            overflow-x: hidden;
-        }
+    /* NAV */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      transition: all 0.4s ease;
+      background: transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+    }
+    .nav-link {
+      position: relative; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 500; transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+      background: var(--gold); transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
 
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0d2a1e 0%, #1B3A2D 45%, #2a5a40 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+    .hero-circle {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(201,169,110,0.15);
+      animation: pulse-ring 4s ease-in-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.05); opacity: 0.15; }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.4);
+      padding: 8px 20px; border-radius: 50px; font-size: 12px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light);
+      animation: fadeInDown 0.8s ease forwards;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 7rem); line-height: 1.0; font-weight: 300;
+      color: white; animation: fadeInUp 1s ease 0.2s both;
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-subtitle {
+      color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; font-weight: 300;
+      animation: fadeInUp 1s ease 0.4s both; max-width: 480px;
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: white; padding: 16px 36px; border-radius: 4px;
+      font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;
+      transition: all 0.3s; box-shadow: 0 8px 24px rgba(201,169,110,0.35);
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.5); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid rgba(255,255,255,0.35); color: white;
+      padding: 16px 36px; border-radius: 4px;
+      font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;
+      transition: all 0.3s; animation: fadeInUp 1s ease 0.7s both;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
 
-        /* ── CURSOR ── */
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background: var(--gold);
-            border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s;
-        }
-        .cursor-ring {
-            width: 36px; height: 36px;
-            border: 1.5px solid rgba(201,168,76,0.5);
-            border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: all 0.15s ease;
-        }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ── GRAIN OVERLAY ── */
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 9997; opacity: 0.35;
-        }
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--green-deep); padding: 28px 0;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--gold); font-weight: 300; }
+    .stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 
-        /* ── GLASS ── */
-        .glass {
-            background: rgba(255,255,255,0.025);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(201,168,76,0.12);
-        }
+    /* SECTION STYLES */
+    .section-badge {
+      display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15;
+      color: var(--green-deep);
+    }
+    .section-title em { font-style: italic; color: var(--gold-dark); }
+    .divider-gold {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+      margin: 20px 0 30px;
+    }
 
-        /* ── GOLD TEXT ── */
-        .gold-gradient {
-            background: linear-gradient(135deg, #C9A84C 0%, #F5D87A 40%, #A8732A 70%, #F5D87A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    /* PRODUCT CARDS */
+    .product-card {
+      background: white; border: 1px solid #f0e8d8;
+      border-radius: 8px; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(27,58,45,0.12);
+      border-color: var(--gold-light);
+    }
+    .product-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-icon {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: linear-gradient(135deg, #f0ead8 0%, #e8d8b8 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin-bottom: 20px;
+    }
+    .product-tag {
+      display: inline-block; background: #f0f7f3; color: var(--green-soft);
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 3px; font-weight: 500;
+    }
+    .btn-product {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold-dark); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 600; transition: gap 0.3s;
+    }
+    .btn-product:hover { gap: 12px; }
 
-        /* ── GOLD BTN ── */
-        .btn-gold {
-            background: linear-gradient(135deg, #C9A84C, #F5D87A, #C9A84C);
-            background-size: 200% 200%;
-            animation: shimmer 3s infinite;
-            color: #0D130D;
-            font-weight: 700;
-            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
-        }
-        .btn-gold:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 12px 30px rgba(201,168,76,0.4);
-        }
-        @keyframes shimmer {
-            0%,100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+    /* CERTIFICATION BADGES */
+    .cert-badge {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: white; border: 1px solid #eee; border-radius: 8px;
+      padding: 24px 16px; text-align: center;
+      transition: all 0.3s; min-height: 110px;
+    }
+    .cert-badge:hover {
+      border-color: var(--gold-light); box-shadow: 0 8px 24px rgba(201,169,110,0.15);
+      transform: translateY(-3px);
+    }
+    .cert-icon { font-size: 28px; margin-bottom: 10px; }
+    .cert-name { font-size: 11px; letter-spacing: 1px; font-weight: 600; color: var(--green-deep); text-transform: uppercase; }
 
-        /* ── NAV ── */
-        nav { transition: all 0.4s; }
-        nav.scrolled { background: rgba(8,12,8,0.92); backdrop-filter: blur(20px); }
+    /* WHY CHOOSE US */
+    .feature-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; border-radius: 8px; transition: all 0.3s;
+    }
+    .feature-item:hover { background: #f9f5ee; }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 8px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: white;
+    }
 
-        /* ── HERO ── */
-        .hero-bg {
-            background: radial-gradient(ellipse at 20% 60%, rgba(45,106,63,0.25) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 80%, rgba(30,77,43,0.2) 0%, transparent 50%);
-        }
+    /* PROCESS STEPS */
+    .step-card {
+      position: relative; padding: 36px 30px; border-radius: 8px;
+      background: white; border: 1px solid #f0e8d8;
+      transition: all 0.3s;
+    }
+    .step-card:hover { border-color: var(--gold-light); box-shadow: 0 12px 36px rgba(27,58,45,0.08); }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300;
+      color: #f0e8d8; position: absolute; top: 12px; right: 20px; line-height: 1;
+    }
 
-        /* ── FLOATING PARTICLES ── */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float-particle linear infinite;
-            opacity: 0;
-        }
-        @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
-        }
+    /* TESTIMONIALS */
+    .testimonial-card {
+      background: white; border: 1px solid #f0e8d8; border-radius: 8px;
+      padding: 36px; position: relative; transition: all 0.3s;
+    }
+    .testimonial-card:hover { box-shadow: 0 16px 40px rgba(27,58,45,0.08); }
+    .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold-light); line-height: 0.5; margin-bottom: 20px; }
+    .stars { color: var(--gold); letter-spacing: 2px; }
 
-        /* ── TEXT REVEAL ── */
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-        }
-        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #0d2218 100%);
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201,169,110,0.12) 0%, transparent 70%);
+    }
 
-        /* ── PRODUCT CARD ── */
-        .product-card {
-            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
-        }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 50px rgba(201,168,76,0.15);
-        }
-        .product-card img {
-            transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .product-card:hover img { transform: scale(1.08) rotate(1deg); }
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+      transition: all 0.3s; animation: float-bounce 3s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.6); }
+    @keyframes float-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-        /* ── COUNTER ── */
-        @keyframes count-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* ACCORDION FAQ */
+    .faq-item { border-bottom: 1px solid #f0e8d8; }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0; cursor: pointer; transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--gold-dark); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-answer.open { max-height: 200px; }
+    .faq-icon { transition: transform 0.3s; font-size: 20px; color: var(--gold); }
+    .faq-icon.open { transform: rotate(45deg); }
 
-        /* ── MARQUEE ── */
-        .marquee-track {
-            display: flex;
-            gap: 3rem;
-            animation: marquee 20s linear infinite;
-            white-space: nowrap;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* ── FEATURE CARD ── */
-        .feature-card {
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s, border-color 0.4s;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .feature-card:hover { transform: translateY(-5px); }
-        .feature-card:hover::before { opacity: 1; }
-        .feature-icon {
-            width: 56px; height: 56px;
-            background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
-            border: 1px solid rgba(201,168,76,0.3);
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .feature-card:hover .feature-icon {
-            transform: rotate(10deg) scale(1.1);
-            box-shadow: 0 8px 20px rgba(201,168,76,0.2);
-        }
+    /* COUNTER ANIMATION */
+    .counter { display: inline-block; }
 
-        /* ── SCROLLBAR ── */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    /* FOOTER */
+    footer { background: #0a1f15; }
+    .footer-link { color: rgba(255,255,255,0.5); font-size: 14px; transition: color 0.3s; display: block; margin-bottom: 10px; }
+    .footer-link:hover { color: var(--gold); }
 
-        /* ── MOBILE MENU ── */
-        #mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-        }
-        #mobile-menu.open { transform: translateX(0); }
+    /* MOBILE MENU */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
 
-        /* ── HERO LINE ANIMATION ── */
-        .hero-line {
-            display: inline-block;
-            overflow: hidden;
-        }
-        .hero-line span {
-            display: inline-block;
-            animation: slide-up 1s cubic-bezier(0.16,1,0.3,1) forwards;
-            animation-delay: var(--delay, 0s);
-            opacity: 0;
-            transform: translateY(100%);
-        }
-        @keyframes slide-up {
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* MARQUEE */
+    .marquee-track {
+      display: flex; gap: 60px; animation: marquee 25s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.35);
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
 
-        /* ── STATS ── */
-        .stat-item {
-            position: relative;
-        }
-        .stat-item::after {
-            content: '';
-            position: absolute; right: 0; top: 20%; bottom: 20%;
-            width: 1px;
-            background: rgba(201,168,76,0.2);
-        }
-        .stat-item:last-child::after { display: none; }
+    /* PRODUCT IMAGE PLACEHOLDER */
+    .product-img {
+      height: 200px;
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 60px;
+      position: relative; overflow: hidden;
+    }
+    .product-img::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
 
-        /* ── REVIEW CARD ── */
-        .review-card {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* CONTACT CARD */
+    .contact-card {
+      background: white; border: 1px solid #f0e8d8; border-radius: 8px;
+      padding: 28px; display: flex; align-items: center; gap: 20px;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { border-color: var(--gold-light); box-shadow: 0 8px 24px rgba(201,169,110,0.15); transform: translateY(-3px); }
+    .contact-icon {
+      width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
 
-        /* ── CONTACT ICON ── */
-        .contact-icon {
-            width: 52px; height: 52px;
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .contact-icon:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(201,168,76,0.25); }
+    /* SOCIAL ICONS */
+    .social-icon {
+      width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
+      font-size: 16px; transition: all 0.3s; text-decoration: none;
+    }
+    .social-icon:hover { background: var(--gold); border-color: var(--gold); color: white; }
 
-        /* ── SOCIAL LINKS ── */
-        .social-link {
-            width: 42px; height: 42px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-            border: 1px solid rgba(201,168,76,0.2);
-        }
-        .social-link:hover { transform: translateY(-4px) scale(1.1); background: rgba(201,168,76,0.1); border-color: var(--gold); }
+    /* MAP SECTION */
+    .globe-visual {
+      background: radial-gradient(ellipse at 50% 50%, #1B3A2D 0%, #0d2218 100%);
+      border-radius: 12px; padding: 60px 40px; text-align: center; position: relative; overflow: hidden;
+    }
+    .globe-ring {
+      position: absolute; border-radius: 50%; border: 1px solid rgba(201,169,110,0.1);
+    }
 
-        /* ── WHATSAPP ── */
-        .wa-btn {
-            animation: wa-pulse 2.5s ease-in-out infinite;
-        }
-        @keyframes wa-pulse {
-            0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-            50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
-        }
-
-        /* ── LEAF DECO ── */
-        .leaf-deco {
-            position: absolute;
-            opacity: 0.06;
-            pointer-events: none;
-        }
-
-        /* ── INPUT FOCUS ── */
-        .form-input {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 12px;
-            padding: 14px 18px;
-            width: 100%;
-            color: #E8E0D0;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .form-input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
-        }
-        .form-input::placeholder { color: rgba(232,224,208,0.3); }
-
-        /* ── SECTION TAG ── */
-        .section-tag {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(201,168,76,0.08);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 100px;
-            padding: 6px 16px;
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-        .section-tag::before {
-            content: '';
-            width: 6px; height: 6px;
-            background: var(--gold);
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
-        }
-        @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-
-        /* Notification toast */
-        #toast {
-            position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background: linear-gradient(135deg, #1E4D2B, #2D6A3F);
-            border: 1px solid rgba(201,168,76,0.3);
-            color: #F5D87A;
-            padding: 14px 28px;
-            border-radius: 100px;
-            font-size: 14px; font-weight: 600;
-            opacity: 0; pointer-events: none;
-            transition: all 0.4s;
-            z-index: 9999;
-            white-space: nowrap;
-        }
-        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-        @media (max-width: 768px) {
-            .stat-item::after { display: none; }
-            .hero-line span { font-size: inherit; }
-        }
-    </style>
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 3rem; }
+      .stat-num { font-size: 2rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- Custom Cursor (desktop only) -->
-<div class="cursor-dot hidden md:block" id="cursor-dot"></div>
-<div class="cursor-ring hidden md:block" id="cursor-ring"></div>
+<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20herbal%20products.%20Please%20share%20more%20details." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
-<!-- Toast Notification -->
-<div id="toast">✓ Message sent successfully!</div>
-
-<!-- ═══ NAVBAR ═══ -->
-<nav id="navbar" class="fixed w-full z-[200] py-4 px-5 md:px-10 flex justify-between items-center transition-all duration-400">
-    <a href="#" class="flex items-center gap-2 group">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#2D6A3F] flex items-center justify-center overflow-hidden">
-  <img src="safaherblogo.jpg" alt="Logo" class="w-full h-full object-cover">
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="px-6 py-5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-3">
+      <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
-        <span class="text-xl font-bold tracking-widest gold-gradient serif">SAFAHERBAL</span>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;line-height:1;" id="logo-text">Safa Herbal</div>
+        <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:500;" id="logo-sub">Herbal Exports</div>
+      </div>
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wider uppercase">
-        <a href="#about" class="text-gray-400 hover:text-[#C9A84C] transition">About</a>
-        <a href="#products" class="text-gray-400 hover:text-[#C9A84C] transition">Products</a>
-        <a href="#export" class="text-gray-400 hover:text-[#C9A84C] transition">Export</a>
-        <a href="#reviews" class="text-gray-400 hover:text-[#C9A84C] transition">Reviews</a>
-        <a href="#contact" class="btn-gold px-6 py-2.5 rounded-full text-sm">Get Inquiry</a>
+    <div class="hidden md:flex items-center gap-8" id="nav-links">
+      <a href="products.html" class="nav-link" style="color:rgba(255,255,255,0.75);">Products</a>
+      <a href="#about" class="nav-link" style="color:rgba(255,255,255,0.75);">About</a>
+      <a href="#quality" class="nav-link" style="color:rgba(255,255,255,0.75);">Quality</a>
+      <a href="#private-label" class="nav-link" style="color:rgba(255,255,255,0.75);">Private Label</a>
+      <a href="#export" class="nav-link" style="color:rgba(255,255,255,0.75);">Export</a>
+      <a href="contact.html" class="nav-link" style="color:rgba(255,255,255,0.75);">Contact</a>
     </div>
 
-    <!-- Mobile Hamburger -->
-    <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl glass text-[#C9A84C]">
-        <i class="fas fa-bars text-lg" id="menu-icon"></i>
-    </button>
+    <!-- CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20a%20free%20sample%20of%20your%20herbal%20products." target="_blank"
+        style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:10px 24px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;">
+        Free Sample →
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="md:hidden text-white text-2xl" onclick="toggleMenu()" id="hamburger">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-white shadow-xl rounded-xl mt-3 mx-2 p-6">
+    <div class="flex flex-col gap-4">
+      <a href="products.html" class="text-green-800 font-medium" onclick="toggleMenu()">Products</a>
+      <a href="#about" class="text-green-800 font-medium" onclick="toggleMenu()">About</a>
+      <a href="#quality" class="text-green-800 font-medium" onclick="toggleMenu()">Quality</a>
+      <a href="#private-label" class="text-green-800 font-medium" onclick="toggleMenu()">Private Label</a>
+      <a href="#export" class="text-green-800 font-medium" onclick="toggleMenu()">Export</a>
+      <a href="contact.html" class="text-green-800 font-medium" onclick="toggleMenu()">Contact</a>
+      <a href="https://wa.me/918279355649" target="_blank" class="btn-gold text-center justify-center">WhatsApp Us</a>
+    </div>
+  </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed top-0 right-0 h-screen w-[75vw] max-w-xs z-[300] glass border-l border-[#C9A84C]/20 flex flex-col p-8 pt-20 gap-6">
-    <button id="menu-close" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-xl bg-[#C9A84C]/10 text-[#C9A84C]">
-        <i class="fas fa-times"></i>
-    </button>
-    <a href="#about" class="mobile-link text-lg font-semibold text-gray-300 hover:text-[#C9A84C] transition py-2 border-b border-white/5">About</a>
-    <a href="#products" class="mobile-link text-lg font-semibold text-gray-300 hover:text-[#C9A84C] transition py-2 border-b border-white/5">Products</a>
-    <a href="#export" class="mobile-link text-lg font-semibold text-gray-300 hover:text-[#C9A84C] transition py-2 border-b border-white/5">Export</a>
-    <a href="#reviews" class="mobile-link text-lg font-semibold text-gray-300 hover:text-[#C9A84C] transition py-2 border-b border-white/5">Reviews</a>
-    <a href="#contact" class="btn-gold px-6 py-3 rounded-xl text-center mt-auto">Get Inquiry</a>
-    <div class="flex gap-3 mt-2">
-        <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="social-link"><i class="fab fa-instagram text-[#C9A84C]"></i></a>
-        <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link"><i class="fab fa-linkedin-in text-[#C9A84C]"></i></a>
-        <a href="https://wa.me/918279355649" target="_blank" class="social-link"><i class="fab fa-whatsapp text-green-400"></i></a>
-    </div>
-</div>
-<div id="menu-overlay" class="hidden fixed inset-0 bg-black/60 z-[250] backdrop-blur-sm"></div>
+<!-- ===== HERO SECTION ===== -->
+<section id="hero">
+  <div class="hero-grain"></div>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero-bg relative min-h-screen flex items-center justify-center text-center px-5 overflow-hidden">
+  <!-- Decorative circles -->
+  <div class="hero-circle" style="width:600px;height:600px;right:-150px;top:-150px;"></div>
+  <div class="hero-circle" style="width:400px;height:400px;right:-50px;top:-50px;animation-delay:1s;"></div>
+  <div class="hero-circle" style="width:300px;height:300px;left:-100px;bottom:-100px;animation-delay:2s;"></div>
 
-    <!-- Animated BG particles -->
-    <div id="particles" class="absolute inset-0 z-0 overflow-hidden"></div>
+  <!-- Floating leaves decoration -->
+  <div style="position:absolute;right:8%;top:25%;font-size:3rem;opacity:0.08;animation:float-bounce 5s ease-in-out infinite;animation-delay:0.5s;">🌿</div>
+  <div style="position:absolute;right:15%;top:60%;font-size:2rem;opacity:0.06;animation:float-bounce 6s ease-in-out infinite;animation-delay:1.5s;">🍃</div>
+  <div style="position:absolute;left:5%;bottom:20%;font-size:2.5rem;opacity:0.06;animation:float-bounce 4s ease-in-out infinite;">🌱</div>
 
-    <!-- Leaf SVGs -->
-    <svg class="leaf-deco w-96 -top-20 -left-20 rotate-12" viewBox="0 0 200 200" fill="none"><path d="M100 10 C60 10, 10 50, 10 100 C10 150, 60 190, 100 190 C140 190, 190 150, 190 100 C190 50, 140 10, 100 10Z" fill="#2D6A3F"/></svg>
-    <svg class="leaf-deco w-72 bottom-20 -right-10 -rotate-12" viewBox="0 0 200 200" fill="none"><path d="M100 10 C60 10, 10 50, 10 100 C10 150, 60 190, 100 190 C140 190, 190 150, 190 100 C190 50, 140 10, 100 10Z" fill="#C9A84C"/></svg>
-
-    <!-- BG image -->
-    <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1615485290382-441e4d019cb5?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover opacity-10" alt="">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#080C08] via-transparent to-[#080C08]"></div>
-    </div>
-
-    <div class="relative z-10 max-w-5xl mx-auto">
-        <div class="section-tag mb-6">Authentic Indian Ayurveda</div>
-
-        <h1 class="text-5xl sm:text-6xl md:text-8xl font-black leading-[1.05] mb-6 serif">
-            <div class="hero-line"><span style="--delay:0.1s">100% Natural</span></div><br>
-            <div class="hero-line"><span style="--delay:0.3s" class="gold-gradient">Herbal Wellness</span></div>
+  <div class="max-w-7xl mx-auto px-6 py-32 w-full">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="hero-badge mb-8">
+          <span>🌿</span> Trusted Since Decades · Made in India
+        </div>
+        <h1 class="hero-title mb-6">
+          Premium<br/>
+          <em>Herbal &</em><br/>
+          Ayurvedic<br/>
+          Exports
         </h1>
+        <p class="hero-subtitle mb-10">
+          Pure. Potent. Proven. We manufacture and export India's finest herbal supplements — from Himalayan Shilajit to Ashwagandha — to global markets with unmatched quality standards.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20herbal%20products.%20Please%20share%20pricing%20and%20catalog." target="_blank" class="btn-gold">
+            Get Wholesale Price →
+          </a>
+          <a href="products.html" class="btn-outline-white">
+            Explore Products
+          </a>
+        </div>
 
-        <p class="reveal-text text-base md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed" style="transition-delay:0.6s">
-            Premium herbal supplements manufactured in the heart of India, exported to elite global markets with ancient wisdom and modern science.
+        <!-- Trust indicators -->
+        <div class="flex flex-wrap gap-6 mt-12" style="animation: fadeInUp 1s ease 0.9s both; opacity:0;">
+          <div class="flex items-center gap-2">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:1px;">ISO Certified</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:1px;">GMP Facility</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:1px;">USFDA Registered</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:1px;">Halal Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side visual -->
+      <div class="hidden md:flex flex-col gap-4">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:12px;padding:30px;animation:fadeInUp 1s ease 0.5s both;opacity:0;">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🏔️</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-bottom:8px;">Himalayan Shilajit</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.7;">Pure resin sourced from the pristine Himalayan belt. Available in resin, capsule & powder form.</div>
+          <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:rgba(201,169,110,0.15);color:var(--gold-light);padding:4px 12px;border-radius:3px;font-size:11px;letter-spacing:1px;">RESIN</span>
+            <span style="background:rgba(201,169,110,0.15);color:var(--gold-light);padding:4px 12px;border-radius:3px;font-size:11px;letter-spacing:1px;">CAPSULES</span>
+            <span style="background:rgba(201,169,110,0.15);color:var(--gold-light);padding:4px 12px;border-radius:3px;font-size:11px;letter-spacing:1px;">POWDER</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4" style="animation:fadeInUp 1s ease 0.7s both;opacity:0;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:12px;padding:24px;">
+            <div style="font-size:2rem;margin-bottom:8px;">🌿</div>
+            <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.2rem;margin-bottom:6px;">Ashwagandha</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Premium root extract capsules</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:12px;padding:24px;">
+            <div style="font-size:2rem;margin-bottom:8px;">🌱</div>
+            <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.2rem;margin-bottom:6px;">Moringa</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Capsules & powder available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);animation:float-bounce 2s ease-in-out infinite;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.3);">
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;">Scroll</span>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none"><rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="7" r="3" fill="currentColor" opacity="0.5"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div style="background:var(--green-deep);padding:16px 0;overflow:hidden;">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ashwagandha Capsules</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Moringa Powder</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Herbal Extracts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>ISO Certified</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Global Export</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>GMP Facility</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Free Samples</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ashwagandha Capsules</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Moringa Powder</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Herbal Extracts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>ISO Certified</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Global Export</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>GMP Facility</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Free Samples</span>
+  </div>
+</div>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="counter" data-target="50">0</span>+</div>
+        <div class="stat-label">Countries Exported</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="counter" data-target="200">0</span>+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="30">0</span>+</div>
+        <div class="stat-label">Product Variants</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span class="counter" data-target="10">0</span>+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section id="about" style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <div class="section-badge">About Us</div>
+        <h2 class="section-title mb-4">India's Trusted <em>Herbal</em> Manufacturer & Exporter</h2>
+        <div class="divider-gold"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:20px;">
+          We are a trusted manufacturer and exporter of premium herbal and Ayurvedic products from India. Deeply rooted in the ancient wisdom of Ayurveda, we combine traditional knowledge with modern manufacturing excellence to deliver products that truly make a difference.
+        </p>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:30px;">
+          Our raw materials are sustainably sourced from the rich Himalayan belt and other biodiverse regions of India. Every ingredient is carefully selected, tested, and processed in our state-of-the-art facilities to ensure the highest purity and potency.
+        </p>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div style="background:white;border:1px solid #f0e8d8;border-radius:8px;padding:20px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-weight:300;">🌿</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Sustainable Sourcing</div>
+            <div style="color:var(--gray-soft);font-size:13px;">Ethically sourced from pristine Himalayan regions</div>
+          </div>
+          <div style="background:white;border:1px solid #f0e8d8;border-radius:8px;padding:20px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-weight:300;">🔬</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Lab Tested</div>
+            <div style="color:var(--gray-soft);font-size:13px;">Third-party lab verified for purity & potency</div>
+          </div>
+        </div>
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20company." target="_blank" class="btn-gold">
+          Talk to Our Team →
+        </a>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <!-- Mission & Vision cards -->
+        <div style="background:var(--green-deep);border-radius:12px;padding:40px;margin-bottom:16px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🎯</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-bottom:12px;">Our Mission</div>
+          <p style="color:rgba(255,255,255,0.6);line-height:1.8;font-size:14px;">
+            To promote the power of natural herbal wellness by providing safe, effective, and high-quality herbal supplements to global markets — combining traditional Ayurvedic knowledge with modern manufacturing standards.
+          </p>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:12px;padding:40px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🌍</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-bottom:12px;">Our Vision</div>
+          <p style="color:rgba(255,255,255,0.8);line-height:1.8;font-size:14px;">
+            To become a globally recognized exporter of herbal and Ayurvedic products — delivering authentic Indian herbal solutions to customers across the world while maintaining trust, quality, and innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS SECTION ===== -->
+<section id="products" style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">Our Products</div>
+      <h2 class="section-title mb-4">Premium <em>Herbal</em> Collection</h2>
+      <div class="divider-gold mx-auto" style="margin:20px auto 30px;"></div>
+      <p style="color:var(--gray-soft);max-width:560px;margin:0 auto;line-height:1.8;">
+        Carefully formulated herbal and Ayurvedic products using the finest natural ingredients from across India. Available for wholesale, private label, and OEM manufacturing.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Product 1 -->
+      <div class="product-card reveal">
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="himalyanShilajitImg.jpeg" alt="" 
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;">
+    <span class="product-tag">Bestseller</span>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin:12px 0 8px;">
+      Himalayan Shilajit
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;margin-bottom:16px;">
+      Pure resin extracted from high-altitude Himalayan rocks. Rich in fulvic acid and 85+ trace minerals. Available as resin, capsules.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="product-tag">Resin</span>
+      <span class="product-tag">Capsules</span>
+      <span class="product-tag">Extract</span>
+    </div>
+
+    <div style="border-top:1px solid #f0e8d8;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20Himalayan%20Shilajit.%20Please%20share%20pricing%20and%20MOQ." target="_blank" class="btn-product">
+        Inquire Now →
+      </a>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Product 2 -->
+     <div class="product-card reveal reveal-delay-1">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="AshwagandhaCapulesImg.jpeg" alt="Ashwagandha Capsules"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;">
+    <span class="product-tag">Popular</span>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin:12px 0 8px;">
+      Ashwagandha Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;margin-bottom:16px;">
+      Standardized Withania somnifera root extract. Clinically studied adaptogen supporting stress relief, energy, and vitality. KSM-66 extract available.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="product-tag">Capsules</span>
+      <span class="product-tag">KSM-66</span>
+      <span class="product-tag">Extract</span>
+    </div>
+
+    <div style="border-top:1px solid #f0e8d8;padding-top:16px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20Ashwagandha%20Capsules.%20Please%20share%20pricing%20and%20MOQ." target="_blank" class="btn-product">
+        Inquire Now →
+      </a>
+    </div>
+    
+  </div>
+</div>
+
+      <!-- Product 3 -->
+      <div class="product-card reveal reveal-delay-2">
+  
+  <div class="product-img" style="height:220px; object-fit:contain;">
+    <img src="MoringaCapsules.jpeg" alt="Moringa Capsules"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;">
+    <span class="product-tag">Superfood</span>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin:12px 0 8px;">
+      Moringa Capsules 
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;margin-bottom:16px;">
+      Organic Moringa oleifera packed with vitamins, minerals, and antioxidants. Perfect for immunity, energy, and overall wellness. Leaf capsules.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="product-tag">Capsules</span>
+      <span class="product-tag">Organic</span>
+      <span class="product-tag">Superfood</span>
+    </div>
+
+    <div style="border-top:1px solid #f0e8d8;padding-top:16px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20Moringa%20capsules.%20Please%20share%20pricing%20and%20MOQ." target="_blank" class="btn-product">
+        Inquire Now →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Product 4 -->
+      <div class="product-card reveal">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="MoringaPowderImg.jpeg" alt="Herbal Extracts"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;">
+    <span class="product-tag">Premium</span>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin:12px 0 8px;">
+      Moringa Powder
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;margin-bottom:16px;">
+       Pure resin extracted from high-altitude Himalayan rocks. Rich in fulvic acid and 85+ trace minerals. Available as resin, Powder.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="product-tag">Resin</span>
+      <span class="product-tag">Powder</span>
+      <span class="product-tag">Extract</span>
+    </div>
+
+    <div style="border-top:1px solid #f0e8d8;padding-top:16px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20need%20Moringa%20Powder.%20Please%20share%20your%20product%20list%20and%20pricing." target="_blank" class="btn-product">
+        Inquire Now →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Product 5 -->
+      <div class="product-card reveal reveal-delay-1">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="HoneyShilajitImg.jpeg" alt="Ayurvedic Supplements"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;">
+    <span class="product-tag">Ayurvedic</span>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin:12px 0 8px;">
+      Ayurvedic Wellness Supplements
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;margin-bottom:16px;">
+      Chyawanprash, Triphala, Shatavari, Guduchi, and other classical Ayurvedic formulations. Designed for holistic wellness and long-term health.
+    </p>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+      <span class="product-tag">Shilajit</span>
+      <span class="product-tag">Honey</span>
+      <span class="product-tag">Energy Boost</span>
+    </div>
+
+    <div style="border-top:1px solid #f0e8d8;padding-top:16px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20Ayurvedic%20Honey%20Shilajit.%20Please%20share%20your%20product%20list%20and%20pricing." target="_blank" class="btn-product">
+        Inquire Now →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Product 6 -->
+      <div class="product-card reveal reveal-delay-2" style="background:linear-gradient(135deg,var(--green-deep) 0%,#0d2218 100%);border:none;">
+        <div style="padding:40px;height:100%;display:flex;flex-direction:column;justify-content:center;">
+          <div style="font-size:3rem;margin-bottom:16px;">⚗️</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;margin-bottom:12px;">Custom Herbal Formulations</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:24px;">Have a unique formula in mind? We develop custom herbal blends and formulations for your brand. Complete R&D and manufacturing support.</p>
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20discuss%20custom%20herbal%20formulation%20for%20my%20brand." target="_blank"
+            style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;padding:14px 28px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transition:all 0.3s;width:fit-content;">
+            Discuss Your Formula →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All CTA -->
+    <div class="text-center mt-12 reveal">
+      <p style="color:var(--gray-soft);margin-bottom:16px;">Looking for something specific? We have 30+ product variants.</p>
+      <a href="https://wa.me/918279355649?text=Hello%2C%20please%20share%20your%20complete%20product%20catalog%20with%20pricing." target="_blank" class="btn-gold">
+        Request Full Catalog →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <div class="section-badge">Why Choose Us</div>
+        <h2 class="section-title mb-4">Your <em>Trusted</em> Herbal Partner</h2>
+        <div class="divider-gold"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:36px;">
+          We don't just supply products — we build long-term partnerships. Our end-to-end support from manufacturing to export documentation makes us the preferred choice for international buyers.
         </p>
 
-        <div class="reveal-text flex flex-col sm:flex-row gap-4 justify-center" style="transition-delay:0.8s">
-            <a href="#products" class="btn-gold px-8 py-4 rounded-full uppercase tracking-widest text-sm">Explore Products</a>
-            <a href="#contact" class="border border-[#C9A84C]/50 text-[#C9A84C] px-8 py-4 rounded-full font-semibold uppercase tracking-widest text-sm hover:bg-[#C9A84C]/10 transition">Contact Us</a>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-            <span class="text-xs tracking-widest uppercase text-gray-500">Scroll</span>
-            <div class="w-px h-12 bg-gradient-to-b from-[#C9A84C] to-transparent animate-bounce"></div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ STATS BAR ═══ -->
-<section class="relative z-20 -mt-1 px-4 md:px-12">
-    <div class="glass rounded-2xl md:rounded-3xl py-8 md:py-12 px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0">
-            <div class="stat-item text-center px-4 py-3" data-aos-stat>
-                <div class="text-3xl md:text-5xl font-black gold-gradient mb-1 serif" data-count="50" data-suffix="+">0+</div>
-                <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500">Global Destinations</div>
-            </div>
-            <div class="stat-item text-center px-4 py-3" data-aos-stat>
-                <div class="text-3xl md:text-5xl font-black gold-gradient mb-1 serif" data-count="100" data-suffix="%">0%</div>
-                <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500">Organic Sourced</div>
-            </div>
-            <div class="stat-item text-center px-4 py-3" data-aos-stat>
-                <div class="text-3xl md:text-5xl font-black gold-gradient mb-1 serif" data-count="250" data-suffix="+">0+</div>
-                <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500">Premium Formulations</div>
-            </div>
-            <div class="stat-item text-center px-4 py-3" data-aos-stat>
-                <div class="text-3xl md:text-5xl font-black gold-gradient mb-1 serif">GMP</div>
-                <div class="text-[10px] md:text-xs uppercase tracking-widest text-gray-500">Certified Quality</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ ABOUT ═══ -->
-<section id="about" class="py-24 md:py-32 px-5 md:px-12">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-        <div class="reveal-text">
-            <div class="section-tag">Our Story</div>
-            <h2 class="text-4xl md:text-5xl font-black mb-8 serif leading-tight">Purity Rooted<br>in <span class="gold-gradient">Tradition</span></h2>
-            <p class="text-gray-400 leading-relaxed mb-6 text-base md:text-lg">
-                We are a trusted manufacturer and exporter of premium herbal and Ayurvedic products from India. Sourcing directly from the sustainable Himalayan belt, we bridge the gap between ancient wisdom and modern wellness.
-            </p>
-            <div class="space-y-5">
-                <div class="flex items-start gap-4 glass rounded-2xl p-5 hover:border-[#C9A84C]/30 transition group">
-                    <div class="feature-icon shrink-0 group-hover:scale-110 transition">
-                        <i class="fas fa-leaf text-[#C9A84C]"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-1">Our Mission</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">To promote global natural wellness through safe, effective, and high-quality supplements.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 glass rounded-2xl p-5 hover:border-[#C9A84C]/30 transition group">
-                    <div class="feature-icon shrink-0 group-hover:scale-110 transition">
-                        <i class="fas fa-eye text-[#C9A84C]"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-1">Our Vision</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Becoming the world's most recognized exporter of authentic Indian herbal solutions.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="relative reveal-text" style="transition-delay:0.3s">
-            <!-- Decorative border -->
-            <div class="absolute -inset-3 border border-[#C9A84C]/20 rounded-3xl rotate-2 transition-transform duration-500 hover:rotate-0"></div>
-            <div class="absolute -inset-6 border border-[#2D6A3F]/20 rounded-3xl -rotate-2 transition-transform duration-500 hover:rotate-0"></div>
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800"
-                 class="rounded-2xl relative z-10 w-full h-72 md:h-[450px] object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-[1.02]"
-                 alt="Herbal Manufacturing">
-            <!-- Floating badge -->
-            <div class="absolute -bottom-6 -left-4 z-20 glass rounded-2xl p-4 border-[#C9A84C]/20 shadow-2xl">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center">
-                        <i class="fas fa-award text-[#C9A84C]"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs text-gray-500">Certified by</div>
-                        <div class="text-sm font-bold">WHO-GMP & ISO</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ WHY US ═══ -->
-<section class="py-20 md:py-28 bg-black/40">
-    <div class="px-5 md:px-12 max-w-7xl mx-auto">
-        <div class="text-center mb-14">
-            <div class="section-tag">Why Choose Us</div>
-            <h2 class="text-4xl md:text-5xl font-black serif gold-gradient mb-3">The Global Benchmark</h2>
-            <p class="text-gray-500 text-sm uppercase tracking-widest">Why Elite Brands Choose Us</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            <div class="feature-card glass p-7 rounded-2xl border-t-2 border-[#C9A84C]/40 reveal-text">
-                <div class="feature-icon mb-6">
-                    <i class="fas fa-flask text-xl text-[#C9A84C]"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-3 serif">Lab Tested</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Every batch is tested for purity, heavy metals, and potency in certified labs.</p>
-            </div>
-            <div class="feature-card glass p-7 rounded-2xl border-t-2 border-[#C9A84C]/40 reveal-text" style="transition-delay:0.1s">
-                <div class="feature-icon mb-6">
-                    <i class="fas fa-box-open text-xl text-[#C9A84C]"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-3 serif">Private Label</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Complete OEM services from custom formulation to luxury packaging design.</p>
-            </div>
-            <div class="feature-card glass p-7 rounded-2xl border-t-2 border-[#C9A84C]/40 reveal-text" style="transition-delay:0.2s">
-                <div class="feature-icon mb-6">
-                    <i class="fas fa-globe text-xl text-[#C9A84C]"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-3 serif">Global Logistics</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Full documentation support for seamless customs clearance worldwide.</p>
-            </div>
-            <div class="feature-card glass p-7 rounded-2xl border-t-2 border-[#C9A84C]/40 reveal-text" style="transition-delay:0.3s">
-                <div class="feature-icon mb-6">
-                    <i class="fas fa-tag text-xl text-[#C9A84C]"></i>
-                </div>
-                <h3 class="font-bold text-lg mb-3 serif">Wholesale Price</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Manufacturer-direct pricing ensuring high margins for global distributors.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ PRODUCTS ═══ -->
-<section id="products" class="py-24 md:py-32 px-5 md:px-12">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-4">
+        <div class="flex flex-col gap-3">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
             <div>
-                <div class="section-tag">Our Collection</div>
-                <h2 class="text-4xl md:text-5xl font-black serif gold-gradient">Signature Products</h2>
-                <p class="text-gray-500 mt-2">Sourced from Nature, Perfected by Science</p>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Premium Quality Herbal Products</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Every product manufactured with the finest natural ingredients and rigorous QC.</div>
             </div>
-            <a href="#contact" class="btn-gold px-6 py-3 rounded-full text-sm shrink-0">Request Catalogue</a>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏭</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Manufacturer Direct — No Middlemen</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Competitive wholesale pricing because you deal directly with the manufacturer.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏷️</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Private Label & Custom Packaging</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Build your own brand with custom formulations, labels, and packaging.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Fast & Reliable Global Shipping</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Professional export documentation and timely delivery worldwide.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🎁</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Free Samples for Serious Buyers</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Test our quality before committing to bulk orders — no strings attached.</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📞</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;">Dedicated Customer Support</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Our expert team is available via WhatsApp, email, and phone for quick responses.</div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
-            <!-- Card 1 -->
-            <div class="product-card glass rounded-3xl overflow-hidden reveal-text">
-                <div class="h-64 md:h-80 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1611073113567-2821ac33508d?auto=format&fit=crop&q=80&w=600" alt="Shilajit" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-[#C9A84C]/90 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Best Seller</div>
-                </div>
-                <div class="p-7">
-                    <h3 class="text-2xl font-bold mb-2 serif">Himalayan Shilajit</h3>
-                    <p class="text-sm text-gray-500 mb-5 leading-relaxed">Available in Gold Grade Resin, Powder, and Pure Extract Capsules.</p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-[#C9A84C] font-bold uppercase tracking-widest text-xs group">
-                        Request Sample
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-            </div>
+      <div class="reveal reveal-delay-2">
+        <div style="background:white;border-radius:12px;padding:40px;box-shadow:0 20px 60px rgba(27,58,45,0.08);border:1px solid #f0e8d8;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:8px;">Request Free Samples</h3>
+          <p style="color:var(--gray-soft);font-size:14px;margin-bottom:28px;line-height:1.7;">Verify our quality before placing your bulk order. Fill your details below and we'll arrange samples.</p>
 
-            <!-- Card 2 -->
-            <div class="product-card glass rounded-3xl overflow-hidden reveal-text" style="transition-delay:0.15s">
-                <div class="h-64 md:h-80 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1584017947486-53d73516763e?auto=format&fit=crop&q=80&w=600" alt="Ashwagandha" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-[#2D6A3F]/90 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Premium</div>
-                </div>
-                <div class="p-7">
-                    <h3 class="text-2xl font-bold mb-2 serif">Ashwagandha KSM-66</h3>
-                    <p class="text-sm text-gray-500 mb-5 leading-relaxed">High-potency Root Extract Capsules for Stress Relief and Vitality.</p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-[#C9A84C] font-bold uppercase tracking-widest text-xs group">
-                        Request Sample
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <label style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Your Name *</label>
+              <input type="text" id="s-name" placeholder="John Smith" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 16px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
             </div>
-
-            <!-- Card 3 -->
-            <div class="product-card glass rounded-3xl overflow-hidden reveal-text sm:col-span-2 md:col-span-1" style="transition-delay:0.3s">
-                <div class="h-64 md:h-80 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&q=80&w=600" alt="Moringa" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-[#C9A84C]/90 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Export Ready</div>
-                </div>
-                <div class="p-7">
-                    <h3 class="text-2xl font-bold mb-2 serif">Pure Moringa</h3>
-                    <p class="text-sm text-gray-500 mb-5 leading-relaxed">Premium Green Superfood available in Bulk Powder or Veggie Capsules.</p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-[#C9A84C] font-bold uppercase tracking-widest text-xs group">
-                        Request Sample
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
+            <div>
+              <label style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Company / Business *</label>
+              <input type="text" id="s-company" placeholder="Your Company Name" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 16px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
             </div>
+            <div>
+              <label style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Country *</label>
+              <input type="text" id="s-country" placeholder="United States" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 16px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
+            </div>
+            <div>
+              <label style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Products of Interest</label>
+              <select id="s-product" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 16px;font-size:14px;outline:none;font-family:'Jost',sans-serif;background:white;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'">
+                <option value="">Select a product...</option>
+                <option>Himalayan Shilajit (Resin)</option>
+                <option>Himalayan Shilajit (Capsules)</option>
+                <option>Ashwagandha Capsules</option>
+                <option>Moringa Capsules & Powder</option>
+                <option>Herbal Extracts</option>
+                <option>Custom Formulation</option>
+                <option>Multiple Products</option>
+              </select>
+            </div>
+            <button onclick="sendSampleRequest()" style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:14px;border-radius:4px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Send via WhatsApp
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ═══ CERTIFICATIONS MARQUEE ═══ -->
-<section id="export" class="py-16 overflow-hidden border-y border-[#C9A84C]/10 bg-black/30">
-    <div class="text-center mb-10">
-        <div class="section-tag">Trust &amp; Compliance</div>
-        <h2 class="text-3xl md:text-4xl font-black serif gold-gradient">Global Certifications</h2>
+<!-- ===== QUALITY SECTION ===== -->
+<section id="quality" style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">Our Quality</div>
+      <h2 class="section-title mb-4">Certified Excellence,<br/><em>Globally Trusted</em></h2>
+      <div class="divider-gold mx-auto" style="margin:20px auto 30px;"></div>
+      <p style="color:var(--gray-soft);max-width:600px;margin:0 auto;line-height:1.8;">
+        Quality is not just a promise — it's our process. Every batch is manufactured under international standards and independently verified to ensure you receive only the best.
+      </p>
     </div>
-    <div class="relative overflow-hidden">
-        <div class="marquee-track">
-            <!-- repeat twice for seamless loop -->
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-award text-[#C9A84C]"></i> GMP Certified</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-check-circle text-[#C9A84C]"></i> ISO 9001:2015</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-certificate text-[#C9A84C]"></i> USFDA Registered</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-file-contract text-[#C9A84C]"></i> COA Tested</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-globe-americas text-[#C9A84C]"></i> FSSAI Approved</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-shield-alt text-[#C9A84C]"></i> WHO Compliant</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-leaf text-[#C9A84C]"></i> Organic Certified</span>
-            <!-- Duplicate -->
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-award text-[#C9A84C]"></i> GMP Certified</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-check-circle text-[#C9A84C]"></i> ISO 9001:2015</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-certificate text-[#C9A84C]"></i> USFDA Registered</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-file-contract text-[#C9A84C]"></i> COA Tested</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-globe-americas text-[#C9A84C]"></i> FSSAI Approved</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-shield-alt text-[#C9A84C]"></i> WHO Compliant</span>
-            <span class="text-gray-400 uppercase tracking-widest text-sm flex items-center gap-3"><i class="fas fa-leaf text-[#C9A84C]"></i> Organic Certified</span>
-        </div>
+
+    <!-- Certifications Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="cert-badge reveal">
+        <div class="cert-icon">🏅</div>
+        <div class="cert-name">ISO Certified</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Manufacturing</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-1">
+        <div class="cert-icon">🏭</div>
+        <div class="cert-name">GMP Facility</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Good Manufacturing Practice</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-2">
+        <div class="cert-icon">☪️</div>
+        <div class="cert-name">Halal Certified</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Halal Compliant</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-3">
+        <div class="cert-icon">🇺🇸</div>
+        <div class="cert-name">USFDA Registered</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">US Facility Registration</div>
+      </div>
+      <div class="cert-badge reveal">
+        <div class="cert-icon">🇮🇳</div>
+        <div class="cert-name">FSSAI Approved</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">India Food Safety</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-1">
+        <div class="cert-icon">🔬</div>
+        <div class="cert-name">3rd Party Tested</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Independent Lab Verified</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-2">
+        <div class="cert-icon">📋</div>
+        <div class="cert-name">COA Available</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Certificate of Analysis</div>
+      </div>
+      <div class="cert-badge reveal reveal-delay-3">
+        <div class="cert-icon">📦</div>
+        <div class="cert-name">Export Docs</div>
+        <div style="font-size:11px;color:var(--gray-soft);margin-top:4px;">Certificate of Origin</div>
+      </div>
     </div>
+
+    <!-- Quality Process -->
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div style="font-size:2rem;margin-bottom:16px;">🌿</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Raw Material Sourcing</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Sustainably harvested from certified Himalayan and Indian botanical regions.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div style="font-size:2rem;margin-bottom:16px;">🔬</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Laboratory Testing</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Every incoming raw material tested for identity, purity, potency, and contaminants.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div style="font-size:2rem;margin-bottom:16px;">🏭</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">GMP Manufacturing</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Produced in modern GMP-certified facilities with strict hygiene and quality control.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div style="font-size:2rem;margin-bottom:16px;">✅</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Final QC & Export</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Finished products undergo final inspection with COA before professional export packaging.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ═══ REVIEWS ═══ -->
-<section id="reviews" class="py-24 md:py-32 px-5 md:px-12">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-14">
-            <div class="section-tag">Testimonials</div>
-            <h2 class="text-4xl md:text-5xl font-black serif gold-gradient mb-6">Client Reviews</h2>
-            <div class="flex items-center justify-center gap-4">
-                <div class="text-4xl font-black serif" id="avg-rating">4.9</div>
-                <div class="flex gap-1 text-[#C9A84C]" id="avg-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="text-gray-500 text-sm" id="total-reviews-count">(128 Reviews)</div>
-            </div>
+<!-- ===== PRIVATE LABEL SECTION ===== -->
+<section id="private-label" style="padding:100px 0;background:var(--green-deep);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <div class="section-badge" style="color:var(--gold-light);">Private Label & OEM</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);color:white;font-weight:300;line-height:1.15;margin-bottom:16px;">
+          Build Your Own<br/><em style="color:var(--gold);">Herbal Brand</em>
+        </h2>
+        <div style="width:60px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:20px 0 30px;"></div>
+        <p style="color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:28px;">
+          We are your complete white-label manufacturing partner. From custom formulations to branded packaging, we handle everything so you can focus on growing your brand in the global market.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:20px;">
+            <div style="font-size:1.5rem;margin-bottom:8px;">⚗️</div>
+            <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Custom Formulations</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Unique blends developed for your brand</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:20px;">
+            <div style="font-size:1.5rem;margin-bottom:8px;">🏷️</div>
+            <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Custom Packaging</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Bottles, pouches, boxes with your label</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:20px;">
+            <div style="font-size:1.5rem;margin-bottom:8px;">📦</div>
+            <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Flexible MOQ</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Start with smaller quantities, scale up</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:20px;">
+            <div style="font-size:1.5rem;margin-bottom:8px;">📄</div>
+            <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Full Documentation</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:12px;">Export docs, COA, regulatory support</div>
+          </div>
         </div>
 
-        <div id="reviews-container" class="space-y-5 mb-12"></div>
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20private%20label%20and%20OEM%20manufacturing.%20Please%20share%20more%20details." target="_blank" class="btn-gold">
+          Start Your Private Label →
+        </a>
+      </div>
 
-        <!-- Review Form -->
-        <div class="glass p-8 md:p-10 rounded-3xl border border-[#C9A84C]/10">
-            <h3 class="text-xl font-bold serif mb-6">Leave a Review</h3>
-            <form id="review-form" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" id="reviewer-name" placeholder="Full Name" class="form-input" required>
-                    <select id="reviewer-rating" class="form-input">
-                        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-                        <option value="4">⭐⭐⭐⭐ Great</option>
-                        <option value="3">⭐⭐⭐ Average</option>
-                    </select>
-                </div>
-                <textarea id="reviewer-text" rows="4" placeholder="Share your experience..." class="form-input resize-none" required></textarea>
-                <button type="submit" class="btn-gold w-full py-4 rounded-xl uppercase tracking-widest text-sm">Submit Review</button>
-            </form>
+      <!-- OEM Process steps -->
+      <div class="reveal reveal-delay-2">
+        <div style="position:relative;padding-left:40px;">
+          <div style="position:absolute;left:16px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--gold),transparent);"></div>
+
+          <div style="margin-bottom:36px;position:relative;">
+            <div style="position:absolute;left:-32px;width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:white;">1</div>
+            <div style="color:white;font-weight:600;margin-bottom:6px;">Consultation & Requirements</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7;">Share your product idea, target market, and requirements with our team.</div>
+          </div>
+
+          <div style="margin-bottom:36px;position:relative;">
+            <div style="position:absolute;left:-32px;width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:white;">2</div>
+            <div style="color:white;font-weight:600;margin-bottom:6px;">Formulation & Sample Development</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7;">We develop your custom formula and send samples for your approval.</div>
+          </div>
+
+          <div style="margin-bottom:36px;position:relative;">
+            <div style="position:absolute;left:-32px;width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:white;">3</div>
+            <div style="color:white;font-weight:600;margin-bottom:6px;">Packaging & Label Design</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7;">Custom packaging with your brand identity, logo, and regulatory compliance labels.</div>
+          </div>
+
+          <div style="margin-bottom:36px;position:relative;">
+            <div style="position:absolute;left:-32px;width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:white;">4</div>
+            <div style="color:white;font-weight:600;margin-bottom:6px;">Bulk Manufacturing</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7;">Full-scale GMP production with strict quality control at every stage.</div>
+          </div>
+
+          <div style="position:relative;">
+            <div style="position:absolute;left:-32px;width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:white;">5</div>
+            <div style="color:white;font-weight:600;margin-bottom:6px;">Export & Delivery</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.7;">Professionally packed, documented, and shipped to your location worldwide.</div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
-<section id="contact" class="py-24 md:py-32 px-5 md:px-12 bg-[#050905]">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-start">
+<!-- ===== GLOBAL EXPORT SECTION ===== -->
+<section id="export" style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">Global Export</div>
+      <h2 class="section-title mb-4">Delivering India's <em>Herbal</em><br/>Treasure Worldwide</h2>
+      <div class="divider-gold mx-auto" style="margin:20px auto 30px;"></div>
+      <p style="color:var(--gray-soft);max-width:560px;margin:0 auto;line-height:1.8;">
+        From India to 50+ countries, our export team ensures your order arrives safely, on time, and with all the required documentation.
+      </p>
+    </div>
 
-        <div class="reveal-text">
-            <div class="section-tag">Get In Touch</div>
-            <h2 class="text-4xl md:text-5xl font-black serif gold-gradient mb-6 leading-tight">Let's Build<br>Your Brand</h2>
-            <p class="text-gray-400 mb-10 leading-relaxed text-base md:text-lg">Discuss bulk orders, private labeling, or free sample requests with our export specialists.</p>
+    <div class="globe-visual mb-12 reveal">
+      <div class="globe-ring" style="width:600px;height:600px;left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+      <div class="globe-ring" style="width:400px;height:400px;left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+      <div class="globe-ring" style="width:220px;height:220px;left:50%;top:50%;transform:translate(-50%,-50%);"></div>
 
-            <div class="space-y-5 mb-10">
-                <a href="tel:+918279355649" class="flex items-center gap-5 group">
-                    <div class="contact-icon glass border border-[#C9A84C]/20 group-hover:border-[#C9A84C]/50">
-                        <i class="fas fa-phone text-[#C9A84C]"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Inquiry Hotline</p>
-                        <p class="text-lg md:text-xl font-bold group-hover:text-[#C9A84C] transition">+91 82793 55649</p>
-                    </div>
-                </a>
+      <div style="font-size:5rem;margin-bottom:20px;position:relative;">🌍</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:white;margin-bottom:12px;position:relative;">Exporting to 50+ Countries</div>
+      <p style="color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto 32px;font-size:14px;line-height:1.8;position:relative;">
+        USA, UK, Canada, Australia, UAE, Europe, Southeast Asia, Africa, and more. Our professional export team manages all customs, documentation, and logistics.
+      </p>
 
-                <a href="mailto:safainternational000@gmail.com" class="flex items-center gap-5 group">
-                    <div class="contact-icon glass border border-[#C9A84C]/20 group-hover:border-[#C9A84C]/50">
-                        <i class="fas fa-envelope text-[#C9A84C]"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Email Us</p>
-                        <p class="text-base md:text-xl font-bold group-hover:text-[#C9A84C] transition break-all">safainternational000@gmail.com</p>
-                    </div>
-                </a>
-
-                <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="flex items-center gap-5 group">
-                    <div class="contact-icon glass border border-[#C9A84C]/20 group-hover:border-pink-500/50">
-                        <i class="fab fa-instagram text-[#C9A84C] group-hover:text-pink-400 transition"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Instagram</p>
-                        <p class="text-lg font-bold group-hover:text-pink-400 transition">@safaherbal</p>
-                    </div>
-                </a>
-
-                <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="flex items-center gap-5 group">
-                    <div class="contact-icon glass border border-[#C9A84C]/20 group-hover:border-blue-500/50">
-                        <i class="fab fa-linkedin-in text-[#C9A84C] group-hover:text-blue-400 transition"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">LinkedIn</p>
-                        <p class="text-lg font-bold group-hover:text-blue-400 transition">SafaHerbal International</p>
-                    </div>
-                </a>
-            </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" style="position:relative;max-width:700px;margin:0 auto;">
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:1.8rem;">🇺🇸</div>
+          <div style="color:white;font-size:12px;margin-top:4px;">USA</div>
         </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:1.8rem;">🇬🇧</div>
+          <div style="color:white;font-size:12px;margin-top:4px;">UK</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:1.8rem;">🇦🇪</div>
+          <div style="color:white;font-size:12px;margin-top:4px;">UAE</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:16px;text-align:center;">
+          <div style="font-size:1.8rem;">🌏</div>
+          <div style="color:white;font-size:12px;margin-top:4px;">50+ More</div>
+        </div>
+      </div>
+    </div>
 
-        <!-- Contact Form -->
-     <div class="glass p-8 md:p-10 rounded-3xl border border-[#C9A84C]/10 reveal-text" style="transition-delay:0.3s">
-    <h3 class="text-xl font-bold serif mb-6">Your Inquiry</h3>
+    <!-- Export features -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:8px;padding:32px;text-align:center;" class="reveal">
+        <div style="font-size:2.5rem;margin-bottom:12px;">📋</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Export Documentation</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;">Commercial invoice, packing list, certificate of origin, COA, phytosanitary certificate — all handled professionally.</p>
+      </div>
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:8px;padding:32px;text-align:center;" class="reveal reveal-delay-1">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🚢</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Reliable Shipping</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;">Air freight and sea freight options. Secure packaging to maintain product integrity during international transit.</p>
+      </div>
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:8px;padding:32px;text-align:center;" class="reveal reveal-delay-2">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🤝</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:8px;">Long-term Partnerships</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;">We work with importers, wholesalers, distributors, and online sellers to build lasting business relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <form id="contact-form" class="space-y-4">
-        <input type="text" id="cf-company" placeholder="Company Name" class="form-input" required>
-        <input type="email" id="cf-email" placeholder="Business Email" class="form-input" required>
-        <input type="tel" id="cf-phone" placeholder="Phone / WhatsApp Number" class="form-input">
-        <textarea id="cf-message" rows="5" placeholder="Tell us about your requirements..." class="form-input resize-none" required></textarea>
+<!-- ===== TESTIMONIALS ===== -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">Testimonials</div>
+      <h2 class="section-title mb-4">Trusted by <em>Global</em> Buyers</h2>
+      <div class="divider-gold mx-auto" style="margin:20px auto 30px;"></div>
+    </div>
 
-        <button type="submit" id="cf-btn"
-            class="btn-gold w-full py-4 rounded-xl uppercase tracking-widest text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            
-            <span id="cf-btn-text">Send Inquiry</span>
-            <span id="cf-spinner" class="hidden">
-                <i class="fas fa-spinner fa-spin"></i>
-            </span>
-        </button>
-    </form>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <div class="stars mb-3">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;margin-bottom:20px;">
+          Exceptional quality Shilajit resin. Our customers love it and the repeat order rate is incredibly high. The export documentation was seamless and delivery was on time.
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #f0e8d8;padding-top:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">M</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Michael R.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Health Brand Owner · USA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote">"</div>
+        <div class="stars mb-3">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;margin-bottom:20px;">
+          We've been sourcing Ashwagandha and Moringa capsules for 2 years now. Consistent quality, competitive pricing, and excellent communication. Highly recommended for bulk buyers.
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #f0e8d8;padding-top:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2E5F47,#1B3A2D);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">S</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Sophie L.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Distributor · United Kingdom</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote">"</div>
+        <div class="stars mb-3">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;margin-bottom:20px;">
+          The private label service is outstanding. They helped us launch our own herbal brand with custom formulations and beautiful packaging. The team is professional and responsive.
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #f0e8d8;padding-top:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#A07840);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;">A</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Ahmed K.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Wellness Entrepreneur · UAE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">FAQ</div>
+      <h2 class="section-title mb-4">Frequently Asked <em>Questions</em></h2>
+      <div class="divider-gold mx-auto" style="margin:20px auto;"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">What is the minimum order quantity (MOQ)?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            We offer flexible MOQ options depending on the product. For most products, MOQ starts from as low as 100–500 units. For bulk wholesale, MOQ may vary. Please contact us on WhatsApp to discuss your specific requirements and we'll provide the best pricing structure.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">Do you provide free samples?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            Yes! We offer free product samples for serious buyers. You only need to cover the shipping cost. Samples allow you to verify quality, purity, and effectiveness before placing a bulk order. Use the sample request form above or contact us directly on WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">Which certifications do your products have?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            Our manufacturing facility is ISO certified, GMP certified, Halal certified, and USFDA registered. Products are FSSAI approved and third-party lab tested. We provide Certificate of Analysis (COA) and Certificate of Origin with every shipment.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">Can you create custom/private label products?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            Absolutely! We specialize in private label and OEM manufacturing. We can create custom formulations, design packaging with your branding, and handle all manufacturing and export. From concept to delivery, we support you every step of the way.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">Which countries do you export to?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            We export to 50+ countries worldwide including the USA, UK, Canada, Australia, UAE, Germany, France, Netherlands, Singapore, Malaysia, and many more. Our export team handles all documentation, customs, and shipping logistics.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span style="font-weight:600;color:var(--green-deep);">What is the typical lead time for orders?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;padding-bottom:20px;">
+            For ready-stock products, lead time is 7–15 business days for manufacturing, quality testing, and packaging. For custom formulations or private label orders, lead time is typically 3–6 weeks. Exact timelines depend on order quantity and product type.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section" style="padding:100px 0;">
+  <div class="max-w-7xl mx-auto px-6 text-center" style="position:relative;">
+    <div class="reveal">
+      <div style="font-size:3rem;margin-bottom:16px;">🎁</div>
+      <div class="section-badge" style="color:var(--gold-light);">Limited Offer</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4rem);color:white;font-weight:300;line-height:1.15;margin:16px 0 20px;">
+        Request Your <em style="color:var(--gold);">Free Sample</em><br/>Today
+      </h2>
+      <p style="color:rgba(255,255,255,0.6);max-width:540px;margin:0 auto 36px;line-height:1.8;">
+        We understand that quality must be experienced before trust is built. That's why we offer free product samples to serious international buyers. Test our quality — we're confident you'll love it.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20would%20like%20to%20request%20free%20samples%20of%20your%20herbal%20products." target="_blank" class="btn-gold" style="font-size:14px;padding:18px 40px;">
+          Request Free Sample on WhatsApp →
+        </a>
+        <a href="mailto:afnansaifi997@gmail.com?subject=Free Sample Request — Herbal Products&body=Hello, I am interested in requesting free samples. Please share details." class="btn-outline-white" style="font-size:14px;padding:18px 40px;">
+          Email Your Inquiry
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact" style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-20">
+      <div class="reveal">
+        <div class="section-badge">Contact Us</div>
+        <h2 class="section-title mb-4">Get in <em>Touch</em></h2>
+        <div class="divider-gold"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:36px;">
+          Ready to start your herbal business journey? Whether you're looking for wholesale pricing, private label services, or just have questions — we're here to help. Reach out through any channel below.
+        </p>
+
+        <div class="flex flex-col gap-4 mb-8">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20herbal%20products." target="_blank" class="contact-card" style="text-decoration:none;">
+            <div class="contact-icon" style="background:#25D366;color:white;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:2px;">WhatsApp (Primary)</div>
+              <div style="color:var(--gray-soft);font-size:14px;">+91 82793 55649</div>
+              <div style="color:#25D366;font-size:12px;margin-top:2px;">Click to chat instantly →</div>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:afnansaifi997@gmail.com?subject=Inquiry — Herbal Products" class="contact-card" style="text-decoration:none;">
+            <div class="contact-icon" style="background:#EA4335;color:white;font-size:22px;">✉</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:2px;">Email</div>
+              <div style="color:var(--gray-soft);font-size:14px;">afnansaifi997@gmail.com</div>
+              <div style="color:#EA4335;font-size:12px;margin-top:2px;">Send your inquiry →</div>
+            </div>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-card" style="text-decoration:none;">
+            <div class="contact-icon" style="background:#0077B5;color:white;font-size:22px;">in</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:2px;">LinkedIn</div>
+              <div style="color:var(--gray-soft);font-size:14px;">Connect professionally</div>
+              <div style="color:#0077B5;font-size:12px;margin-top:2px;">View LinkedIn profile →</div>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="contact-card" style="text-decoration:none;">
+            <div class="contact-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;font-size:22px;">📸</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:2px;"></div>
+              <div style="color:var(--gray-soft);font-size:14px;">Follow us for updates</div>
+              <div style="color:#e6683c;font-size:12px;margin-top:2px;">View our profile →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="reveal reveal-delay-2">
+        <div style="background:white;border:1px solid #f0e8d8;border-radius:12px;padding:44px;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:6px;">Send an Inquiry</h3>
+          <p style="color:var(--gray-soft);font-size:14px;margin-bottom:28px;">Fill in the details and we'll respond within 24 hours.</p>
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">First Name</label>
+                <input type="text" id="c-fname" placeholder="John" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
+              </div>
+              <div>
+                <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Last Name</label>
+                <input type="text" id="c-lname" placeholder="Smith" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
+              </div>
+            </div>
+            <div>
+              <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Email Address</label>
+              <input type="email" id="c-email" placeholder="john@company.com" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
+            </div>
+            <div>
+              <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Company / Country</label>
+              <input type="text" id="c-company" placeholder="Your Company, USA" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"/>
+            </div>
+            <div>
+              <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Inquiry Type</label>
+              <select id="c-type" style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;background:white;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'">
+                <option value="">Select inquiry type...</option>
+                <option>Wholesale Pricing</option>
+                <option>Private Label / OEM</option>
+                <option>Free Sample Request</option>
+                <option>Custom Formulation</option>
+                <option>Export Partnership</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--green-deep);font-weight:600;display:block;margin-bottom:6px;">Message</label>
+              <textarea id="c-message" rows="4" placeholder="Tell us about your requirements, product interest, quantities, and any questions..." style="width:100%;border:1px solid #e8e0d0;border-radius:4px;padding:12px 14px;font-size:14px;outline:none;font-family:'Jost',sans-serif;resize:vertical;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#e8e0d0'"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <button onclick="sendContactWhatsApp()" style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:14px;border-radius:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </button>
+              <button onclick="sendContactEmail()" style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:14px;border-radius:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                ✉ Send Email
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="padding:60px 0 0;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+           <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
-</section>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;">Safa Herbal</div>
+        </div>
+        <p style="color:rgba(255,255,255,0.4);font-size:13px;line-height:1.8;margin-bottom:20px;">Premium Herbal & Ayurvedic manufacturer and exporter from India. Delivering nature's best to the world.</p>
+        <div class="flex gap-3">
+          <a href="https://wa.me/918279355649" target="_blank" class="social-icon" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="social-icon" title="Instagram">📸</a>
+          <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-icon" title="LinkedIn" style="font-size:14px;font-weight:700;">in</a>
+          <a href="mailto:afnansaifi997@gmail.com" class="social-icon" title="Email">✉</a>
+        </div>
+      </div>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="pt-16 pb-8 border-t border-white/5 px-5 md:px-12">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-10">
-            <div>
-                <div class="text-2xl font-black tracking-widest gold-gradient serif mb-2">SAFAHERBAL</div>
-                <p class="text-xs text-gray-600 uppercase tracking-widest">Premium Ayurvedic Manufacturing & Export</p>
-            </div>
-            <div class="flex gap-3">
-                <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="social-link" title="Instagram">
-                    <i class="fab fa-instagram text-[#C9A84C]"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link" title="LinkedIn">
-                    <i class="fab fa-linkedin-in text-[#C9A84C]"></i>
-                </a>
-                <a href="https://wa.me/918279355649" target="_blank" class="social-link" title="WhatsApp">
-                    <i class="fab fa-whatsapp text-green-400"></i>
-                </a>
-                <a href="mailto:safainternational000@gmail.com" class="social-link" title="Email">
-                    <i class="fas fa-envelope text-[#C9A84C]"></i>
-                </a>
-            </div>
+      <!-- Products -->
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;">Products</div>
+        <a href="#products" class="footer-link">Himalayan Shilajit</a>
+        <a href="#products" class="footer-link">Ashwagandha Capsules</a>
+        <a href="#products" class="footer-link">Moringa Capsules & Powder</a>
+        <a href="#products" class="footer-link">Herbal Extracts</a>
+        <a href="#products" class="footer-link">Ayurvedic Supplements</a>
+        <a href="#products" class="footer-link">Custom Formulations</a>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;">Services</div>
+        <a href="#private-label" class="footer-link">Private Label Manufacturing</a>
+        <a href="#private-label" class="footer-link">OEM Services</a>
+        <a href="#export" class="footer-link">Global Export</a>
+        <a href="#quality" class="footer-link">Quality Certifications</a>
+        <a href="https://wa.me/918279355649?text=Free%20Sample%20Request" target="_blank" class="footer-link">Free Samples</a>
+        <a href="contact.html" class="footer-link">Custom Packaging</a>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;">Contact</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:10px;line-height:1.6;">📍 India (Himalayan Region)</div>
+        <a href="https://wa.me/918279355649" target="_blank" style="color:rgba(255,255,255,0.4);font-size:13px;display:block;margin-bottom:10px;text-decoration:none;">📱 +91 82793 55649</a>
+        <a href="mailto:afnansaifi997@gmail.com" style="color:rgba(255,255,255,0.4);font-size:13px;display:block;margin-bottom:10px;text-decoration:none;word-break:break-all;">✉ afnansaifi997@gmail.com</a>
+        <div style="margin-top:20px;">
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20have%20an%20inquiry%20about%20your%20herbal%20products." target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;padding:10px 20px;border-radius:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;">
+            WhatsApp Us →
+          </a>
         </div>
-        <div class="border-t border-white/5 pt-8 text-center text-gray-600 text-xs md:text-sm">
-            <p>© 2026 SafaHerbal International — Manufacturers & Exporters, India. All Rights Reserved.</p>
-        </div>
+      </div>
     </div>
+
+    <!-- Certifications strip -->
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;">
+      <span style="color:rgba(255,255,255,0.25);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Certified By:</span>
+      <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);padding:6px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">ISO</span>
+      <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);padding:6px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">GMP</span>
+      <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);padding:6px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">HALAL</span>
+      <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);padding:6px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">USFDA</span>
+      <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.35);padding:6px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">FSSAI</span>
+    </div>
+
+    <!-- Copyright -->
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">
+      <div style="color:rgba(255,255,255,0.25);font-size:12px;">© 2025 Safa Herbal. All rights reserved. Premium Herbal Exports from India.</div>
+      <div style="color:rgba(255,255,255,0.2);font-size:12px;">Made with 🌿 in India</div>
+    </div>
+  </div>
 </footer>
 
-<!-- WhatsApp FAB -->
-<a href="https://wa.me/918279355649" target="_blank" class="wa-btn fixed bottom-6 right-5 md:bottom-8 md:right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full flex items-center gap-2 group">
-    <i class="fab fa-whatsapp text-3xl"></i>
-    <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold text-sm">Chat with us</span>
-</a>
-
-<!-- ═══ SCRIPTS ═══ -->
+<!-- ===== JAVASCRIPT ===== -->
 <script>
-// ── Cursor
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-document.addEventListener('mousemove', e => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.8)'; ring.style.borderColor = 'rgba(201,168,76,0.8)'; });
-    el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(201,168,76,0.5)'; });
-});
+  // NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('#nav-links .nav-link');
+  const logoText = document.getElementById('logo-text');
+  const logoSub = document.getElementById('logo-sub');
 
-// ── Navbar Scroll
-window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// ── Mobile Menu
-const toggle = document.getElementById('menu-toggle');
-const menuClose = document.getElementById('menu-close');
-const mobileMenu = document.getElementById('mobile-menu');
-const overlay = document.getElementById('menu-overlay');
-const menuIcon = document.getElementById('menu-icon');
-
-function openMenu() {
-    mobileMenu.classList.add('open');
-    overlay.classList.remove('hidden');
-    menuIcon.className = 'fas fa-times text-lg';
-    document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-    mobileMenu.classList.remove('open');
-    overlay.classList.add('hidden');
-    menuIcon.className = 'fas fa-bars text-lg';
-    document.body.style.overflow = '';
-}
-toggle.addEventListener('click', openMenu);
-menuClose.addEventListener('click', closeMenu);
-overlay.addEventListener('click', closeMenu);
-document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
-
-// ── Floating Particles
-(function() {
-    const container = document.getElementById('particles');
-    const colors = ['#C9A84C','#2D6A3F','#F5D87A','#4CAF72'];
-    for (let i = 0; i < 25; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        const size = Math.random() * 6 + 2;
-        p.style.cssText = `
-            width:${size}px; height:${size}px;
-            background:${colors[Math.floor(Math.random()*colors.length)]};
-            left:${Math.random()*100}%;
-            animation-duration:${10 + Math.random()*20}s;
-            animation-delay:${Math.random()*15}s;
-        `;
-        container.appendChild(p);
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+      navLinks.forEach(l => l.style.color = '#1B3A2D');
+      logoText.style.color = '#1B3A2D';
+      logoSub.style.color = '#6B7280';
+    } else {
+      navbar.classList.remove('scrolled');
+      navLinks.forEach(l => l.style.color = 'rgba(255,255,255,0.75)');
+      logoText.style.color = 'white';
+      logoSub.style.color = 'rgba(255,255,255,0.45)';
     }
-})();
+  });
 
-// ── Scroll Reveal
-const revealEls = document.querySelectorAll('.reveal-text');
-const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-}, { threshold: 0.15 });
-revealEls.forEach(el => revealObs.observe(el));
+  // MOBILE MENU
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
 
-// Trigger hero elements
-setTimeout(() => {
-    document.querySelectorAll('.reveal-text').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) el.classList.add('visible');
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-}, 100);
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
 
-// ── Count Up Animation
-const statEls = document.querySelectorAll('[data-count]');
-const statObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            const el = e.target;
-            const target = parseInt(el.dataset.count);
-            const suffix = el.dataset.suffix || '';
-            let start = 0;
-            const duration = 1800;
-            const step = target / (duration / 16);
-            const timer = setInterval(() => {
-                start = Math.min(start + step, target);
-                el.textContent = Math.floor(start) + suffix;
-                if (start >= target) clearInterval(timer);
-            }, 16);
-            statObs.unobserve(el);
-        }
+  // COUNTER ANIMATION
+  function animateCounter(el, target) {
+    let start = 0;
+    const duration = 2000;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        el.textContent = target;
+        clearInterval(timer);
+      } else {
+        el.textContent = start;
+      }
+    }, 16);
+  }
+
+  const counters = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target, parseInt(entry.target.dataset.target));
+        counterObserver.unobserve(entry.target);
+      }
     });
-}, { threshold: 0.5 });
-statEls.forEach(el => statObs.observe(el));
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
 
-// ── Reviews System
-const initialReviews = [
-    { name: "Julian Marks", rating: 5, text: "The quality of the Shilajit is unparalleled. Our customers in Germany absolutely love the purity.", date: "2026-03-01" },
-    { name: "Sophia Chen", rating: 5, text: "Excellent private label support. They handled everything from packaging to export documents seamlessly.", date: "2026-02-15" },
-    { name: "Ahmed Al-Rashid", rating: 5, text: "Best Ayurvedic supplier I've worked with. Highly recommend SafaHerbal for Middle East distribution.", date: "2026-01-20" }
-];
+  // FAQ ACCORDION
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const icon = el.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
 
-let reviews = JSON.parse(localStorage.getItem('safa_reviews') || 'null') || initialReviews;
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
 
-function renderReviews() {
-    const c = document.getElementById('reviews-container');
-    c.innerHTML = reviews.slice(-5).reverse().map((r, i) => `
-        <div class="review-card glass rounded-2xl p-6 border-l-4 border-[#C9A84C] hover:border-[#F5D87A] transition" style="animation-delay:${i*0.1}s">
-            <div class="flex justify-between items-start mb-3">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#C9A84C]/30 to-[#2D6A3F]/30 flex items-center justify-center font-bold text-[#C9A84C] text-sm">${r.name.charAt(0)}</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-[#C9A84C]">${r.name}</h4>
-                        <p class="text-[10px] text-gray-600">${r.date}</p>
-                    </div>
-                </div>
-                <div class="text-xs text-[#C9A84C]">${'⭐'.repeat(parseInt(r.rating))}</div>
-            </div>
-            <p class="text-gray-400 text-sm italic leading-relaxed">"${r.text}"</p>
-        </div>
-    `).join('');
-    document.getElementById('total-reviews-count').textContent = `(${reviews.length} Reviews)`;
-    const avg = (reviews.reduce((a, r) => a + parseInt(r.rating), 0) / reviews.length).toFixed(1);
-    document.getElementById('avg-rating').textContent = avg;
-}
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.classList.add('open');
+    }
+  }
 
-document.getElementById('review-form').addEventListener('submit', e => {
-    e.preventDefault();
-    reviews.push({
-        name: document.getElementById('reviewer-name').value,
-        rating: document.getElementById('reviewer-rating').value,
-        text: document.getElementById('reviewer-text').value,
-        date: new Date().toISOString().split('T')[0]
+  // WHATSAPP SAMPLE REQUEST
+  function sendSampleRequest() {
+    const name = document.getElementById('s-name').value.trim();
+    const company = document.getElementById('s-company').value.trim();
+    const country = document.getElementById('s-country').value.trim();
+    const product = document.getElementById('s-product').value;
+
+    if (!name || !company || !country) {
+      alert('Please fill in your name, company, and country to proceed.');
+      return;
+    }
+
+    const msg = encodeURIComponent(
+      `Hello Safa Herbal Team! 🌿\n\nI would like to request free samples.\n\n` +
+      `👤 Name: ${name}\n🏢 Company: ${company}\n🌍 Country: ${country}\n` +
+      `📦 Product Interest: ${product || 'Not specified'}\n\n` +
+      `Please let me know the next steps. Thank you!`
+    );
+    window.open(`https://wa.me/918279355649?text=${msg}`, '_blank');
+  }
+
+  // CONTACT FORM - WHATSAPP
+  function sendContactWhatsApp() {
+    const fname = document.getElementById('c-fname').value.trim();
+    const lname = document.getElementById('c-lname').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const company = document.getElementById('c-company').value.trim();
+    const type = document.getElementById('c-type').value;
+    const message = document.getElementById('c-message').value.trim();
+
+    if (!fname) { alert('Please enter your name.'); return; }
+
+    const msg = encodeURIComponent(
+      `Hello Safa Herbal Team! 🌿\n\nNew Inquiry:\n\n` +
+      `👤 Name: ${fname} ${lname}\n📧 Email: ${email || 'Not provided'}\n` +
+      `🏢 Company/Country: ${company || 'Not provided'}\n📋 Inquiry Type: ${type || 'General'}\n\n` +
+      `💬 Message:\n${message || 'Please contact me with more information.'}\n\nThank you!`
+    );
+    window.open(`https://wa.me/918279355649?text=${msg}`, '_blank');
+  }
+
+  // CONTACT FORM - EMAIL
+  function sendContactEmail() {
+    const fname = document.getElementById('c-fname').value.trim();
+    const lname = document.getElementById('c-lname').value.trim();
+    const company = document.getElementById('c-company').value.trim();
+    const type = document.getElementById('c-type').value;
+    const message = document.getElementById('c-message').value.trim();
+
+    const subject = encodeURIComponent(`Inquiry: ${type || 'General'} — ${fname} ${lname}`);
+    const body = encodeURIComponent(
+      `Hello Safa Herbal Team,\n\nName: ${fname} ${lname}\nCompany/Country: ${company}\nInquiry Type: ${type}\n\nMessage:\n${message}\n\nBest regards,\n${fname}`
+    );
+    window.location.href = `mailto:afnansaifi997@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  // SMOOTH ACTIVE NAV on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
     });
-    localStorage.setItem('safa_reviews', JSON.stringify(reviews));
-    renderReviews();
-    e.target.reset();
-    showToast('Thank you for your feedback!');
-});
-
-renderReviews();
-
-// ── Contact Form (mailto + EmailJS fallback)
-
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById("cf-btn");
-    const btnText = document.getElementById("cf-btn-text");
-    const spinner = document.getElementById("cf-spinner");
-
-    // Show loading animation
-    btnText.innerText = "Sending...";
-    spinner.classList.remove("hidden");
-    btn.classList.add("scale-95");
-
-    // Get values
-    const company = document.getElementById("cf-company").value;
-    const email = document.getElementById("cf-email").value;
-    const phone = document.getElementById("cf-phone").value;
-    const message = document.getElementById("cf-message").value;
-
-    // Format WhatsApp message
-    const whatsappMessage = 
-`*New Inquiry* 🚀
-
-🏢 Company: ${company}
-📧 Email: ${email}
-📱 Phone: ${phone}
-📝 Message: ${message}`;
-
-    const whatsappURL = `https://wa.me/918279355649?text=${encodeURIComponent(whatsappMessage)}`;
-
-    // Delay for animation
-    setTimeout(() => {
-        window.open(whatsappURL, "_blank");
-
-        // Reset button
-        btnText.innerText = "Sent ✓";
-        spinner.classList.add("hidden");
-        btn.classList.remove("scale-95");
-    }, 1200);
-});
-
-
-// ── Toast
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3500);
-}
+    navLinks.forEach(link => {
+      link.style.fontWeight = link.getAttribute('href') === `#${current}` ? '600' : '500';
+    });
+  });
 </script>
 
 </body>

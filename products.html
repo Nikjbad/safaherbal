@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products — Safa Herbal Premium Herbal & Ayurvedic Exports</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --gold-dark: #A07840;
+      --green-deep: #1B3A2D;
+      --green-mid: #2E5F47;
+      --green-soft: #4A8B67;
+      --cream: #FAF7F2;
+      --cream-dark: #F0EAE0;
+      --white: #FFFFFF;
+      --charcoal: #1A1A1A;
+      --gray-soft: #6B7280;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--charcoal); overflow-x: hidden; }
+    h1,h2,h3,h4,.serif { font-family: 'Cormorant Garamond', serif; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* NAV */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      transition: all 0.4s ease;
+      background: rgba(27,58,45,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.15);
+    }
+    .nav-link {
+      position: relative; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 500; color: rgba(255,255,255,0.7); transition: color 0.3s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+      background: var(--gold); transition: width 0.3s;
+    }
+    .nav-link:hover::after,.nav-link.active::after { width: 100%; }
+
+    /* HERO */
+    .page-hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(160deg, #0d2a1e 0%, #1B3A2D 55%, #243d2f 100%);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px;
+    }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
+    .breadcrumb span { color: var(--gold); }
+
+    /* SECTION */
+    .section-badge { display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+    .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--green-deep); }
+    .section-title em { font-style: italic; color: var(--gold-dark); }
+    .divider-gold { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold) 0%, transparent 100%); margin: 20px 0 30px; }
+    .divider-gold.center { margin: 20px auto 30px; }
+
+    /* FILTER TABS */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 48px; }
+    .filter-btn {
+      padding: 10px 24px; border-radius: 3px; font-size: 11px; letter-spacing: 1.5px;
+      text-transform: uppercase; font-weight: 500; cursor: pointer;
+      border: 1px solid #e0d8c8; color: var(--gray-soft); background: white;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--green-deep); color: white; border-color: var(--green-deep);
+    }
+
+    /* PRODUCT CARDS */
+    .product-card {
+      background: white; border: 1px solid #f0e8d8; border-radius: 8px;
+      overflow: hidden; transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      position: relative; display: flex; flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 28px 70px rgba(27,58,45,0.13); border-color: var(--gold-light); }
+    .product-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-img {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 70px; position: relative; overflow: hidden;
+    }
+    .product-img::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+    .tag {
+      display: inline-block; padding: 3px 10px; border-radius: 3px;
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+    }
+    .tag-green { background: #f0f7f3; color: var(--green-soft); }
+    .tag-gold { background: #fdf5e8; color: var(--gold-dark); }
+    .tag-blue { background: #f0f4ff; color: #4060c0; }
+    .tag-purple { background: #f5f0ff; color: #7050b0; }
+    .btn-inquire {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: white; padding: 12px 24px; border-radius: 4px;
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+      transition: all 0.3s; text-decoration: none;
+    }
+    .btn-inquire:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(201,169,110,0.4); }
+    
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--gold); color: var(--gold-dark); padding: 12px 24px; border-radius: 4px;
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+      transition: all 0.3s; text-decoration: none; cursor: pointer; background: transparent;
+    }
+    .btn-ghost:hover { background: var(--gold); color: white; }
+
+    /* SPOTLIGHT CARD */
+    .spotlight {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #0d2218 100%);
+      border-radius: 12px; overflow: hidden; position: relative;
+    }
+    .spotlight::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.15), transparent 70%);
+    }
+
+    /* BENEFIT PILLS */
+    .benefit-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 6px; padding: 10px 14px;
+    }
+    .benefit-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* SPEC TABLE */
+    .spec-table { width: 100%; border-collapse: collapse; }
+    .spec-table tr { border-bottom: 1px solid #f0e8d8; }
+    .spec-table tr:last-child { border-bottom: none; }
+    .spec-table td { padding: 12px 16px; font-size: 13px; }
+    .spec-table td:first-child { color: var(--gray-soft); width: 140px; font-weight: 500; }
+    .spec-table td:last-child { color: var(--charcoal); font-weight: 500; }
+
+    /* COMPARISON TABLE */
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th { padding: 16px 20px; text-align: left; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+    .compare-table td { padding: 16px 20px; font-size: 13px; border-top: 1px solid #f0e8d8; }
+    .compare-table tr:hover td { background: #faf7f2; }
+    .check { color: #4A8B67; font-size: 16px; }
+    .cross { color: #ccc; font-size: 16px; }
+
+    /* PACKAGING SECTION */
+    .pack-card {
+      border: 2px solid #f0e8d8; border-radius: 10px; padding: 28px; text-align: center;
+      transition: all 0.3s; cursor: pointer; position: relative;
+    }
+    .pack-card:hover, .pack-card.selected { border-color: var(--gold); background: #fdf9f0; }
+    .pack-card.selected::after { content: '✓'; position: absolute; top: -10px; right: -10px; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+
+    /* PRICING TIERS */
+    .tier-card {
+      border: 1px solid #f0e8d8; border-radius: 10px; overflow: hidden;
+      transition: all 0.3s;
+    }
+    .tier-card:hover { border-color: var(--gold-light); box-shadow: 0 12px 36px rgba(27,58,45,0.08); }
+    .tier-card.featured { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.15); }
+    .tier-header { padding: 28px; }
+    .tier-body { padding: 28px; border-top: 1px solid #f0e8d8; }
+    .tier-feature { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 13px; color: var(--gray-soft); }
+    .tier-feature .check-sm { color: var(--green-soft); font-size: 14px; }
+
+    /* INGREDIENTS */
+    .ingredient-card {
+      background: white; border: 1px solid #f0e8d8; border-radius: 8px;
+      padding: 24px; text-align: center; transition: all 0.3s;
+    }
+    .ingredient-card:hover { border-color: var(--gold-light); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,58,45,0.08); }
+
+    /* CERTIFICATIONS BAR */
+    .cert-strip {
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+      padding: 32px 40px; background: var(--cream);
+      border-radius: 10px; border: 1px solid #f0e8d8;
+    }
+    .cert-item { display: flex; align-items: center; gap: 10px; }
+    .cert-circle { width: 44px; height: 44px; border-radius: 50%; background: white; border: 2px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+
+    /* MARQUEE */
+    .marquee-track { display: flex; gap: 60px; animation: marquee 25s linear infinite; white-space: nowrap; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
+
+    /* WHATSAPP */
+    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.45); animation: float-bounce 3s ease-in-out infinite; transition: all 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    @keyframes float-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* STICKY SIDEBAR */
+    .sticky-side { position: sticky; top: 100px; }
+
+    /* PRODUCT DETAIL MODAL STYLES */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9998; backdrop-filter: blur(4px); }
+    .modal-overlay.open { display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal-box { background: white; border-radius: 12px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+
+    /* FOOTER */
+    footer { background: #0a1f15; }
+    .footer-link { color: rgba(255,255,255,0.5); font-size: 13px; transition: color 0.3s; display: block; margin-bottom: 10px; }
+    .footer-link:hover { color: var(--gold); }
+    .social-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 15px; transition: all 0.3s; text-decoration: none; }
+    .social-icon:hover { background: var(--gold); border-color: var(--gold); color: white; }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 120px 0 60px; }
+      .spec-table td { padding: 10px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20herbal%20products.%20Please%20share%20details." target="_blank" class="whatsapp-float">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="px-6 py-4">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+       <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;line-height:1;">Safa Herbal</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Herbal Exports</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="products.html" class="nav-link active">Products</a>
+      <a href="index.html#quality" class="nav-link">Quality</a>
+      <a href="index.html#private-label" class="nav-link">Private Label</a>
+      <a href="index.html#export" class="nav-link">Export</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="https://wa.me/918279355649?text=I%20want%20to%20request%20free%20samples." target="_blank" style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:10px 22px;border-radius:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;transition:all 0.3s;">Free Sample →</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <!-- Decorative circles -->
+  <div style="position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(201,169,110,0.1);right:-120px;top:-120px;"></div>
+  <div style="position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(201,169,110,0.08);right:-40px;top:-40px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6" style="position:relative;">
+    <div class="breadcrumb">
+      <a href="index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Home</a>
+      <span style="color:rgba(255,255,255,0.25);">›</span>
+      <span>Products</span>
+    </div>
+    <div style="max-width:720px;">
+      <div class="section-badge" style="color:var(--gold-light);">Our Product Range</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5.5rem);color:white;font-weight:300;line-height:1.05;margin:12px 0 24px;">
+        Premium <em style="color:var(--gold);font-style:italic;">Herbal</em><br/>& Ayurvedic<br/>Collection
+      </h1>
+      <p style="color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.85;max-width:560px;margin-bottom:36px;">
+        Explore our full catalogue of 30+ premium herbal products — from Himalayan Shilajit to bespoke Ayurvedic formulations. All GMP-manufactured, lab-tested, and export-ready.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.25);padding:10px 18px;border-radius:4px;">
+          <span style="font-size:16px;">🏅</span>
+          <span style="color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:1px;">ISO Certified</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.25);padding:10px 18px;border-radius:4px;">
+          <span style="font-size:16px;">🔬</span>
+          <span style="color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:1px;">3rd Party Tested</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.25);padding:10px 18px;border-radius:4px;">
+          <span style="font-size:16px;">🚀</span>
+          <span style="color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:1px;">50+ Countries</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.25);padding:10px 18px;border-radius:4px;">
+          <span style="font-size:16px;">🏷️</span>
+          <span style="color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:1px;">Private Label Available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div style="background:var(--green-deep);padding:14px 0;overflow:hidden;">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ashwagandha KSM-66</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Moringa Capsules</span>
+    
+    
+   
+    <span class="marquee-item"><span class="marquee-dot"></span>Organic Moringa Leaf Capsules</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Honey Shilajit</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ashwagandha Powder</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Moringa Powder</span>
+    
+     <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Shilajit Energy Sticks</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ashwagandha Root Extract Capsules</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Organic Moringa Leaf Powder</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit Powder</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit Resin</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Shilajit Capsules</span>
+    
+
+    <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+  </div>
+</div>
+
+<!-- ===== FEATURED SPOTLIGHT ===== -->
+<section style="padding:80px 0;background:var(--green-deep);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;" class="reveal">
+      <div>
+        <div class="section-badge" style="color:var(--gold-light);">Featured Product</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);color:white;font-weight:300;">Our <em style="color:var(--gold);">Bestseller</em></h2>
+      </div>
+      <a href="https://wa.me/918279355649?text=I%20want%20details%20on%20Himalayan%20Shilajit." target="_blank" class="btn-inquire">Request Pricing →</a>
+    </div>
+
+    <div class="spotlight p-8 md:p-12 reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="md:grid-cols-2">
+        <div>
+          <div style="background:rgba(201,169,110,0.12);border:1px solid rgba(201,169,110,0.3);border-radius:8px;padding:6px 14px;display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;">#1 Bestseller · Premium Grade</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);color:white;font-weight:300;line-height:1.1;margin-bottom:16px;">
+            Himalayan<br/><em style="color:var(--gold);">Shilajit</em>
+          </h2>
+          <p style="color:rgba(255,255,255,0.6);line-height:1.85;font-size:14px;margin-bottom:28px;">
+            Sourced from altitudes above 16,000 feet in the pristine Himalayan range. Naturally rich in fulvic acid (40%+), 85+ trace minerals, and bioactive compounds. Purified using traditional methods with modern quality control. Available in three premium forms to match your market needs.
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">40%+ Fulvic Acid</span></div>
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">85+ Trace Minerals</span></div>
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Heavy Metal Tested</span></div>
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">COA Available</span></div>
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Halal Certified</span></div>
+            <div class="benefit-pill"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Private Label Ready</span></div>
+          </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap; position:relative; z-index:10;">
+
+  <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20bulk%20pricing%20for%20Himalayan%20Shilajit.%20Please%20share%20details."
+     target="_blank"
+     style="position:relative; z-index:11;"
+     class="btn-inquire">
+    Get Bulk Price →
+  </a>
+
+  <a href="https://wa.me/918279355649?text=Hello%2C%20I%20would%20like%20a%20free%20sample%20of%20Himalayan%20Shilajit.%20Please%20guide%20me."
+     target="_blank"
+     style="position:relative; z-index:11;"
+     class="btn-ghost">
+    Free Sample
+  </a>
+
+</div>
+        </div>
+
+        <div style="position:relative;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.2);border-radius:12px;padding:32px;text-align:center;margin-bottom:16px;">
+            <div style="font-size:80px;margin-bottom:12px;">🏔️</div>
+            <div style="font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:1.1rem;letter-spacing:1px;">Himalayan Origin · 16,000ft+</div>
+          </div>
+          <!-- Forms Available -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:18px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">🫙</div>
+              <div style="color:white;font-size:12px;font-weight:600;">Resin</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:11px;margin-top:4px;">Pure Form</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:18px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">💊</div>
+              <div style="color:white;font-size:12px;font-weight:600;">Capsules</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:11px;margin-top:4px;">Easy Dose</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:18px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">🌾</div>
+              <div style="color:white;font-size:12px;font-weight:600;">Powder</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:11px;margin-top:4px;">Versatile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN PRODUCT CATALOGUE ===== -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="section-badge">Full Catalogue</div>
+      <h2 class="section-title mb-4">Our Complete <em>Herbal</em> Range</h2>
+      <div class="divider-gold center"></div>
+      <p style="color:var(--gray-soft);max-width:580px;margin:0 auto 40px;line-height:1.8;">Browse our complete collection of 30+ premium herbal and Ayurvedic products — all available for wholesale, private label, and custom OEM manufacturing.</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="shilajit">Shilajit</button>
+      <button class="filter-btn" data-filter="adaptogens">Adaptogens</button>
+      <button class="filter-btn" data-filter="superfoods">Superfoods</button>
+      <button class="filter-btn" data-filter="custom">Custom / OEM</button>
+    </div>
+
+    <!-- PRODUCTS GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;" id="products-grid">
+
+      <!-- Product 1: Shilajit Resin -->
+     <div class="product-card reveal" data-category="shilajit">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="himalyanShilajitImg.jpeg" alt="Himalayan Shilajit Resin"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Bestseller</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-SHJ-R01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Himalayan Shilajit Resin
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Purest form of Shilajit, sourced from high-altitude Himalayan rocks. Minimum 40% fulvic acid content. Deep black-brown resin packed with bioactive minerals and humic substances.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Resin (Jar)</td></tr>
+        <tr><td>Fulvic Acid</td><td>40%+ Minimum</td></tr>
+        <tr><td>MOQ</td><td>From 100 units</td></tr>
+        <tr><td>Packaging</td><td>20g / 50g / 100g</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Halal</span>
+      <span class="tag tag-green">Lab Tested</span>
+      <span class="tag tag-green">COA Ready</span>
+      <span class="tag tag-green">Private Label</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20need%20pricing%20for%20Shilajit%20Resin." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20free%20sample%20of%20Shilajit%20Resin." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 2: Shilajit Capsules -->
+     <div class="product-card reveal d1" data-category="shilajit">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="shilajitCapsules.png" alt="Himalayan Shilajit Capsules"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Popular</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-SHJ-C01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Himalayan Shilajit Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Standardized Shilajit extract in convenient vegetarian capsules. Perfect for retail markets demanding ease of use. Available in 200mg, 400mg, and 500mg strengths.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Veg Capsules</td></tr>
+        <tr><td>Strength</td><td>200mg / 400mg / 500mg</td></tr>
+        <tr><td>MOQ</td><td>From 500 caps / 100 bottles</td></tr>
+        <tr><td>Packaging</td><td>30 / 60 / 90 caps/bottle</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Vegetarian</span>
+      <span class="tag tag-green">Halal</span>
+      <span class="tag tag-green">GMP Certified</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Shilajit%20Capsules." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20free%20sample%20of%20Shilajit%20Capsules." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 3: Shilajit Powder -->
+      <div class="product-card reveal d2" data-category="shilajit">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="shilajitPowder.png" alt="Himalayan Shilajit Powder"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-blue">B2B Favorite</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-SHJ-P01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Himalayan Shilajit Powder
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Fine Shilajit powder ideal for encapsulation, blending, or formulation. Standardized extract available. Bulk quantities for manufacturers and supplement brands.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Fine Powder</td></tr>
+        <tr><td>Grade</td><td>Food / Supplement</td></tr>
+        <tr><td>MOQ</td><td>1kg (Bulk)</td></tr>
+        <tr><td>Packaging</td><td>1kg / 5kg / 25kg bags</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Bulk Available</span>
+      <span class="tag tag-green">Lab Tested</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Shilajit%20Powder%20bulk." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20free%20sample%20of%20Shilajit%20Powder." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 4: Ashwagandha KSM-66 -->
+      <div class="product-card reveal" data-category="adaptogens">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="AshwagandhaCapulesImg.jpeg" alt="Ashwagandha KSM-66 Capsules"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Premium</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-ASH-K01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Ashwagandha KSM-66 Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      World's most studied Ashwagandha extract. KSM-66 full-spectrum root extract standardized to 5% Withanolides. Clinical evidence supporting stress relief, energy, and athletic performance.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Extract</td><td>KSM-66® Full Spectrum</td></tr>
+        <tr><td>Standardized</td><td>5% Withanolides</td></tr>
+        <tr><td>Strength</td><td>300mg / 500mg / 600mg</td></tr>
+        <tr><td>MOQ</td><td>From 500 capsules</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Clinically Studied</span>
+      <span class="tag tag-green">Vegetarian</span>
+      <span class="tag tag-green">Non-GMO</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Ashwagandha%20KSM-66." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20free%20sample%20of%20Ashwagandha%20KSM-66." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 5: Ashwagandha Standard -->
+      <div class="product-card reveal d1" data-category="adaptogens">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="ashwagandhaRootCapsules.jpeg" alt="Ashwagandha Root Extract Capsules"
+         style="width:100%; height:100%; object-fit:cover; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-green">Value Range</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-ASH-S01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Ashwagandha Root Extract Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      High-quality Withania somnifera root extract at an accessible price point. Standardized to 2.5% Withanolides. Ideal for retailers and mid-market supplement brands.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Extract Ratio</td><td>10:1 Root Extract</td></tr>
+        <tr><td>Standardized</td><td>2.5% Withanolides</td></tr>
+        <tr><td>Strength</td><td>500mg per capsule</td></tr>
+        <tr><td>MOQ</td><td>From 1,000 capsules</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Competitive Price</span>
+      <span class="tag tag-green">Halal</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Ashwagandha%20Standard%20Extract." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Ashwagandha%20Extract%20Capsules." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+      <!-- Product 6: Moringa Capsules -->
+     <div class="product-card reveal d2" data-category="superfoods">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="moringaLeafCapsules.jpeg" alt="Organic Moringa Leaf Capsules"
+         style="width:100%; height:100%; object-fit:cover; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Superfood</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-MOR-C01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Organic Moringa Leaf Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Certified organic Moringa oleifera leaf powder packed with essential vitamins (A, B, C, E), minerals, and 18 amino acids. The world's most nutritious plant — in convenient capsule form.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Source</td><td>Organic Moringa Leaf</td></tr>
+        <tr><td>Strength</td><td>400mg / 500mg</td></tr>
+        <tr><td>MOQ</td><td>From 500 bottles</td></tr>
+        <tr><td>Certification</td><td>USDA Organic Available</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Organic</span>
+      <span class="tag tag-green">Vegan</span>
+      <span class="tag tag-green">USDA Organic</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Organic%20Moringa%20Capsules." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Moringa%20Capsules." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 7: Moringa Powder -->
+      <div class="product-card reveal" data-category="superfoods">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="MoringaPowderImg.jpeg" alt="Organic Moringa Leaf Powder"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-green">Export Ready</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-MOR-P01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Organic Moringa Leaf Powder
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Pure sun-dried, finely milled Moringa leaf powder. Brilliant green color indicating optimal nutrient preservation. Popular in the health food, smoothie, and nutraceutical sectors globally.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Grade</td><td>Food / Supplement</td></tr>
+        <tr><td>Mesh Size</td><td>80 Mesh (Fine)</td></tr>
+        <tr><td>MOQ</td><td>5kg (Bulk)</td></tr>
+        <tr><td>Packaging</td><td>100g / 250g / 500g / 1kg</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Bulk Wholesale</span>
+      <span class="tag tag-green">Organic</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20bulk%20pricing%20for%20Moringa%20Leaf%20Powder." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Moringa%20Leaf%20Powder." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 8: Turmeric Extract -->
+     <div class="product-card reveal d1" data-category="shilajit">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="HoneyShilajitImg.jpeg" alt="Honey Shilajit"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Premium Blend</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-SHJ-H01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Honey Shilajit
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      A powerful fusion of pure Himalayan Shilajit and natural honey. Combines mineral-rich fulvic acid with the nutritional benefits of raw honey for enhanced energy, immunity, and overall vitality. Ideal for daily wellness consumption.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Honey Blend</td></tr>
+        <tr><td>Key Ingredient</td><td>Shilajit + Raw Honey</td></tr>
+        <tr><td>Usage</td><td>Daily Wellness</td></tr>
+        <tr><td>MOQ</td><td>From 100 units</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Natural Energy</span>
+      <span class="tag tag-green">Immunity Boost</span>
+      <span class="tag tag-green">Premium Blend</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Honey%20Shilajit." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Honey%20Shilajit." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 9: Brahmi -->
+      <div class="product-card reveal d2" data-category="superfoods">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="MoringaCapsules.jpeg" alt="Moringa Capsules"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-green">Superfood</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-MOR-C02</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Moringa Capsules
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Nutrient-rich Moringa oleifera capsules packed with vitamins, minerals, and antioxidants. Supports immunity, energy, and overall wellness. A popular superfood supplement for daily health.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Source</td><td>Moringa Leaf</td></tr>
+        <tr><td>Strength</td><td>400mg / 500mg</td></tr>
+        <tr><td>Form</td><td>Capsules</td></tr>
+        <tr><td>MOQ</td><td>From 500 bottles</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Superfood</span>
+      <span class="tag tag-green">Vegan</span>
+      <span class="tag tag-green">Rich in Nutrients</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Moringa%20Capsules." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Moringa%20Capsules." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 10: Triphala -->
+     <div class="product-card reveal" data-category="adaptogens">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="AswagandhaPowderImg.jpeg" alt="Ashwagandha Powder"
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-purple">Ayurvedic Adaptogen</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-ASH-P01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Ashwagandha Powder
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Premium quality Withania somnifera root powder known for stress relief, strength, and vitality. Widely used in Ayurvedic formulations and modern wellness products. Ideal for daily consumption and bulk manufacturing.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Fine Powder</td></tr>
+        <tr><td>Source</td><td>Ashwagandha Root</td></tr>
+        <tr><td>Grade</td><td>Food / Supplement</td></tr>
+        <tr><td>MOQ</td><td>5kg (Bulk)</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Adaptogen</span>
+      <span class="tag tag-green">Stress Relief</span>
+      <span class="tag tag-green">Natural Energy</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Ashwagandha%20Powder." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Ashwagandha%20Powder." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+
+      <!-- Product 11: Shatavari -->
+      <div class="product-card reveal d1" data-category="shilajit">
+  
+  <div class="product-img" style="height:220px; overflow:hidden;">
+    <img src="shilajitSticks.jpeg" alt="Shilajit Sticks"
+         style="width:100%; height:100%; object-fit:contain; display:block; rotate:270deg;">
+  </div>
+
+  <div style="padding:28px;flex:1;display:flex;flex-direction:column;">
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <span class="tag tag-gold">Modern Format</span>
+      <span style="font-size:11px;color:var(--gray-soft);letter-spacing:1px;">SKU: NV-SHJ-S01</span>
+    </div>
+
+    <h3 class="serif" style="font-size:1.45rem;color:var(--green-deep);margin-bottom:8px;">
+      Shilajit Energy Sticks
+    </h3>
+
+    <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;margin-bottom:16px;flex:1;">
+      Convenient single-dose Shilajit sticks designed for on-the-go energy and vitality. Enriched with fulvic acid and trace minerals, offering a modern and easy-to-consume format for daily wellness.
+    </p>
+
+    <div style="background:var(--cream);border-radius:6px;padding:14px;margin-bottom:16px;">
+      <table class="spec-table">
+        <tr><td>Form</td><td>Stick Sachets</td></tr>
+        <tr><td>Usage</td><td>Single Dose</td></tr>
+        <tr><td>Key Content</td><td>Shilajit Extract</td></tr>
+        <tr><td>MOQ</td><td>From 500 boxes</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+      <span class="tag tag-green">Easy to Use</span>
+      <span class="tag tag-green">Travel Friendly</span>
+      <span class="tag tag-green">Energy Boost</span>
+    </div>
+
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/918279355649?text=I%20need%20pricing%20for%20Shilajit%20Sticks." target="_blank" class="btn-inquire" style="flex:1;justify-content:center;">
+        Get Price →
+      </a>
+
+      <a href="https://wa.me/918279355649?text=I%20want%20a%20sample%20of%20Shilajit%20Sticks." target="_blank" class="btn-ghost" style="flex:1;justify-content:center;">
+        Sample
+      </a>
+    </div>
+
+  </div>
+</div>
+      <!-- Product 12: Custom Formulation -->
+      <div class="product-card reveal d2" data-category="custom" style="background:linear-gradient(135deg,var(--green-deep) 0%,#0d2218 100%);border:none;">
+        <div style="padding:40px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <div style="font-size:3.5rem;margin-bottom:20px;">⚗️</div>
+          <div style="background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.3);border-radius:3px;padding:4px 12px;display:inline-block;font-size:11px;letter-spacing:1.5px;color:var(--gold-light);text-transform:uppercase;font-weight:600;margin-bottom:16px;width:fit-content;">R&D + OEM Service</div>
+          <h3 class="serif" style="font-size:1.8rem;color:white;margin-bottom:12px;">Custom Herbal Formulations</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:13px;line-height:1.8;margin-bottom:28px;">Bring your unique formula to life. Our R&D team develops custom herbal blends tailored to your brand's needs — from stress formulas to immunity blends to performance supplements.</p>
+          <ul style="margin-bottom:28px;">
+            <li class="benefit-pill" style="margin-bottom:8px;"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Custom ingredient combinations</span></li>
+            <li class="benefit-pill" style="margin-bottom:8px;"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Proprietary blend development</span></li>
+            <li class="benefit-pill" style="margin-bottom:8px;"><div class="benefit-dot"></div><span style="color:rgba(255,255,255,0.7);font-size:13px;">Label claim support & CoA</span></li>
+          </ul>
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20discuss%20a%20custom%20herbal%20formulation." target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;padding:14px 28px;border-radius:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;width:fit-content;">Discuss Your Formula →</a>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+    <!-- LOAD MORE -->
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <p style="color:var(--gray-soft);margin-bottom:16px;font-size:14px;">Showing 12 of 30+ products. Need something specific?</p>
+      <a href="https://wa.me/918279355649?text=Hello%2C%20please%20send%20me%20your%20complete%20product%20catalogue%20with%20pricing." target="_blank" class="btn-inquire" style="font-size:13px;padding:16px 36px;">Request Full Catalogue →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY INGREDIENTS SECTION ===== -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge">Key Ingredients</div>
+      <h2 class="section-title mb-4">Nature's Finest <em>Botanicals</em></h2>
+      <div class="divider-gold center"></div>
+      <p style="color:var(--gray-soft);max-width:560px;margin:0 auto;line-height:1.8;">Every ingredient is carefully selected, sustainably sourced from India's richest botanical regions, and rigorously tested before it enters our manufacturing process.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;">
+      <div class="ingredient-card reveal"><div style="font-size:2.5rem;margin-bottom:12px;">🏔️</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Shilajit</div><div style="font-size:12px;color:var(--gray-soft);">Himalayan resin · 16,000 ft</div></div>
+      <div class="ingredient-card reveal d1"><div style="font-size:2.5rem;margin-bottom:12px;">🌿</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Ashwagandha</div><div style="font-size:12px;color:var(--gray-soft);">Madhya Pradesh roots</div></div>
+      <div class="ingredient-card reveal d2"><div style="font-size:2.5rem;margin-bottom:12px;">🌳</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Moringa</div><div style="font-size:12px;color:var(--gray-soft);">Rajasthan organic farms</div></div>
+      <div class="ingredient-card reveal d3"><div style="font-size:2.5rem;margin-bottom:12px;">🌟</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Honey</div><div style="font-size:12px;color:var(--gray-soft);">Salem, Tamil Nadu</div></div>
+      <div class="ingredient-card reveal"><div style="font-size:2.5rem;margin-bottom:12px;">🍃</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Leaf</div><div style="font-size:12px;color:var(--gray-soft);">Wetland herb · Kerala</div></div>
+      <div class="ingredient-card reveal d1"><div style="font-size:2.5rem;margin-bottom:12px;">🍀</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:6px;">Organic</div><div style="font-size:12px;color:var(--gray-soft);">Asparagus · Himalayas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PACKAGING OPTIONS ===== -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;" class="md:grid-cols-2">
+      <div class="reveal">
+        <div class="section-badge">Packaging & MOQ</div>
+        <h2 class="section-title mb-4">Flexible <em>Packaging</em> Options</h2>
+        <div class="divider-gold"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:36px;">Whether you're launching a new brand or scaling an existing one, we offer flexible packaging solutions from retail-ready bottles to bulk export packaging. All options available with your private label.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+          <div class="pack-card">
+            <div style="font-size:2.5rem;margin-bottom:12px;">💊</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:14px;">Capsule Bottles</div>
+            <div style="color:var(--gray-soft);font-size:12px;line-height:1.6;">30 / 60 / 90 / 120 caps<br/>HDPE or glass jars</div>
+          </div>
+          <div class="pack-card">
+            <div style="font-size:2.5rem;margin-bottom:12px;">🫙</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:14px;">Resin Jars</div>
+            <div style="color:var(--gray-soft);font-size:12px;line-height:1.6;">10g / 20g / 50g / 100g<br/>Premium glass or PP jar</div>
+          </div>
+          <div class="pack-card">
+            <div style="font-size:2.5rem;margin-bottom:12px;">🛍️</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:14px;">Pouches & Sachets</div>
+            <div style="color:var(--gray-soft);font-size:12px;line-height:1.6;">Stand-up pouches<br/>Sachet formats available</div>
+          </div>
+          <div class="pack-card">
+            <div style="font-size:2.5rem;margin-bottom:12px;">📦</div>
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:14px;">Bulk Export</div>
+            <div style="color:var(--gray-soft);font-size:12px;line-height:1.6;">1kg / 5kg / 25kg drums<br/>For manufacturers</div>
+          </div>
+        </div>
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20discuss%20packaging%20options%20and%20private%20label." target="_blank" class="btn-inquire">Discuss Packaging →</a>
+      </div>
+
+      <!-- MOQ & PRICING TIERS -->
+      <div class="reveal d2">
+        <div class="section-badge">Wholesale Tiers</div>
+        <h2 class="section-title mb-4">Volume <em>Pricing</em> Tiers</h2>
+        <div class="divider-gold"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:28px;">Better pricing as you scale. Our tiered structure rewards growing businesses and makes it easy to start small and expand.</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="tier-card">
+            <div class="tier-header" style="background:#fafafa;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-soft);font-weight:600;">Starter</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin-top:2px;">Sample / Small Batch</div>
+                </div>
+                <div style="font-size:2rem;">🌱</div>
+              </div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-feature"><span class="check-sm">✓</span> MOQ from 100 units</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Standard pricing</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Free samples available</div>
+            </div>
+          </div>
+
+          <div class="tier-card featured">
+            <div class="tier-header" style="background:linear-gradient(135deg,#fdf6e8,#faefd5);">
+              <div style="position:absolute;top:-1px;right:20px;background:var(--gold);color:white;padding:4px 12px;border-radius:0 0 6px 6px;font-size:11px;letter-spacing:1px;font-weight:600;">MOST POPULAR</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;">Wholesale</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin-top:2px;">1,000 – 10,000 units</div>
+                </div>
+                <div style="font-size:2rem;">🏪</div>
+              </div>
+            </div>
+            <div class="tier-body" style="position:relative;">
+              <div class="tier-feature"><span class="check-sm">✓</span> Competitive wholesale pricing</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Private label service</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Dedicated account manager</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Export documentation support</div>
+            </div>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-header" style="background:var(--green-deep);">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);font-weight:600;">Enterprise / OEM</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-top:2px;">10,000+ units</div>
+                </div>
+                <div style="font-size:2rem;">🏭</div>
+              </div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-feature"><span class="check-sm">✓</span> Best-in-class pricing</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Full OEM manufacturing</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Custom formulation R&D</div>
+              <div class="tier-feature"><span class="check-sm">✓</span> Priority production scheduling</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section style="padding:80px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="section-badge">Quality Assurance</div>
+      <h2 class="section-title">Backed by <em>Certifications</em></h2>
+    </div>
+    <div class="cert-strip reveal" style="justify-content:space-between;">
+      <div class="cert-item"><div class="cert-circle">🏅</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">ISO Certified</div><div style="font-size:11px;color:var(--gray-soft);">Manufacturing</div></div></div>
+      <div style="width:1px;height:40px;background:#e8e0d0;"></div>
+      <div class="cert-item"><div class="cert-circle">🏭</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">GMP Facility</div><div style="font-size:11px;color:var(--gray-soft);">Good Manufacturing</div></div></div>
+      <div style="width:1px;height:40px;background:#e8e0d0;"></div>
+      <div class="cert-item"><div class="cert-circle">☪️</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">Halal Certified</div><div style="font-size:11px;color:var(--gray-soft);">Global Markets</div></div></div>
+      <div style="width:1px;height:40px;background:#e8e0d0;"></div>
+      <div class="cert-item"><div class="cert-circle">🇺🇸</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">USFDA Registered</div><div style="font-size:11px;color:var(--gray-soft);">US Export Ready</div></div></div>
+      <div style="width:1px;height:40px;background:#e8e0d0;"></div>
+      <div class="cert-item"><div class="cert-circle">🔬</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">3rd Party Tested</div><div style="font-size:11px;color:var(--gray-soft);">Independent Labs</div></div></div>
+      <div style="width:1px;height:40px;background:#e8e0d0;"></div>
+      <div class="cert-item"><div class="cert-circle">📋</div><div><div style="font-weight:600;color:var(--green-deep);font-size:13px;">COA Available</div><div style="font-size:11px;color:var(--gray-soft);">Per Batch</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section style="padding:100px 0;background:linear-gradient(135deg,var(--green-deep) 0%,#0d2218 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(201,169,110,0.12),transparent 70%);"></div>
+  <div class="max-w-4xl mx-auto px-6 text-center" style="position:relative;">
+    <div class="reveal">
+      <div style="font-size:3rem;margin-bottom:16px;">🎁</div>
+      <div class="section-badge" style="color:var(--gold-light);">Ready to Start?</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);color:white;font-weight:300;margin:16px 0 20px;">
+        Get <em style="color:var(--gold);">Free Samples</em><br/>& Wholesale Pricing
+      </h2>
+      <p style="color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto 36px;line-height:1.85;">
+        Experience our quality first-hand. Request free product samples or get a custom wholesale quote for your specific requirements — no commitment required.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20would%20like%20to%20request%20free%20product%20samples." target="_blank" class="btn-inquire" style="padding:18px 40px;font-size:13px;">Request Free Samples on WhatsApp →</a>
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.3);color:white;padding:18px 40px;border-radius:4px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;text-decoration:none;">Send Detailed Inquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:60px 0 0;background:#0a1f15;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:48px;" class="md:grid-cols-4">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+           <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:white;">Safa Herbal</div>
+        </div>
+        <p style="color:rgba(255,255,255,0.38);font-size:13px;line-height:1.8;margin-bottom:18px;">Premium Herbal & Ayurvedic manufacturer and exporter from India.</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/918279355649" target="_blank" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="mailto:afnansaifi997@gmail.com" class="social-icon" style="font-size:14px;">✉</a>
+          <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-icon" style="font-size:13px;font-weight:700;">in</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;">Products</div>
+        <a href="#" class="footer-link">Himalayan Shilajit</a>
+        <a href="#" class="footer-link">Ashwagandha Capsules</a>
+        <a href="#" class="footer-link">Moringa Products</a>
+        <a href="#" class="footer-link">Superfood</a>
+        <a href="#" class="footer-link">Adaptogens</a>
+        <a href="#" class="footer-link">Custom Formulations</a>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;">Services</div>
+        <a href="index.html#private-label" class="footer-link">Private Label</a>
+        <a href="index.html#export" class="footer-link">Global Export</a>
+        <a href="index.html#quality" class="footer-link">Quality & Certs</a>
+        <a href="contact.html" class="footer-link">Free Samples</a>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;">Contact</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:8px;">📍 India</div>
+        <a href="https://wa.me/918279355649" target="_blank" style="color:rgba(255,255,255,0.4);font-size:13px;display:block;margin-bottom:8px;text-decoration:none;">📱 +91 82793 55649</a>
+        <a href="mailto:afnansaifi997@gmail.com" style="color:rgba(255,255,255,0.4);font-size:13px;display:block;text-decoration:none;word-break:break-all;">✉ afnansaifi997@gmail.com</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="color:rgba(255,255,255,0.22);font-size:12px;">© 2025 Safa Herbal. All rights reserved.</div>
+      <div style="color:rgba(255,255,255,0.18);font-size:12px;">Made with 🌿 in India</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Filter tabs
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#products-grid .product-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        const cat = card.dataset.category || '';
+        if (filter === 'all' || cat.includes(filter)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Pack card selection
+  document.querySelectorAll('.pack-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+</script>
+</body>
+</html>
+
