@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Safa Herbal | Premium Herbal & Ayurvedic Exports from India</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --gold-dark: #A07840;
+      --green-deep: #1B3A2D;
+      --green-mid: #2E5F47;
+      --green-soft: #4A8B67;
+      --cream: #FAF7F2;
+      --cream-dark: #F0EAE0;
+      --white: #FFFFFF;
+      --charcoal: #1A1A1A;
+      --gray-soft: #6B7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--charcoal); overflow-x: hidden; }
+    h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      transition: all 0.4s ease; background: transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+    }
+    .nav-link {
+      position: relative; font-size: 13px; letter-spacing: 1.5px;
+      text-transform: uppercase; font-weight: 500; transition: color 0.3s;
+    }
+    .nav-link::after {
+      content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px;
+      background:var(--gold); transition:width 0.3s;
+    }
+    .nav-link:hover::after { width:100%; }
+    #mobile-menu { display:none; }
+    #mobile-menu.open { display:block; }
+
+    /* ─── HERO ─── */
+    .about-hero {
+      min-height: 100vh;
+      background: linear-gradient(150deg, #071a10 0%, #0d2218 35%, #1B3A2D 70%, #2a5a40 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-grain {
+      position:absolute; inset:0; opacity:0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size:256px;
+    }
+    .hero-ring {
+      position:absolute; border-radius:50%;
+      border:1px solid rgba(201,169,110,0.12);
+      animation: ring-pulse 5s ease-in-out infinite;
+    }
+    @keyframes ring-pulse {
+      0%,100%{ transform:scale(1); opacity:0.4; }
+      50%{ transform:scale(1.04); opacity:0.15; }
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(201,169,110,0.12); border:1px solid rgba(201,169,110,0.35);
+      padding:8px 22px; border-radius:50px; font-size:11px;
+      letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light);
+    }
+    .hero-title {
+      font-size: clamp(3rem,7vw,6.5rem); line-height:1.0; font-weight:300; color:white;
+    }
+    .hero-title em { color:var(--gold); font-style:italic; }
+    .hero-desc { color:rgba(255,255,255,0.6); font-size:1.05rem; line-height:1.85; font-weight:300; }
+    .btn-gold {
+      display:inline-flex; align-items:center; gap:10px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      color:white; padding:15px 34px; border-radius:4px;
+      font-size:12px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500;
+      transition:all 0.3s; box-shadow:0 8px 24px rgba(201,169,110,0.35);
+      text-decoration:none;
+    }
+    .btn-gold:hover { transform:translateY(-2px); box-shadow:0 14px 32px rgba(201,169,110,0.5); }
+    .btn-outline {
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid rgba(255,255,255,0.3); color:white;
+      padding:15px 34px; border-radius:4px;
+      font-size:12px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500;
+      transition:all 0.3s; text-decoration:none;
+    }
+    .btn-outline:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.55); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity:0; transform:translateY(36px); transition:opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-left { opacity:0; transform:translateX(-40px); transition:opacity 0.75s ease, transform 0.75s ease; }
+    .reveal-left.visible { opacity:1; transform:translateX(0); }
+    .reveal-right { opacity:0; transform:translateX(40px); transition:opacity 0.75s ease, transform 0.75s ease; }
+    .reveal-right.visible { opacity:1; transform:translateX(0); }
+    .d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; }
+    .d3 { transition-delay:0.3s; } .d4 { transition-delay:0.4s; }
+    .d5 { transition-delay:0.5s; }
+
+    /* ─── SHARED SECTION STYLES ─── */
+    .section-badge {
+      display:inline-block; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); font-weight:600; margin-bottom:14px;
+    }
+    .section-title {
+      font-size:clamp(2.2rem,4vw,3.4rem); font-weight:300; line-height:1.15; color:var(--green-deep);
+    }
+    .section-title em { font-style:italic; color:var(--gold-dark); }
+    .divider { width:56px; height:2px; background:linear-gradient(90deg,var(--gold),transparent); margin:18px 0 28px; }
+    .divider-center { margin:18px auto 28px; }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar { background:var(--green-deep); padding:32px 0; }
+    .stat-num { font-family:'Cormorant Garamond',serif; font-size:3rem; color:var(--gold); font-weight:300; line-height:1; }
+    .stat-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px; }
+
+    /* ─── MARQUEE ─── */
+    .marquee-track {
+      display:flex; gap:60px; animation:marquee 25s linear infinite; white-space:nowrap;
+    }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-item {
+      display:flex; align-items:center; gap:12px;
+      color:rgba(255,255,255,0.35); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    }
+    .marquee-dot { width:4px; height:4px; border-radius:50%; background:var(--gold); opacity:0.5; }
+
+    /* ─── STORY / ABOUT CARDS ─── */
+    .story-card {
+      background:white; border:1px solid #f0e8d8; border-radius:10px;
+      padding:32px; transition:all 0.35s;
+    }
+    .story-card:hover { border-color:var(--gold-light); box-shadow:0 16px 48px rgba(27,58,45,0.10); transform:translateY(-4px); }
+
+    /* ─── VALUE CARDS ─── */
+    .value-card {
+      background:white; border:1px solid #f0e8d8; border-radius:10px;
+      padding:34px 28px; position:relative; overflow:hidden; transition:all 0.35s;
+    }
+    .value-card::before {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold-dark));
+      transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+    }
+    .value-card:hover { border-color:var(--gold-light); box-shadow:0 20px 52px rgba(27,58,45,0.10); transform:translateY(-5px); }
+    .value-card:hover::before { transform:scaleX(1); }
+    .value-icon {
+      width:58px; height:58px; border-radius:12px;
+      background:linear-gradient(135deg,#f4ede0,#e8d8b8);
+      display:flex; align-items:center; justify-content:center;
+      font-size:26px; margin-bottom:18px;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-item { position:relative; padding-left:52px; padding-bottom:48px; }
+    .timeline-item::before {
+      content:''; position:absolute; left:19px; top:38px; bottom:0; width:1px;
+      background:linear-gradient(180deg,var(--gold),transparent);
+    }
+    .timeline-item:last-child::before { display:none; }
+    .timeline-dot {
+      position:absolute; left:0; top:4px;
+      width:40px; height:40px; border-radius:50%;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; font-weight:700; color:white;
+      box-shadow:0 4px 16px rgba(201,169,110,0.35);
+    }
+    .timeline-year {
+      font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:6px;
+    }
+    .timeline-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; color:var(--green-deep); margin-bottom:8px; font-weight:400; }
+    .timeline-desc { color:var(--gray-soft); font-size:14px; line-height:1.75; }
+
+    /* ─── CERTIFICATION BADGES ─── */
+    .cert-card {
+      background:white; border:1px solid #f0e8d8; border-radius:10px;
+      padding:28px 20px; text-align:center; transition:all 0.3s;
+    }
+    .cert-card:hover { border-color:var(--gold-light); box-shadow:0 12px 32px rgba(201,169,110,0.15); transform:translateY(-4px); }
+
+    /* ─── TEAM CARDS ─── */
+    .team-card {
+      background:white; border:1px solid #f0e8d8; border-radius:10px;
+      overflow:hidden; transition:all 0.35s;
+    }
+    .team-card:hover { border-color:var(--gold-light); box-shadow:0 20px 52px rgba(27,58,45,0.12); transform:translateY(-5px); }
+    .team-avatar {
+      height:180px; display:flex; align-items:center; justify-content:center;
+      font-size:5rem;
+    }
+
+    /* ─── PROCESS STEPS ─── */
+    .process-step {
+      background:white; border:1px solid #f0e8d8; border-radius:10px;
+      padding:32px 26px; position:relative; transition:all 0.35s;
+    }
+    .process-step:hover { border-color:var(--gold-light); box-shadow:0 16px 44px rgba(27,58,45,0.09); }
+    .step-big-num {
+      font-family:'Cormorant Garamond',serif; font-size:5.5rem; font-weight:300;
+      color:#f0e8d8; position:absolute; top:8px; right:18px; line-height:1;
+    }
+
+    /* ─── EXPORT REGION PILLS ─── */
+    .region-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,0.07); border:1px solid rgba(201,169,110,0.22);
+      padding:10px 18px; border-radius:50px; color:rgba(255,255,255,0.8);
+      font-size:13px; transition:all 0.3s;
+    }
+    .region-pill:hover { background:rgba(201,169,110,0.18); border-color:var(--gold); color:white; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-dark {
+      background:linear-gradient(135deg,var(--green-deep) 0%,#0a1a10 100%);
+      position:relative; overflow:hidden;
+    }
+    .cta-dark::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 25% 50%,rgba(201,169,110,0.10),transparent 65%);
+    }
+
+    /* ─── SOCIAL ICONS ─── */
+    .social-icon {
+      width:42px; height:42px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6);
+      font-size:15px; transition:all 0.3s; text-decoration:none;
+    }
+    .social-icon:hover { background:var(--gold); border-color:var(--gold); color:white; }
+
+    /* ─── FOOTER ─── */
+    footer { background:#0a1f15; }
+    .footer-link { color:rgba(255,255,255,0.45); font-size:14px; transition:color 0.3s; display:block; margin-bottom:10px; text-decoration:none; }
+    .footer-link:hover { color:var(--gold); }
+
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-box {
+      background:linear-gradient(135deg,var(--green-deep),#0d2218);
+      border-radius:12px; padding:44px 40px;
+    }
+    .highlight-box-gold {
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      border-radius:12px; padding:44px 40px;
+    }
+
+    /* ─── FEATURE LIST ─── */
+    .feature-row {
+      display:flex; gap:18px; align-items:flex-start;
+      padding:22px; border-radius:8px; transition:background 0.3s;
+    }
+    .feature-row:hover { background:#f9f5ee; }
+    .feature-icon-box {
+      width:46px; height:46px; flex-shrink:0; border-radius:9px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+      display:flex; align-items:center; justify-content:center; font-size:20px;
+    }
+
+    /* ─── PROMISE CARD ─── */
+    .promise-card {
+      border-left:3px solid var(--gold); padding:20px 24px;
+      background:white; border-radius:0 8px 8px 0; transition:all 0.3s;
+      border-top:1px solid #f0e8d8; border-right:1px solid #f0e8d8; border-bottom:1px solid #f0e8d8;
+    }
+    .promise-card:hover { box-shadow:0 8px 28px rgba(27,58,45,0.08); transform:translateX(4px); }
+
+    /* WHATSAPP FLOAT */
+    .wa-float {
+      position:fixed; bottom:30px; right:30px; z-index:9999;
+      width:60px; height:60px; border-radius:50%;
+      background:#25D366; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 24px rgba(37,211,102,0.45);
+      transition:all 0.3s; animation:float-bounce 3s ease-in-out infinite;
+      text-decoration:none;
+    }
+    .wa-float:hover { transform:scale(1.1); box-shadow:0 12px 32px rgba(37,211,102,0.6); }
+    @keyframes float-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+    /* RESPONSIVE HELPERS */
+    @media (max-width: 768px) {
+      .hero-title { font-size:2.8rem; }
+      .stat-num { font-size:2.2rem; }
+      .highlight-box, .highlight-box-gold { padding:30px 24px; }
+      .section-title { font-size:2rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size:2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20your%20herbal%20products." target="_blank" class="wa-float" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar" class="px-6 py-5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3" style="text-decoration:none;">
+      <div style="width:38px;height:38px;border-radius:8px;overflow:hidden;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;">🌿</div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;line-height:1;" id="logo-text">Safa Herbal</div>
+        <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:500;" id="logo-sub">Herbal Exports</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-8" id="nav-links">
+      <a href="index.html" class="nav-link" style="color:rgba(255,255,255,0.75);">Home</a>
+      <a href="products.html" class="nav-link" style="color:rgba(255,255,255,0.75);">Products</a>
+      <a href="about.html" class="nav-link" style="color:var(--gold);font-weight:600;">About</a>
+      <a href="index.html#quality" class="nav-link" style="color:rgba(255,255,255,0.75);">Quality</a>
+      <a href="index.html#private-label" class="nav-link" style="color:rgba(255,255,255,0.75);">Private Label</a>
+      <a href="contact.html" class="nav-link" style="color:rgba(255,255,255,0.75);">Contact</a>
+    </div>
+    <div class="hidden md:flex">
+      <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20a%20free%20sample." target="_blank" style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:10px 24px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;text-decoration:none;">Free Sample →</a>
+    </div>
+    <button class="md:hidden text-white text-2xl" onclick="toggleMenu()">☰</button>
+  </div>
+  <div id="mobile-menu" class="md:hidden bg-white shadow-xl rounded-xl mt-3 mx-2 p-6">
+    <div class="flex flex-col gap-4">
+      <a href="index.html" style="color:#1B3A2D;font-weight:500;text-decoration:none;" onclick="toggleMenu()">Home</a>
+      <a href="products.html" style="color:#1B3A2D;font-weight:500;text-decoration:none;" onclick="toggleMenu()">Products</a>
+      <a href="about.html" style="color:var(--gold-dark);font-weight:700;text-decoration:none;" onclick="toggleMenu()">About</a>
+      <a href="index.html#quality" style="color:#1B3A2D;font-weight:500;text-decoration:none;" onclick="toggleMenu()">Quality</a>
+      <a href="index.html#private-label" style="color:#1B3A2D;font-weight:500;text-decoration:none;" onclick="toggleMenu()">Private Label</a>
+      <a href="contact.html" style="color:#1B3A2D;font-weight:500;text-decoration:none;" onclick="toggleMenu()">Contact</a>
+      <a href="https://wa.me/918279355649" target="_blank" class="btn-gold" style="justify-content:center;text-align:center;">WhatsApp Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section class="about-hero">
+  <div class="hero-grain"></div>
+  <div class="hero-ring" style="width:700px;height:700px;right:-200px;top:-200px;"></div>
+  <div class="hero-ring" style="width:450px;height:450px;right:-80px;top:-80px;animation-delay:1.5s;"></div>
+  <div class="hero-ring" style="width:280px;height:280px;left:-80px;bottom:-80px;animation-delay:3s;"></div>
+
+  <!-- floating botanicals -->
+  <div style="position:absolute;right:6%;top:22%;font-size:3rem;opacity:0.06;animation:float-bounce 5s ease-in-out infinite;">🌿</div>
+  <div style="position:absolute;right:18%;bottom:28%;font-size:2.2rem;opacity:0.06;animation:float-bounce 6s ease-in-out infinite;animation-delay:1s;">🍃</div>
+  <div style="position:absolute;left:4%;top:40%;font-size:2.5rem;opacity:0.05;animation:float-bounce 4.5s ease-in-out infinite;animation-delay:2s;">🌱</div>
+
+  <div class="max-w-7xl mx-auto px-6 py-36 w-full">
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <div class="hero-badge mb-8" style="animation:fadeInDown 0.8s ease both;">
+          <span>🌿</span> Our Story · Est. in India
+        </div>
+        <h1 class="hero-title mb-6" style="animation:fadeInUp 1s ease 0.2s both;opacity:0;">
+          Rooted in<br/>
+          <em>Tradition,</em><br/>
+          Growing<br/>
+          Globally
+        </h1>
+        <p class="hero-desc mb-10" style="max-width:480px;animation:fadeInUp 1s ease 0.4s both;opacity:0;">
+          For over a decade, Safa Herbal has been bridging the ancient wisdom of Ayurveda with the demands of the modern global wellness market — one pure, potent product at a time.
+        </p>
+        <div class="flex flex-wrap gap-4" style="animation:fadeInUp 1s ease 0.6s both;opacity:0;">
+          <a href="#our-story" class="btn-gold">Discover Our Story →</a>
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20learn%20more%20about%20Safa%20Herbal." target="_blank" class="btn-outline">Talk to Our Team</a>
+        </div>
+        <!-- trust pills -->
+        <div class="flex flex-wrap gap-5 mt-12" style="animation:fadeInUp 1s ease 0.8s both;opacity:0;">
+          <div class="flex items-center gap-2">
+            <div style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:1px;">ISO Certified</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:1px;">GMP Facility</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:1px;">USFDA Registered</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></div>
+            <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:1px;">Halal Certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: quick-fact cards -->
+      <div class="hidden md:flex flex-col gap-4" style="animation:fadeInUp 1s ease 0.5s both;opacity:0;">
+        <div class="grid grid-cols-2 gap-4">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.22);border-radius:12px;padding:28px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:300;line-height:1;">50+</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Countries Served</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.22);border-radius:12px;padding:28px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:300;line-height:1;">200+</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Global Clients</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.22);border-radius:12px;padding:28px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:300;line-height:1;">30+</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Product Variants</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,169,110,0.22);border-radius:12px;padding:28px;text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);font-weight:300;line-height:1;">10+</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;">Years Experience</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.18);border-radius:12px;padding:26px;display:flex;align-items:center;gap:16px;">
+          <div style="font-size:2.4rem;">🏔️</div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.2rem;margin-bottom:4px;">Himalayan Heritage</div>
+            <div style="color:rgba(255,255,255,0.45);font-size:13px;line-height:1.7;">Sourcing pure botanicals from the pristine high-altitude Himalayan belt since our founding.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- scroll indicator -->
+  <div style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:float-bounce 2s ease-in-out infinite;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.25);">
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;">Scroll</span>
+      <svg width="14" height="22" viewBox="0 0 16 24" fill="none"><rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="7" r="3" fill="currentColor" opacity="0.5"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div style="background:var(--green-deep);padding:14px 0;overflow:hidden;">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Our Story</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Sourcing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mission & Vision</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>GMP Certified Facility</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>10+ Years Excellence</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>50+ Countries</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>ISO Certified</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Our Story</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Himalayan Sourcing</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mission & Vision</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>GMP Certified Facility</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Private Label OEM</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>10+ Years Excellence</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>50+ Countries</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>ISO Certified</span>
+  </div>
+</div>
+
+<!-- ─── STATS BAR ─── -->
+<div class="stats-bar">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="reveal"><div class="stat-num"><span class="counter" data-target="50">0</span>+</div><div class="stat-label">Countries Exported</div></div>
+      <div class="reveal d1"><div class="stat-num"><span class="counter" data-target="200">0</span>+</div><div class="stat-label">Happy Clients</div></div>
+      <div class="reveal d2"><div class="stat-num"><span class="counter" data-target="30">0</span>+</div><div class="stat-label">Product Variants</div></div>
+      <div class="reveal d3"><div class="stat-num"><span class="counter" data-target="10">0</span>+</div><div class="stat-label">Years Experience</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     OUR STORY
+═══════════════════════════════════════════════ -->
+<section id="our-story" style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <div class="reveal-left">
+        <div class="section-badge">Our Story</div>
+        <h2 class="section-title mb-4">Where <em>Ancient Wisdom</em><br/>Meets Modern Excellence</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray-soft);line-height:1.95;margin-bottom:20px;font-size:15px;">
+          Safa Herbal was born from a deep conviction: that the timeless healing power of Ayurveda deserves to reach every corner of the world in its most authentic, unadulterated form. Our founders, deeply rooted in the herbal traditions of India's Himalayan heartland, saw a growing global demand for pure, ethically sourced herbal supplements — and a gap in the market for a manufacturer who could deliver quality without compromise.
+        </p>
+        <p style="color:var(--gray-soft);line-height:1.95;margin-bottom:20px;font-size:15px;">
+          What began as a modest operation in Northern India has grown into a globally recognized brand serving clients across 50+ countries. Every product we manufacture carries with it the essence of India's rich botanical heritage — sourced responsibly, processed meticulously, and delivered with transparency.
+        </p>
+        <p style="color:var(--gray-soft);line-height:1.95;margin-bottom:36px;font-size:15px;">
+          Today, Safa Herbal stands as a trusted bridge between India's millennia-old herbal knowledge and the health-conscious consumers of the modern world — from wellness brands in the USA to Ayurvedic distributors in the UAE and nutraceutical companies across Europe.
+        </p>
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20learn%20more%20about%20Safa%20Herbal%20and%20your%20products." target="_blank" class="btn-gold">Connect With Our Team →</a>
+      </div>
+
+      <div class="reveal-right">
+        <!-- Mission card -->
+        <div class="highlight-box mb-5">
+          <div style="font-size:2rem;margin-bottom:14px;">🎯</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:white;margin-bottom:14px;font-weight:400;">Our Mission</h3>
+          <p style="color:rgba(255,255,255,0.62);line-height:1.85;font-size:14px;">
+            To promote the transformative power of natural herbal wellness by providing safe, effective, and high-quality herbal and Ayurvedic supplements to global markets — seamlessly combining traditional Ayurvedic knowledge with modern manufacturing standards, scientific validation, and ethical business practices.
+          </p>
+        </div>
+        <!-- Vision card -->
+        <div class="highlight-box-gold">
+          <div style="font-size:2rem;margin-bottom:14px;">🌍</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:white;margin-bottom:14px;font-weight:400;">Our Vision</h3>
+          <p style="color:rgba(255,255,255,0.82);line-height:1.85;font-size:14px;">
+            To become the world's most trusted exporter of premium herbal and Ayurvedic products — delivering authentic Indian herbal solutions that empower healthier lives globally, while setting the benchmark for purity, potency, and ethical sourcing in the international wellness industry.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CORE VALUES
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge">Our Core Values</div>
+      <h2 class="section-title mb-4">The Principles That <em>Guide</em> Everything We Do</h2>
+      <div class="divider divider-center"></div>
+      <p style="color:var(--gray-soft);max-width:580px;margin:0 auto;line-height:1.85;font-size:15px;">
+        These aren't just words on a wall — they are the living commitments embedded into every decision, every product, and every relationship we build.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="value-card reveal">
+        <div class="value-icon">🌿</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Purity Above All</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We never compromise on the purity of our ingredients. Every raw material is rigorously tested before it enters our facility, and every finished product is verified before it leaves. Our customers trust what's in the bottle because we do too.</p>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">🔬</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Science-Backed Quality</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">Tradition informs us, science validates us. We invest in third-party laboratory testing, standardized extracts, and documented efficacy to ensure our products meet and exceed international quality benchmarks including ISO and GMP standards.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">🤝</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Partnership & Trust</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We think of every buyer as a long-term partner, not a one-time transaction. From the first sample request to the hundredth bulk order, we remain responsive, transparent, and committed to your success.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🌱</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Sustainable Sourcing</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">Our planet provides us with extraordinary healing plants. In return, we source responsibly — working with farmers who practice ethical harvesting, protecting biodiversity, and minimizing our ecological footprint across every stage of production.</p>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">🏆</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Continuous Innovation</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">The wellness world evolves rapidly. We stay ahead through R&D investment, adopting new extraction technologies, developing novel formulations, and constantly expanding our product range to meet emerging global health trends.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">🌍</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-deep);margin-bottom:10px;">Global Accessibility</h3>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We believe the benefits of Ayurvedic wellness should be accessible to people worldwide. That is why we work with international buyers of all sizes — from startups launching their first herbal brand to established global distributors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     OUR JOURNEY / TIMELINE
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <div class="reveal-left">
+        <div class="section-badge">Our Journey</div>
+        <h2 class="section-title mb-4">A Decade of <em>Growth</em><br/>& Global Impact</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:14px;font-size:15px;">
+          Every milestone in our story reflects a deeper commitment — to quality, to our clients, and to the global vision of bringing India's herbal heritage to the world.
+        </p>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:40px;font-size:15px;">
+          From our first export shipment to building a GMP-certified manufacturing facility, each step has been guided by the belief that quality and integrity are the only sustainable foundations for business.
+        </p>
+
+        <!-- promise cards -->
+        <div class="flex flex-col gap-4">
+          <div class="promise-card">
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">🌿 Deep Himalayan Roots</div>
+            <div style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Our sourcing network spans the pristine Himalayan belt — from Uttarakhand to Himachal Pradesh — ensuring the finest raw materials.</div>
+          </div>
+          <div class="promise-card">
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">🏭 State-of-the-Art Manufacturing</div>
+            <div style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Our GMP-certified facility employs modern extraction, encapsulation, and packaging technologies with rigorous in-house QC.</div>
+          </div>
+          <div class="promise-card">
+            <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">🚀 Accelerating Global Reach</div>
+            <div style="color:var(--gray-soft);font-size:13px;line-height:1.75;">From our first international order to serving 50+ countries — our export capability grows stronger every year.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="reveal-right">
+        <div class="timeline-item">
+          <div class="timeline-dot">🌱</div>
+          <div class="timeline-year">Founding</div>
+          <div class="timeline-title">Safa Herbal is Founded</div>
+          <div class="timeline-desc">Established in Northern India with a clear mission: to bring India's finest herbal products to global markets with uncompromising quality. The company begins with sourcing and exporting raw herbal materials.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🏭</div>
+          <div class="timeline-year">Early Growth</div>
+          <div class="timeline-title">GMP Manufacturing Facility Established</div>
+          <div class="timeline-desc">Invested in a dedicated manufacturing facility compliant with Good Manufacturing Practice (GMP) standards. This marks the transition from trading to full-scale herbal manufacturing and value-added product development.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🏅</div>
+          <div class="timeline-year">Certification Milestone</div>
+          <div class="timeline-title">ISO Certification & USFDA Registration</div>
+          <div class="timeline-desc">Achieved ISO certification for manufacturing and completed USFDA facility registration, opening doors to the lucrative US and European wellness markets. Halal certification follows, unlocking Middle East and Southeast Asian opportunities.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🌍</div>
+          <div class="timeline-year">Global Expansion</div>
+          <div class="timeline-title">Crossing 25 Countries in Export Reach</div>
+          <div class="timeline-desc">Safa Herbal's reputation for quality and reliability drives rapid international expansion. Strategic partnerships with importers, distributors, and private-label brands across USA, UK, UAE, and Australia are established.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">⚗️</div>
+          <div class="timeline-year">Innovation Era</div>
+          <div class="timeline-title">Private Label & Custom Formulation Launch</div>
+          <div class="timeline-desc">Expanded into complete white-label manufacturing and OEM services, empowering entrepreneurs and businesses worldwide to launch their own herbal wellness brands backed by Safa Herbal's quality infrastructure.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🏆</div>
+          <div class="timeline-year">Present Day</div>
+          <div class="timeline-title">50+ Countries · 200+ Clients · Growing Strong</div>
+          <div class="timeline-desc">Today, Safa Herbal is a globally recognized premium herbal exporter with a diverse product portfolio of 30+ variants, serving clients in 50+ countries and continuing to grow through innovation, quality, and trust.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     MANUFACTURING & SOURCING
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge">Manufacturing & Sourcing</div>
+      <h2 class="section-title mb-4">From the <em>Himalayas</em><br/>to Your Customer's Hands</h2>
+      <div class="divider divider-center"></div>
+      <p style="color:var(--gray-soft);max-width:600px;margin:0 auto;line-height:1.85;font-size:15px;">
+        Our end-to-end supply chain is built on integrity — from ethical sourcing in pristine Himalayan regions to state-of-the-art manufacturing and professional global export.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+      <div class="process-step reveal">
+        <div class="step-big-num">01</div>
+        <div style="font-size:2.2rem;margin-bottom:16px;">🌿</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--green-deep);margin-bottom:10px;">Ethical Sourcing</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Wild-harvested and cultivated botanicals sourced from certified Himalayan regions. Farmers are paid fair prices. Every material comes with documented origin.</p>
+      </div>
+      <div class="process-step reveal d1">
+        <div class="step-big-num">02</div>
+        <div style="font-size:2.2rem;margin-bottom:16px;">🔬</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--green-deep);margin-bottom:10px;">Rigorous Testing</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Incoming raw materials tested for identity, purity, heavy metals, microbial contamination, and potency by our in-house lab and independent third-party laboratories.</p>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-big-num">03</div>
+        <div style="font-size:2.2rem;margin-bottom:16px;">🏭</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--green-deep);margin-bottom:10px;">GMP Production</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Manufactured in ISO & GMP certified facilities using modern extraction, encapsulation, and blending equipment. Every batch is traceable from raw material to finished good.</p>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-big-num">04</div>
+        <div style="font-size:2.2rem;margin-bottom:16px;">✅</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--green-deep);margin-bottom:10px;">QC & Global Export</h4>
+        <p style="color:var(--gray-soft);font-size:13px;line-height:1.75;">Finished products pass final quality inspection. Complete COA, phytosanitary certificates, and all export documentation issued before professional, secure international shipment.</p>
+      </div>
+    </div>
+
+    <!-- Facility highlights -->
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="story-card reveal" style="background:var(--cream);">
+        <div style="font-size:2.2rem;margin-bottom:14px;">🏔️</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:10px;">Himalayan Sourcing Network</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">A dedicated network of trusted collectors and farmers across Uttarakhand, Himachal Pradesh, and Jammu & Kashmir ensures a consistent supply of premium, authentic Himalayan botanicals year-round.</p>
+      </div>
+      <div class="story-card reveal d1" style="background:var(--cream);">
+        <div style="font-size:2.2rem;margin-bottom:14px;">⚗️</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:10px;">Advanced Extraction Technology</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We use supercritical CO₂ extraction, standardized solvent extraction, and water-based processes to create potent, bioavailable herbal extracts. Standardized ratios available for all key actives.</p>
+      </div>
+      <div class="story-card reveal d2" style="background:var(--cream);">
+        <div style="font-size:2.2rem;margin-bottom:14px;">📦</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--green-deep);margin-bottom:10px;">Flexible Packaging Capabilities</h4>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">From HDPE bottles and glass jars to pouches and blister packs — we accommodate diverse packaging requirements for private label and OEM clients, with full branding and regulatory labeling support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     WHY CHOOSE SAFA HERBAL
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal-left">
+        <div class="section-badge">Why Safa Herbal</div>
+        <h2 class="section-title mb-4">Your <em>Competitive Edge</em><br/>Starts Here</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray-soft);line-height:1.9;margin-bottom:36px;font-size:15px;">
+          In a market flooded with suppliers, Safa Herbal stands apart through a combination of manufacturing excellence, ethical practices, and a genuine partnership approach that puts your business growth first.
+        </p>
+
+        <div class="flex flex-col gap-2">
+          <div class="feature-row">
+            <div class="feature-icon-box">🏭</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Manufacturer Direct — No Middlemen</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">Dealing directly with the manufacturer means you get factory-best pricing, faster lead times, and direct accountability. No brokers, no markups, no delays.</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon-box">✓</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Guaranteed Batch Consistency</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">Our standardized manufacturing protocols ensure every batch you receive matches the last in potency, color, texture, and purity — critical for building customer loyalty.</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon-box">🏷️</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Complete Private Label Solutions</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">From custom formulations and packaging design to branded labeling and regulatory documentation — we are your end-to-end herbal brand-building partner.</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon-box">🎁</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Free Samples for Qualified Buyers</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">We believe quality should speak before contracts are signed. We offer complimentary product samples to serious international buyers — only shipping charges apply.</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon-box">📞</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Responsive, Dedicated Support</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">Our export specialists are available via WhatsApp, email, and phone. Expect quick replies, proactive updates, and a team that actually cares about your order arriving perfectly.</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon-box">📋</div>
+            <div>
+              <div style="font-weight:600;color:var(--green-deep);margin-bottom:4px;font-size:15px;">Complete Export Documentation</div>
+              <div style="color:var(--gray-soft);font-size:14px;line-height:1.75;">COA, phytosanitary certificates, certificate of origin, commercial invoices — all export paperwork is handled professionally so your shipment clears customs seamlessly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <!-- Certifications grid -->
+        <div class="mb-6">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-deep);margin-bottom:16px;font-weight:400;">Our Certifications & Registrations</div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">🏅</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">ISO Certified</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">Manufacturing Excellence</div>
+            </div>
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">🏭</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">GMP Facility</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">Good Manufacturing Practice</div>
+            </div>
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">☪️</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">Halal Certified</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">Global Halal Compliant</div>
+            </div>
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">🇺🇸</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">USFDA Registered</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">US Facility Registration</div>
+            </div>
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">🇮🇳</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">FSSAI Approved</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">India Food Safety Authority</div>
+            </div>
+            <div class="cert-card">
+              <div style="font-size:2.2rem;margin-bottom:10px;">🔬</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-deep);text-transform:uppercase;letter-spacing:1px;">3rd Party Tested</div>
+              <div style="font-size:12px;color:var(--gray-soft);margin-top:4px;">Independent Lab Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COA note -->
+        <div style="background:linear-gradient(135deg,var(--green-deep),#0d2218);border-radius:10px;padding:28px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="font-size:2rem;flex-shrink:0;">📋</div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:white;margin-bottom:8px;">Certificate of Analysis Available</div>
+            <div style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.75;">Every batch ships with a comprehensive Certificate of Analysis from our accredited lab — detailing potency, purity, microbial testing, heavy metal analysis, and more.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     GLOBAL PRESENCE
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:var(--green-deep);position:relative;overflow:hidden;">
+  <!-- decorative rings -->
+  <div style="position:absolute;width:700px;height:700px;border-radius:50%;border:1px solid rgba(201,169,110,0.08);left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+  <div style="position:absolute;width:450px;height:450px;border-radius:50%;border:1px solid rgba(201,169,110,0.10);left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+  <div style="position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(201,169,110,0.13);left:50%;top:50%;transform:translate(-50%,-50%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6" style="position:relative;">
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge" style="color:var(--gold-light);">Global Presence</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);color:white;font-weight:300;line-height:1.15;margin-bottom:16px;">
+        Trusted Across <em style="color:var(--gold);">50+ Nations</em>
+      </h2>
+      <div style="width:56px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:18px auto 28px;"></div>
+      <p style="color:rgba(255,255,255,0.55);max-width:580px;margin:0 auto;line-height:1.85;font-size:15px;">
+        Our products have crossed borders, cultures, and continents. From healthcare startups in Silicon Valley to established wellness brands in the Middle East — Safa Herbal is a name that travels well.
+      </p>
+    </div>
+
+    <div class="text-center mb-12 reveal">
+      <div style="font-size:5rem;margin-bottom:12px;">🌍</div>
+    </div>
+
+    <!-- Regions -->
+    <div class="flex flex-wrap justify-center gap-3 mb-14 reveal">
+      <span class="region-pill">🇺🇸 USA</span>
+      <span class="region-pill">🇬🇧 United Kingdom</span>
+      <span class="region-pill">🇨🇦 Canada</span>
+      <span class="region-pill">🇦🇺 Australia</span>
+      <span class="region-pill">🇦🇪 UAE</span>
+      <span class="region-pill">🇸🇦 Saudi Arabia</span>
+      <span class="region-pill">🇩🇪 Germany</span>
+      <span class="region-pill">🇫🇷 France</span>
+      <span class="region-pill">🇳🇱 Netherlands</span>
+      <span class="region-pill">🇸🇬 Singapore</span>
+      <span class="region-pill">🇲🇾 Malaysia</span>
+      <span class="region-pill">🇿🇦 South Africa</span>
+      <span class="region-pill">🌏 + 40 More Nations</span>
+    </div>
+
+    <!-- Export cards -->
+    <div class="grid md:grid-cols-3 gap-5">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.18);border-radius:10px;padding:32px;text-align:center;" class="reveal">
+        <div style="font-size:2.5rem;margin-bottom:14px;">📋</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;margin-bottom:10px;">Full Export Documentation</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.8;">Commercial invoices, packing lists, COA, certificate of origin, phytosanitary and fumigation certificates — all managed by our experienced export team.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.18);border-radius:10px;padding:32px;text-align:center;" class="reveal d1">
+        <div style="font-size:2.5rem;margin-bottom:14px;">🚢</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;margin-bottom:10px;">Air & Sea Freight Options</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.8;">Flexible shipping modes to suit your timeline and budget. Air freight for urgent orders; sea freight for cost-effective bulk shipments. Secure, moisture-resistant packaging throughout.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.18);border-radius:10px;padding:32px;text-align:center;" class="reveal d2">
+        <div style="font-size:2.5rem;margin-bottom:14px;">🤝</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;margin-bottom:10px;">Distributor Partnerships</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.8;">We actively seek long-term distribution partners in new markets. Exclusive territory arrangements, marketing support, and flexible payment terms available for qualified partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     WHAT OUR CLIENTS SAY
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge">Client Testimonials</div>
+      <h2 class="section-title mb-4">Stories from Our <em>Global</em> Partners</h2>
+      <div class="divider divider-center"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="story-card reveal">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--gold-light);line-height:0.6;margin-bottom:18px;">"</div>
+        <div style="color:var(--gold);letter-spacing:2px;margin-bottom:14px;">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;margin-bottom:22px;">Exceptional quality Shilajit resin. Our customers love it and our repeat order rate is incredibly high. The export documentation was seamless and delivery was exactly on time. Safa Herbal is our #1 supplier.</p>
+        <div style="border-top:1px solid #f0e8d8;padding-top:18px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0;">M</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Michael R.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Health Brand Owner · USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card reveal d1">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--gold-light);line-height:0.6;margin-bottom:18px;">"</div>
+        <div style="color:var(--gold);letter-spacing:2px;margin-bottom:14px;">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;margin-bottom:22px;">We've been sourcing Ashwagandha and Moringa capsules for over 2 years now. Consistent quality, competitive pricing, and excellent communication. Highly recommended for any serious bulk buyer.</p>
+        <div style="border-top:1px solid #f0e8d8;padding-top:18px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2E5F47,#1B3A2D);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0;">S</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Sophie L.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Distributor · United Kingdom</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-card reveal d2">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--gold-light);line-height:0.6;margin-bottom:18px;">"</div>
+        <div style="color:var(--gold);letter-spacing:2px;margin-bottom:14px;">★★★★★</div>
+        <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;margin-bottom:22px;">The private label service is outstanding. They helped us launch our own herbal brand with custom formulations and beautiful packaging. The team is professional, responsive, and truly invested in our success.</p>
+        <div style="border-top:1px solid #f0e8d8;padding-top:18px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#A07840);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0;">A</div>
+          <div>
+            <div style="font-weight:600;color:var(--green-deep);font-size:14px;">Ahmed K.</div>
+            <div style="color:var(--gray-soft);font-size:12px;">Wellness Entrepreneur · UAE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     OUR COMMITMENT
+═══════════════════════════════════════════════ -->
+<section style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge">Our Commitments</div>
+      <h2 class="section-title mb-4">Promises We Keep <em>Every Single Day</em></h2>
+      <div class="divider divider-center"></div>
+      <p style="color:var(--gray-soft);max-width:580px;margin:0 auto;line-height:1.85;font-size:15px;">
+        Beyond business, we hold ourselves to a higher standard — one that honours the planet, the people, and the ancient knowledge that makes our work possible.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:10px;padding:36px;display:flex;gap:20px;align-items:flex-start;" class="reveal">
+        <div style="font-size:2.5rem;flex-shrink:0;">🌿</div>
+        <div>
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-deep);margin-bottom:10px;">Sustainability & Ethical Sourcing</h4>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We are committed to sustainable harvesting practices that protect India's precious botanical biodiversity. We partner with farmers who follow environmentally responsible cultivation and harvesting, ensuring that the ecosystems that produce our ingredients thrive for generations to come.</p>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:10px;padding:36px;display:flex;gap:20px;align-items:flex-start;" class="reveal d1">
+        <div style="font-size:2.5rem;flex-shrink:0;">👨‍🌾</div>
+        <div>
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-deep);margin-bottom:10px;">Farmer & Community Support</h4>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">Fair trade is not optional for us — it is foundational. We pay farmers and collectors fair market prices, provide advance payments where needed, and invest in the communities that sustain our supply chain. Their wellbeing is inseparable from ours.</p>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:10px;padding:36px;display:flex;gap:20px;align-items:flex-start;" class="reveal">
+        <div style="font-size:2.5rem;flex-shrink:0;">🔒</div>
+        <div>
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-deep);margin-bottom:10px;">Uncompromising Transparency</h4>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">Every product comes with full traceability from origin to shelf. We freely share our COAs, testing protocols, and facility documentation with clients. If something is ever not right, we take full responsibility and make it right — no questions asked.</p>
+        </div>
+      </div>
+      <div style="background:white;border:1px solid #f0e8d8;border-radius:10px;padding:36px;display:flex;gap:20px;align-items:flex-start;" class="reveal d1">
+        <div style="font-size:2.5rem;flex-shrink:0;">💡</div>
+        <div>
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-deep);margin-bottom:10px;">Continuous Research & Development</h4>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.8;">We invest consistently in R&D to develop new formulations, improve existing extracts, and explore emerging scientific evidence around traditional Ayurvedic botanicals — ensuring our product portfolio evolves with the science and market demands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════════════ -->
+<section class="cta-dark" style="padding:100px 0;">
+  <div class="max-w-7xl mx-auto px-6 text-center" style="position:relative;">
+    <div class="reveal">
+      <div style="font-size:3rem;margin-bottom:16px;">🤝</div>
+      <div class="section-badge" style="color:var(--gold-light);">Partner With Us</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);color:white;font-weight:300;line-height:1.15;margin:16px 0 20px;">
+        Ready to Build Something<br/><em style="color:var(--gold);">Extraordinary Together?</em>
+      </h2>
+      <p style="color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto 42px;line-height:1.9;font-size:15px;">
+        Whether you're a wellness brand seeking a reliable manufacturing partner, a distributor looking for premium herbal products, or an entrepreneur ready to launch your own brand — we are your ideal partner. Let's start the conversation today.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://wa.me/918279355649?text=Hello%2C%20I%20visited%20your%20About%20page%20and%20would%20like%20to%20discuss%20a%20partnership." target="_blank" class="btn-gold" style="padding:18px 42px;font-size:13px;">
+          Start on WhatsApp →
+        </a>
+        <a href="mailto:afnansaifi997@gmail.com?subject=Partnership Inquiry — Safa Herbal&body=Hello Safa Herbal Team, I would like to discuss a potential partnership." style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.3);color:white;padding:18px 42px;border-radius:4px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+          Email Our Team
+        </a>
+      </div>
+
+      <!-- Quick contact row -->
+      <div class="flex flex-wrap justify-center gap-8 mt-16" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:40px;">
+        <a href="https://wa.me/918279355649" target="_blank" style="text-decoration:none;text-align:center;">
+          <div style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">WhatsApp</div>
+          <div style="color:white;font-size:15px;font-weight:500;">+91 82793 55649</div>
+        </a>
+        <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;" class="hidden md:block"></div>
+        <a href="mailto:afnansaifi997@gmail.com" style="text-decoration:none;text-align:center;">
+          <div style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Email</div>
+          <div style="color:white;font-size:15px;font-weight:500;">afnansaifi997@gmail.com</div>
+        </a>
+        <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;" class="hidden md:block"></div>
+        <div style="text-align:center;">
+          <div style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Location</div>
+          <div style="color:white;font-size:15px;font-weight:500;">India (Himalayan Region)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer style="padding:60px 0 0;background:#0a1f15;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:38px;height:38px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;">🌿</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:white;">Safa Herbal</div>
+        </div>
+        <p style="color:rgba(255,255,255,0.38);font-size:13px;line-height:1.85;margin-bottom:22px;">Premium Herbal & Ayurvedic manufacturer and exporter from India. Delivering nature's best to the world.</p>
+        <div class="flex gap-3">
+          <a href="https://wa.me/918279355649" target="_blank" class="social-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="social-icon">📸</a>
+          <a href="https://www.linkedin.com/in/afnan000" target="_blank" class="social-icon" style="font-weight:700;font-size:13px;">in</a>
+          <a href="mailto:afnansaifi997@gmail.com" class="social-icon">✉</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;">Products</div>
+        <a href="index.html#products" class="footer-link">Himalayan Shilajit</a>
+        <a href="index.html#products" class="footer-link">Ashwagandha Capsules</a>
+        <a href="index.html#products" class="footer-link">Moringa Capsules & Powder</a>
+        <a href="index.html#products" class="footer-link">Herbal Extracts</a>
+        <a href="index.html#products" class="footer-link">Ayurvedic Supplements</a>
+        <a href="index.html#products" class="footer-link">Custom Formulations</a>
+      </div>
+
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;">Company</div>
+        <a href="about.html" class="footer-link" style="color:var(--gold);">About Us</a>
+        <a href="index.html#quality" class="footer-link">Quality & Certifications</a>
+        <a href="index.html#private-label" class="footer-link">Private Label / OEM</a>
+        <a href="index.html#export" class="footer-link">Global Export</a>
+        <a href="https://wa.me/918279355649?text=Free%20Sample%20Request" target="_blank" class="footer-link">Free Samples</a>
+        <a href="contact.html" class="footer-link">Contact Us</a>
+      </div>
+
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;">Contact</div>
+        <div style="color:rgba(255,255,255,0.38);font-size:13px;margin-bottom:10px;">📍 India (Himalayan Region)</div>
+        <a href="https://wa.me/918279355649" target="_blank" class="footer-link">📱 +91 82793 55649</a>
+        <a href="mailto:afnansaifi997@gmail.com" class="footer-link" style="word-break:break-all;">✉ afnansaifi997@gmail.com</a>
+        <div style="margin-top:22px;">
+          <a href="https://wa.me/918279355649?text=Hello%2C%20I%20have%20an%20inquiry." target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:white;padding:10px 20px;border-radius:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;">WhatsApp Us →</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding:22px 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;">
+      <span style="color:rgba(255,255,255,0.2);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Certified By:</span>
+      <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:5px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">ISO</span>
+      <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:5px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">GMP</span>
+      <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:5px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">HALAL</span>
+      <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:5px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">USFDA</span>
+      <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);padding:5px 14px;border-radius:3px;font-size:11px;letter-spacing:1px;">FSSAI</span>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.05);padding:20px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">
+      <div style="color:rgba(255,255,255,0.2);font-size:12px;">© 2025 Safa Herbal. All rights reserved. Premium Herbal Exports from India.</div>
+      <div style="color:rgba(255,255,255,0.18);font-size:12px;">Made with 🌿 in India</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+  // ── NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('#nav-links .nav-link');
+  const logoText = document.getElementById('logo-text');
+  const logoSub  = document.getElementById('logo-sub');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+      navLinks.forEach(l => { if (!l.style.color.includes('gold')) l.style.color = '#1B3A2D'; });
+      logoText.style.color = '#1B3A2D';
+      logoSub.style.color  = '#6B7280';
+    } else {
+      navbar.classList.remove('scrolled');
+      navLinks.forEach(l => { if (!l.classList.contains('active')) l.style.color = 'rgba(255,255,255,0.75)'; });
+      logoText.style.color = 'white';
+      logoSub.style.color  = 'rgba(255,255,255,0.45)';
+    }
+  });
+
+  // ── MOBILE MENU
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  // ── SCROLL REVEAL (all variants)
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ── COUNTER ANIMATION
+  function animateCounter(el, target) {
+    let start = 0;
+    const step = Math.ceil(target / (2000 / 16));
+    const t = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target; clearInterval(t); }
+      else el.textContent = start;
+    }, 16);
+  }
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target, parseInt(e.target.dataset.target));
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(c => counterObs.observe(c));
+
+  // ── HERO ANIMATIONS (keyframes via CSS — add inline opacity fix)
+ </script>
+
+<style>
+  @keyframes fadeInUp   { from { opacity:0; transform:translateY(30px); }  to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+</style>
+
+</body>
+</html>
