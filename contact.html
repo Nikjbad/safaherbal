@@ -28,38 +28,44 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--cream); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
+ 
     /* NAV */
     #navbar { position: fixed; top: 0; width: 100%; z-index: 1000; transition: all 0.4s ease; background: rgba(27,58,45,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 40px rgba(0,0,0,0.15); }
     .nav-link { position: relative; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; color: rgba(255,255,255,0.7); transition: color 0.3s; text-decoration: none; }
     .nav-link:hover,.nav-link.active { color: var(--gold); }
     .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
     .nav-link:hover::after,.nav-link.active::after { width: 100%; }
-
+ 
+    /* MOBILE MENU */
+    #mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,35,22,0.98); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    #mobile-menu.open { display: flex; }
+    .mobile-nav-link { font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 2px; transition: color 0.3s; }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--gold); }
+    #menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 28px; cursor: pointer; padding: 8px; }
+    #hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+    #hamburger span { display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.3s; }
+ 
     /* PAGE HERO */
     .page-hero { padding: 160px 0 100px; background: linear-gradient(160deg, #0d2a1e 0%, #1B3A2D 55%, #243d2f 100%); position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 256px; }
     .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
     .breadcrumb span { color: var(--gold); }
-
+ 
     /* SECTION */
     .section-badge { display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
     .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--green-deep); }
     .section-title em { font-style: italic; color: var(--gold-dark); }
     .divider-gold { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold) 0%, transparent 100%); margin: 20px 0 30px; }
     .divider-gold.center { margin: 20px auto 30px; }
-
+ 
     /* CONTACT CHANNEL CARDS */
-    .channel-card {
-      background: white; border: 1px solid #f0e8d8; border-radius: 10px; padding: 32px;
-      display: flex; flex-direction: column; gap: 16px; transition: all 0.3s; position: relative; overflow: hidden;
-    }
+    .channel-card { background: white; border: 1px solid #f0e8d8; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: all 0.3s; position: relative; overflow: hidden; }
     .channel-card:hover { border-color: var(--gold-light); box-shadow: 0 16px 48px rgba(27,58,45,0.1); transform: translateY(-4px); }
     .channel-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
     .channel-card:hover::before { transform: scaleX(1); }
     .channel-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .channel-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 4px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: all 0.3s; width: fit-content; }
-
+ 
     /* FORM STYLES */
     .form-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--green-deep); font-weight: 600; display: block; margin-bottom: 7px; }
     .form-input { width: 100%; border: 1px solid #e8e0d0; border-radius: 5px; padding: 13px 16px; font-size: 14px; outline: none; font-family: 'Jost', sans-serif; transition: border-color 0.3s; background: white; color: var(--charcoal); }
@@ -67,52 +73,52 @@
     .form-input::placeholder { color: #b0a898; }
     select.form-input { cursor: pointer; }
     textarea.form-input { resize: vertical; min-height: 120px; }
-
+ 
     /* QUICK ACTIONS */
     .quick-action { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 8px; border: 1px solid #f0e8d8; background: white; transition: all 0.3s; text-decoration: none; }
     .quick-action:hover { border-color: var(--gold-light); background: #fdf9f0; transform: translateX(4px); }
     .quick-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-
+ 
     /* TEAM CARD */
     .team-card { background: white; border: 1px solid #f0e8d8; border-radius: 10px; padding: 28px; text-align: center; transition: all 0.3s; }
     .team-card:hover { border-color: var(--gold-light); box-shadow: 0 12px 36px rgba(27,58,45,0.08); transform: translateY(-4px); }
     .avatar { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px; font-weight: 700; }
-
+ 
     /* OFFICE INFO */
     .info-row { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid #f0e8d8; }
     .info-row:last-child { border-bottom: none; }
     .info-icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-
+ 
     /* TIMEZONE CARD */
     .tz-card { background: var(--cream); border-radius: 8px; padding: 20px; display: flex; align-items: center; gap: 14px; }
     .tz-dot { width: 10px; height: 10px; border-radius: 50%; background: #4A8B67; flex-shrink: 0; animation: tz-pulse 2s ease-in-out infinite; }
     @keyframes tz-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(74,139,103,0.4); } 50% { box-shadow: 0 0 0 6px rgba(74,139,103,0); } }
-
+ 
     /* FAQ */
     .faq-item { border-bottom: 1px solid #f0e8d8; }
-    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; cursor: pointer; transition: color 0.3s; }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; cursor: pointer; transition: color 0.3s; gap: 12px; }
     .faq-question:hover { color: var(--gold-dark); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .faq-answer.open { max-height: 240px; }
-    .faq-icon { transition: transform 0.3s; font-size: 20px; color: var(--gold); }
+    .faq-answer.open { max-height: 300px; }
+    .faq-icon { transition: transform 0.3s; font-size: 20px; color: var(--gold); flex-shrink: 0; }
     .faq-icon.open { transform: rotate(45deg); }
-
+ 
     /* SOCIAL CARDS */
     .social-card { border: 1px solid #f0e8d8; border-radius: 10px; padding: 28px; text-align: center; transition: all 0.3s; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .social-card:hover { border-color: var(--gold-light); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,58,45,0.08); }
     .social-circle { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-
+ 
     /* MARQUEE */
     .marquee-track { display: flex; gap: 60px; animation: marquee 30s linear infinite; white-space: nowrap; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
     .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; }
-
+ 
     /* WHATSAPP */
-    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 9999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.45); animation: float-bounce 3s ease-in-out infinite; transition: all 0.3s; text-decoration: none; }
+    .whatsapp-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(37,211,102,0.45); animation: float-bounce 3s ease-in-out infinite; transition: all 0.3s; text-decoration: none; }
     .whatsapp-float:hover { transform: scale(1.1); }
     @keyframes float-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
+ 
     /* BTN */
     .btn-gold { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: white; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; transition: all 0.3s; text-decoration: none; border: none; cursor: pointer; }
     .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.4); }
@@ -120,49 +126,146 @@
     .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.35); }
     .btn-outline { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold); color: var(--gold-dark); padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; transition: all 0.3s; background: transparent; cursor: pointer; text-decoration: none; }
     .btn-outline:hover { background: var(--gold); color: white; }
-
+ 
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
-
+ 
     /* FOOTER */
     footer { background: #0a1f15; }
     .footer-link { color: rgba(255,255,255,0.5); font-size: 13px; transition: color 0.3s; display: block; margin-bottom: 10px; text-decoration: none; }
     .footer-link:hover { color: var(--gold); }
     .social-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 15px; transition: all 0.3s; text-decoration: none; }
     .social-icon:hover { background: var(--gold); border-color: var(--gold); color: white; }
-
+ 
     /* STEP INDICATOR */
     .step-badge { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600; flex-shrink: 0; }
-
+ 
+    /* ===================== MOBILE RESPONSIVE ===================== */
+    @media (max-width: 900px) {
+      #hamburger { display: flex; }
+      .desktop-nav { display: none !important; }
+      .desktop-cta { display: none !important; }
+    }
+ 
     @media (max-width: 768px) {
-      .two-col { grid-template-columns: 1fr !important; }
-      .page-hero { padding: 120px 0 60px; }
+      /* Hero */
+      .page-hero { padding: 100px 0 56px; }
+      .hero-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+      .hero-decoration { display: none; }
+ 
+      /* Quick contact chips on mobile */
+      .hero-chips { margin-top: 0; }
+      .hero-chip { padding: 16px !important; }
+      .hero-chip-btn { padding: 7px 12px !important; font-size: 10px !important; white-space: nowrap; }
+ 
+      /* Channel cards */
+      .channels-grid { grid-template-columns: 1fr !important; }
+      .channel-card { padding: 22px !important; }
+ 
+      /* Main contact section */
+      .contact-main-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+ 
+      /* Form box */
+      .form-box { padding: 24px !important; border-radius: 10px !important; }
+ 
+      /* Form inner grids */
+      .form-row-2col { grid-template-columns: 1fr !important; }
+ 
+      /* Process steps */
+      .steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 32px 16px !important; }
+      .steps-connector { display: none !important; }
+      .step-item:nth-child(2) { padding-top: 0 !important; }
+ 
+      /* Social grid */
+      .social-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .social-card { padding: 20px !important; }
+ 
+      /* Footer grid */
+      .footer-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
+ 
+      /* CTA buttons stack */
+      .cta-btns { flex-direction: column !important; align-items: stretch !important; }
+      .cta-btns a { justify-content: center !important; text-align: center; }
+ 
+      /* Quick actions */
+      .quick-action { padding: 14px 16px !important; }
+ 
+      /* General section padding */
+      .section-pad { padding: 64px 0 !important; }
+ 
+      /* FAQ */
+      .faq-question span:first-child { font-size: 14px !important; }
+ 
+      /* Btn full-width on mobile */
+      .btn-wa, .btn-gold { width: 100%; justify-content: center; }
+ 
+      /* Info rows */
+      .info-icon-wrap { width: 36px !important; height: 36px !important; font-size: 15px !important; }
+ 
+      /* Business hours */
+      .biz-hours { font-size: 12px !important; }
+ 
+      /* How-we-work section */
+      .process-section { padding: 64px 0 !important; }
+ 
+      /* Marquee smaller text on mobile */
+      .marquee-item { font-size: 10px !important; gap: 8px !important; }
+      .marquee-track { gap: 40px !important; }
+    }
+ 
+    @media (max-width: 480px) {
+      /* Tighten up for very small screens */
+      .page-hero { padding: 88px 0 48px; }
+      .section-title { font-size: clamp(1.8rem, 6vw, 2.5rem) !important; }
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .social-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .channel-card { padding: 18px !important; }
+      .form-box { padding: 20px !important; }
+      .hero-chips .hero-chip { flex-wrap: wrap; }
+      .hero-chip-btn { margin-top: 4px; }
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .contact-chips-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
 <body>
-
+ 
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobile-menu">
+  <button id="menu-close" onclick="closeMobileMenu()">✕</button>
+  <div style="text-align:center;margin-bottom:16px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;">Safa Herbal</div>
+    <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Herbal Exports</div>
+  </div>
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="products.html" class="mobile-nav-link">Products</a>
+  <a href="index.html#quality" class="mobile-nav-link">Quality</a>
+  <a href="index.html#private-label" class="mobile-nav-link">Private Label</a>
+  <a href="index.html#export" class="mobile-nav-link">Export</a>
+  <a href="contact.html" class="mobile-nav-link active">Contact</a>
+  <a href="https://wa.me/918279355649?text=I%20want%20to%20request%20free%20samples." target="_blank" style="margin-top:12px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:14px 36px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;">Free Sample →</a>
+</div>
+ 
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/918279355649?text=Hello%2C%20I%20have%20an%20inquiry%20about%20your%20herbal%20products." target="_blank" class="whatsapp-float">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-
+ 
 <!-- NAVBAR -->
-<nav id="navbar" class="px-6 py-4">
+<nav id="navbar" class="px-5 py-4">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3" style="text-decoration:none;">
-       <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
-       style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
+      <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <img src="SafaHerbalLogo.jpeg" alt="safa logo" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
       <div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:white;line-height:1;">Safa Herbal</div>
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Herbal Exports</div>
       </div>
     </a>
-    <div class="hidden md:flex items-center gap-8">
+    <div class="desktop-nav hidden md:flex items-center gap-8">
       <a href="index.html" class="nav-link">Home</a>
       <a href="products.html" class="nav-link">Products</a>
       <a href="index.html#quality" class="nav-link">Quality</a>
@@ -170,84 +273,89 @@
       <a href="index.html#export" class="nav-link">Export</a>
       <a href="contact.html" class="nav-link active">Contact</a>
     </div>
-    <a href="https://wa.me/918279355649?text=I%20want%20to%20request%20free%20samples." target="_blank" style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:10px 22px;border-radius:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;">Free Sample →</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://wa.me/918279355649?text=I%20want%20to%20request%20free%20samples." target="_blank" class="desktop-cta" style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:10px 22px;border-radius:4px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;text-decoration:none;">Free Sample →</a>
+      <!-- Hamburger -->
+      <button id="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
-
+ 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div style="position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(201,169,110,0.1);right:-100px;top:-100px;"></div>
-  <div style="position:absolute;width:280px;height:280px;border-radius:50%;border:1px solid rgba(201,169,110,0.07);right:40px;top:40px;"></div>
-  <div style="position:absolute;font-size:4rem;opacity:0.05;right:8%;bottom:20%;animation:float-bounce 5s ease-in-out infinite;">🌍</div>
-
-  <div class="max-w-7xl mx-auto px-6" style="position:relative;">
+  <div class="hero-decoration" style="position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(201,169,110,0.1);right:-100px;top:-100px;"></div>
+  <div class="hero-decoration" style="position:absolute;width:280px;height:280px;border-radius:50%;border:1px solid rgba(201,169,110,0.07);right:40px;top:40px;"></div>
+  <div class="hero-decoration" style="position:absolute;font-size:4rem;opacity:0.05;right:8%;bottom:20%;animation:float-bounce 5s ease-in-out infinite;">🌍</div>
+ 
+  <div class="max-w-7xl mx-auto px-5" style="position:relative;">
     <div class="breadcrumb">
       <a href="index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Home</a>
       <span style="color:rgba(255,255,255,0.25);">›</span>
       <span>Contact Us</span>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="two-col">
+    <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
       <div>
         <div class="section-badge" style="color:var(--gold-light);">Get In Touch</div>
-        <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5.5rem);color:white;font-weight:300;line-height:1.05;margin:12px 0 24px;">
+        <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);color:white;font-weight:300;line-height:1.05;margin:12px 0 24px;">
           Let's Build<br/><em style="color:var(--gold);">Something</em><br/>Together
         </h1>
         <p style="color:rgba(255,255,255,0.6);font-size:1.05rem;line-height:1.85;margin-bottom:36px;max-width:480px;">
           Whether you're exploring wholesale pricing, launching a private label brand, or just want to learn more about our herbal products — our team is ready to help.
         </p>
-        <!-- Response promises -->
         <div style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
             <span style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:0.5px;">WhatsApp responses within 1 hour</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
             <span style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:0.5px;">Email replies within 24 hours</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
             <span style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:0.5px;">Free samples dispatched within 5 days</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
             <span style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:0.5px;">Dedicated export manager assigned</span>
           </div>
         </div>
       </div>
       <!-- Quick contact chips -->
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
+      <div class="hero-chips" style="display:flex;flex-direction:column;gap:14px;">
+        <div class="hero-chip" style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
           <div style="width:50px;height:50px;border-radius:12px;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">WhatsApp · Primary</div>
             <div style="color:white;font-size:1rem;font-weight:500;">+91 82793 55649</div>
           </div>
-          <a href="https://wa.me/918279355649" target="_blank" style="background:rgba(37,211,102,0.2);color:#25D366;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(37,211,102,0.3);">Chat Now</a>
+          <a href="https://wa.me/918279355649" target="_blank" class="hero-chip-btn" style="background:rgba(37,211,102,0.2);color:#25D366;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(37,211,102,0.3);">Chat Now</a>
         </div>
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
+        <div class="hero-chip" style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
           <div style="width:50px;height:50px;border-radius:12px;background:#EA4335;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;flex-shrink:0;">✉</div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Email</div>
-            <div style="color:white;font-size:1rem;font-weight:500;">afnansaifi997@gmail.com</div>
+            <div style="color:white;font-size:0.9rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">afnansaifi997@gmail.com</div>
           </div>
-          <a href="mailto:afnansaifi997@gmail.com" style="background:rgba(234,67,53,0.15);color:#EA4335;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(234,67,53,0.3);">Email</a>
+          <a href="mailto:afnansaifi997@gmail.com" class="hero-chip-btn" style="background:rgba(234,67,53,0.15);color:#EA4335;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(234,67,53,0.3);">Email</a>
         </div>
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
+        <div class="hero-chip" style="background:rgba(255,255,255,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:22px;display:flex;align-items:center;gap:16px;">
           <div style="width:50px;height:50px;border-radius:12px;background:#0077B5;display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:700;flex-shrink:0;">in</div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">LinkedIn</div>
             <div style="color:white;font-size:1rem;font-weight:500;">afnansaifi997</div>
           </div>
-          <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" style="background:rgba(0,119,181,0.15);color:#0077B5;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(0,119,181,0.3);">Connect</a>
+          <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="hero-chip-btn" style="background:rgba(0,119,181,0.15);color:#0077B5;padding:8px 16px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;text-decoration:none;white-space:nowrap;border:1px solid rgba(0,119,181,0.3);">Connect</a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <!-- MARQUEE -->
 <div style="background:var(--green-deep);padding:13px 0;overflow:hidden;">
   <div class="marquee-track">
@@ -265,19 +373,19 @@
     <span class="marquee-item"><span class="marquee-dot"></span>Response within 1 Hour</span>
   </div>
 </div>
-
+ 
 <!-- ===== CONTACT CHANNELS ===== -->
-<section style="padding:100px 0;background:var(--cream);">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="section-pad" style="padding:100px 0;background:var(--cream);">
+  <div class="max-w-7xl mx-auto px-5">
     <div class="text-center mb-16 reveal">
       <div class="section-badge">All Channels</div>
       <h2 class="section-title mb-4">Multiple Ways to <em>Reach Us</em></h2>
       <div class="divider-gold center"></div>
       <p style="color:var(--gray-soft);max-width:540px;margin:0 auto;line-height:1.8;">Choose the communication channel that works best for you. We're active and responsive across all platforms.</p>
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
-
+ 
+    <div class="channels-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+ 
       <!-- WhatsApp -->
       <div class="channel-card reveal">
         <div style="display:flex;align-items:center;gap:14px;">
@@ -301,7 +409,7 @@
           <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20request%20a%20free%20sample." target="_blank" class="channel-btn" style="border:1px solid #e0d8c8;color:var(--gray-soft);justify-content:center;">Request Free Sample</a>
         </div>
       </div>
-
+ 
       <!-- Email -->
       <div class="channel-card reveal d1">
         <div style="display:flex;align-items:center;gap:14px;">
@@ -312,7 +420,7 @@
           </div>
         </div>
         <div>
-          <div style="font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:4px;word-break:break-all;">afnansaifi997@gmail.com</div>
+          <div style="font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:4px;word-break:break-all;">afnansaifi997@gmail.com</div>
           <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Ideal for detailed business proposals, attaching documents, product specifications, and formal business correspondence.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
@@ -320,7 +428,7 @@
           <a href="mailto:afnansaifi997@gmail.com?subject=Free Sample Request&body=Hello%2C%20I%20would%20like%20to%20request%20free%20samples." class="channel-btn" style="border:1px solid #e0d8c8;color:var(--gray-soft);justify-content:center;">Sample Request Email</a>
         </div>
       </div>
-
+ 
       <!-- LinkedIn -->
       <div class="channel-card reveal d2">
         <div style="display:flex;align-items:center;gap:14px;">
@@ -339,7 +447,7 @@
           <a href="https://www.linkedin.com/in/afnan000?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="channel-btn" style="border:1px solid #e0d8c8;color:var(--gray-soft);justify-content:center;">Send Connection Request</a>
         </div>
       </div>
-
+ 
       <!-- Instagram -->
       <div class="channel-card reveal d3">
         <div style="display:flex;align-items:center;gap:14px;">
@@ -350,7 +458,7 @@
           </div>
         </div>
         <div>
-          <div style="font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:4px;">@afnansaifi997</div>
+          <div style="font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:4px;">@safa_exim_00</div>
           <p style="color:var(--gray-soft);font-size:13px;line-height:1.7;">Follow us for product updates, Himalayan sourcing stories, quality process insights, and industry news from the world of Ayurveda.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
@@ -358,16 +466,16 @@
           <a href="https://www.instagram.com/safa_exim_00?igsh=MXczOTF4OWM1cGQ1Yw==" target="_blank" class="channel-btn" style="border:1px solid #e0d8c8;color:var(--gray-soft);justify-content:center;">Send DM on Instagram</a>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== MAIN CONTACT FORM + OFFICE INFO ===== -->
-<section style="padding:100px 0;background:white;" id="inquiry">
-  <div class="max-w-7xl mx-auto px-6">
-    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:60px;" class="two-col">
-
+<section class="section-pad" style="padding:100px 0;background:white;" id="inquiry">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="contact-main-grid" style="display:grid;grid-template-columns:1fr 1.5fr;gap:60px;">
+ 
       <!-- LEFT: Office Info + Quick Actions -->
       <div>
         <div class="reveal">
@@ -375,8 +483,7 @@
           <h2 class="section-title mb-4">Business <em>Details</em></h2>
           <div class="divider-gold"></div>
         </div>
-
-        <!-- Info rows -->
+ 
         <div class="reveal d1" style="margin-bottom:32px;">
           <div class="info-row">
             <div class="info-icon-wrap">📍</div>
@@ -397,7 +504,7 @@
             <div class="info-icon-wrap">✉</div>
             <div>
               <div style="font-weight:600;color:var(--green-deep);margin-bottom:3px;font-size:14px;">Email Address</div>
-              <div style="color:var(--gray-soft);font-size:13px;">afnansaifi997@gmail.com</div>
+              <div style="color:var(--gray-soft);font-size:13px;word-break:break-all;">afnansaifi997@gmail.com</div>
               <a href="mailto:afnansaifi997@gmail.com" style="color:#EA4335;font-size:12px;text-decoration:none;font-weight:600;">→ Send an Email</a>
             </div>
           </div>
@@ -416,11 +523,11 @@
             </div>
           </div>
         </div>
-
+ 
         <!-- Business Hours -->
         <div class="reveal d2" style="margin-bottom:32px;">
           <div style="font-weight:600;color:var(--green-deep);font-size:14px;letter-spacing:0.5px;margin-bottom:14px;">Business Hours (IST)</div>
-          <div style="background:var(--cream);border-radius:8px;padding:20px;font-size:13px;">
+          <div class="biz-hours" style="background:var(--cream);border-radius:8px;padding:20px;font-size:13px;">
             <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0e8d8;"><span style="color:var(--gray-soft);">Monday – Friday</span><span style="font-weight:600;color:var(--green-deep);">9:00 AM – 7:00 PM</span></div>
             <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0e8d8;"><span style="color:var(--gray-soft);">Saturday</span><span style="font-weight:600;color:var(--green-deep);">10:00 AM – 5:00 PM</span></div>
             <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="color:var(--gray-soft);">Sunday</span><span style="color:#EA4335;font-weight:600;">Closed (Email available)</span></div>
@@ -433,59 +540,59 @@
             </div>
           </div>
         </div>
-
+ 
         <!-- Quick Actions -->
         <div class="reveal d3">
           <div style="font-weight:600;color:var(--green-deep);font-size:14px;letter-spacing:0.5px;margin-bottom:14px;">Quick Actions</div>
           <div style="display:flex;flex-direction:column;gap:10px;">
             <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20request%20free%20product%20samples." target="_blank" class="quick-action">
-              <div class="quick-icon" style="background:#e8f5ee;font-size:18px;">🎁</div>
-              <div>
+              <div class="quick-icon" style="background:#e8f5ee;">🎁</div>
+              <div style="min-width:0;">
                 <div style="font-weight:600;color:var(--green-deep);font-size:13px;">Request Free Samples</div>
                 <div style="color:var(--gray-soft);font-size:11px;">Sent to serious buyers. Courier costs apply.</div>
               </div>
-              <div style="color:var(--gold);font-size:18px;margin-left:auto;">→</div>
+              <div style="color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;">→</div>
             </a>
             <a href="https://wa.me/918279355649?text=Hello%2C%20please%20send%20me%20your%20full%20product%20catalogue%20with%20pricing." target="_blank" class="quick-action">
-              <div class="quick-icon" style="background:#fdf5e8;font-size:18px;">📋</div>
-              <div>
+              <div class="quick-icon" style="background:#fdf5e8;">📋</div>
+              <div style="min-width:0;">
                 <div style="font-weight:600;color:var(--green-deep);font-size:13px;">Get Full Catalogue + Pricing</div>
                 <div style="color:var(--gray-soft);font-size:11px;">30+ products with wholesale prices.</div>
               </div>
-              <div style="color:var(--gold);font-size:18px;margin-left:auto;">→</div>
+              <div style="color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;">→</div>
             </a>
             <a href="https://wa.me/918279355649?text=Hello%2C%20I%20am%20interested%20in%20private%20label%20manufacturing." target="_blank" class="quick-action">
-              <div class="quick-icon" style="background:#f0f4ff;font-size:18px;">🏷️</div>
-              <div>
+              <div class="quick-icon" style="background:#f0f4ff;">🏷️</div>
+              <div style="min-width:0;">
                 <div style="font-weight:600;color:var(--green-deep);font-size:13px;">Discuss Private Label / OEM</div>
                 <div style="color:var(--gray-soft);font-size:11px;">Build your own herbal brand.</div>
               </div>
-              <div style="color:var(--gold);font-size:18px;margin-left:auto;">→</div>
+              <div style="color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;">→</div>
             </a>
             <a href="https://wa.me/918279355649?text=Hello%2C%20I%20want%20to%20discuss%20a%20custom%20herbal%20formulation." target="_blank" class="quick-action">
-              <div class="quick-icon" style="background:#f5f0ff;font-size:18px;">⚗️</div>
-              <div>
+              <div class="quick-icon" style="background:#f5f0ff;">⚗️</div>
+              <div style="min-width:0;">
                 <div style="font-weight:600;color:var(--green-deep);font-size:13px;">Custom Formulation Inquiry</div>
                 <div style="color:var(--gray-soft);font-size:11px;">R&D support for unique products.</div>
               </div>
-              <div style="color:var(--gold);font-size:18px;margin-left:auto;">→</div>
+              <div style="color:var(--gold);font-size:18px;margin-left:auto;flex-shrink:0;">→</div>
             </a>
           </div>
         </div>
       </div>
-
+ 
       <!-- RIGHT: Main Inquiry Form -->
       <div class="reveal d2">
-        <div style="background:white;border:1px solid #f0e8d8;border-radius:14px;padding:48px;box-shadow:0 20px 60px rgba(27,58,45,0.06);">
+        <div class="form-box" style="background:white;border:1px solid #f0e8d8;border-radius:14px;padding:48px;box-shadow:0 20px 60px rgba(27,58,45,0.06);">
           <div style="margin-bottom:32px;">
             <div class="section-badge">Send Inquiry</div>
             <h2 class="section-title mb-2">Write to <em>Us</em></h2>
             <p style="color:var(--gray-soft);font-size:14px;line-height:1.7;">Fill in your details and we'll get back to you within 24 hours. For the fastest response, use WhatsApp.</p>
           </div>
-
+ 
           <div style="display:flex;flex-direction:column;gap:18px;">
             <!-- Name row -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-row-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
               <div>
                 <label class="form-label">First Name *</label>
                 <input type="text" id="fn" class="form-input" placeholder="John"/>
@@ -495,15 +602,15 @@
                 <input type="text" id="ln" class="form-input" placeholder="Smith"/>
               </div>
             </div>
-
+ 
             <!-- Email -->
             <div>
               <label class="form-label">Email Address *</label>
               <input type="email" id="em" class="form-input" placeholder="john@company.com"/>
             </div>
-
+ 
             <!-- Phone + Country row -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-row-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
               <div>
                 <label class="form-label">Phone / WhatsApp</label>
                 <input type="tel" id="ph" class="form-input" placeholder="+1 555 000 0000"/>
@@ -513,13 +620,13 @@
                 <input type="text" id="cn" class="form-input" placeholder="United States"/>
               </div>
             </div>
-
+ 
             <!-- Company -->
             <div>
               <label class="form-label">Company / Business Name</label>
               <input type="text" id="co" class="form-input" placeholder="Your Company Ltd."/>
             </div>
-
+ 
             <!-- Inquiry type -->
             <div>
               <label class="form-label">Inquiry Type *</label>
@@ -535,7 +642,7 @@
                 <option value="general">General Inquiry</option>
               </select>
             </div>
-
+ 
             <!-- Products of interest -->
             <div>
               <label class="form-label">Products of Interest</label>
@@ -556,7 +663,7 @@
                 <option>Multiple Products</option>
               </select>
             </div>
-
+ 
             <!-- Expected MOQ -->
             <div>
               <label class="form-label">Expected Order Quantity / MOQ</label>
@@ -571,13 +678,13 @@
                 <option>Not sure yet</option>
               </select>
             </div>
-
+ 
             <!-- Message -->
             <div>
               <label class="form-label">Message / Requirements</label>
               <textarea id="msg" class="form-input" rows="5" placeholder="Tell us about your business, target market, specific product requirements, packaging preferences, and any other details..."></textarea>
             </div>
-
+ 
             <!-- How did you hear -->
             <div>
               <label class="form-label">How did you find us?</label>
@@ -592,7 +699,7 @@
                 <option>Other</option>
               </select>
             </div>
-
+ 
             <!-- Submit Buttons -->
             <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px;">
               <button onclick="submitWhatsApp()" class="btn-wa" style="justify-content:center;font-size:13px;padding:16px;">
@@ -610,41 +717,41 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== HOW WE WORK TOGETHER ===== -->
-<section style="padding:100px 0;background:var(--green-deep);">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="process-section" style="padding:100px 0;background:var(--green-deep);">
+  <div class="max-w-7xl mx-auto px-5">
     <div class="text-center mb-16 reveal">
       <div class="section-badge" style="color:var(--gold-light);">Our Process</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);color:white;font-weight:300;margin-bottom:12px;">From First <em style="color:var(--gold);">Contact</em><br/>to Delivery</h2>
       <p style="color:rgba(255,255,255,0.5);max-width:520px;margin:0 auto;font-size:14px;line-height:1.8;">Here's exactly what happens after you reach out — a simple, transparent process designed to get you results fast.</p>
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;" class="reveal">
+ 
+    <div class="steps-grid reveal" style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;">
       <!-- Connector line -->
-      <div style="position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,110,0.2));z-index:0;"></div>
-
-      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+      <div class="steps-connector" style="position:absolute;top:28px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,169,110,0.2));z-index:0;"></div>
+ 
+      <div class="step-item" style="text-align:center;padding:0 16px;position:relative;z-index:1;">
         <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:20px;">💬</div>
         <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.1rem;margin-bottom:8px;">You Contact Us</div>
         <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.6;">WhatsApp, email, or contact form</div>
       </div>
-      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+      <div class="step-item" style="text-align:center;padding:0 16px;position:relative;z-index:1;">
         <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:20px;">⚡</div>
         <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.1rem;margin-bottom:8px;">Fast Response</div>
         <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.6;">Within 1 hour on WhatsApp</div>
       </div>
-      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+      <div class="step-item" style="text-align:center;padding:0 16px;position:relative;z-index:1;">
         <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:20px;">🎁</div>
         <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.1rem;margin-bottom:8px;">Free Samples</div>
         <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.6;">Dispatched within 5 business days</div>
       </div>
-      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+      <div class="step-item" style="text-align:center;padding:0 16px;position:relative;z-index:1;">
         <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:20px;">📋</div>
         <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.1rem;margin-bottom:8px;">Quote & Terms</div>
         <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.6;">Custom pricing proposal for you</div>
       </div>
-      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+      <div class="step-item" style="text-align:center;padding:0 16px;position:relative;z-index:1;">
         <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:20px;">🚢</div>
         <div style="font-family:'Cormorant Garamond',serif;color:white;font-size:1.1rem;margin-bottom:8px;">Order & Deliver</div>
         <div style="color:rgba(255,255,255,0.45);font-size:12px;line-height:1.6;">Manufacturing, quality check, export</div>
@@ -652,16 +759,16 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== FAQ ===== -->
-<section style="padding:100px 0;background:var(--cream);" id="faq">
-  <div class="max-w-4xl mx-auto px-6">
+<section class="section-pad" style="padding:100px 0;background:var(--cream);" id="faq">
+  <div class="max-w-4xl mx-auto px-5">
     <div class="text-center mb-16 reveal">
       <div class="section-badge">FAQs</div>
       <h2 class="section-title mb-4">Questions Before <em>You Reach Out?</em></h2>
       <div class="divider-gold center"></div>
     </div>
-
+ 
     <div class="reveal">
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
@@ -672,7 +779,6 @@
           <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">WhatsApp is our fastest channel — we typically respond within 1 hour during business hours (9 AM – 7 PM IST, Monday to Saturday). Click the floating WhatsApp button on this page to start a chat instantly.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">How do I request free product samples?</span>
@@ -682,7 +788,6 @@
           <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">We offer free product samples to serious buyers. Simply send us a WhatsApp or email with your name, business name, country, and the product you're interested in. You only need to cover courier shipping costs. Samples are typically dispatched within 5 business days.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">Do you work with buyers in my country?</span>
@@ -692,17 +797,15 @@
           <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">Yes — we export to 50+ countries globally including the USA, UK, Canada, Australia, Germany, Netherlands, UAE, Singapore, Malaysia, South Africa, and many more. Our export team handles all documentation, customs clearance, and logistics for international shipments.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">What information should I include in my first inquiry?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">For the most accurate and fastest response, include: your name and company name, your country, the product(s) you're interested in, your approximate order quantity (or if you want samples first), and whether you need standard products or custom/private label. The more detail you provide, the more tailored our response will be.</p>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">For the most accurate and fastest response, include: your name and company name, your country, the product(s) you're interested in, your approximate order quantity (or if you want samples first), and whether you need standard products or custom/private label.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">Can you help with private label and custom branding?</span>
@@ -712,48 +815,45 @@
           <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">Absolutely — private label is one of our core services. We handle everything: custom formulation development, label design support, branded packaging (bottles, pouches, jars), all export documentation, and shipping. Contact us to discuss your vision and we'll put together a complete proposal.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">What certifications and documentation do you provide?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">We provide a complete documentation package with every shipment: Certificate of Analysis (COA), Certificate of Origin, Commercial Invoice, Packing List, and Phytosanitary Certificate when required. Our facility is ISO certified, GMP certified, Halal certified, USFDA registered, and FSSAI approved.</p>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">We provide a complete documentation package: Certificate of Analysis (COA), Certificate of Origin, Commercial Invoice, Packing List, and Phytosanitary Certificate when required. Our facility is ISO certified, GMP certified, Halal certified, USFDA registered, and FSSAI approved.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">What is your minimum order quantity (MOQ)?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">MOQ depends on the product and format. For finished capsule products, MOQ typically starts at 100–500 bottles. For bulk powder, MOQ starts at 1kg. For private label orders, MOQ varies by product but we work with starting quantities to accommodate new brands. Contact us and we'll give you specific MOQs for your products of interest.</p>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">MOQ depends on the product and format. For finished capsule products, MOQ typically starts at 100–500 bottles. For bulk powder, MOQ starts at 1kg. For private label orders, MOQ varies by product but we work with starting quantities to accommodate new brands.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span style="font-weight:600;color:var(--green-deep);font-size:15px;">How long does shipping and delivery take?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">For ready-stock products, manufacturing and quality testing takes 7–15 business days, plus shipping time. Air freight typically takes 5–10 days internationally. Sea freight takes 15–45 days depending on destination. For custom formulations or private label orders, total lead time is 4–8 weeks. We'll give you an exact timeline when you place your order.</p>
+          <p style="color:var(--gray-soft);font-size:14px;line-height:1.85;padding-bottom:20px;">For ready-stock products, manufacturing and quality testing takes 7–15 business days, plus shipping. Air freight typically takes 5–10 days internationally. Sea freight takes 15–45 days depending on destination. For custom formulations, total lead time is 4–8 weeks.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== SOCIAL FOLLOW ===== -->
-<section style="padding:80px 0;background:white;">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="section-pad" style="padding:80px 0;background:white;">
+  <div class="max-w-7xl mx-auto px-5">
     <div class="text-center mb-12 reveal">
       <div class="section-badge">Follow & Connect</div>
       <h2 class="section-title mb-4">Stay <em>Connected</em></h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:800px;margin:0 auto;" class="two-col reveal">
+    <div class="social-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:800px;margin:0 auto;">
       <a href="https://wa.me/918279355649" target="_blank" class="social-card">
         <div class="social-circle" style="background:#25D366;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -779,39 +879,38 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===== FINAL CTA ===== -->
-<section style="padding:100px 0;background:linear-gradient(135deg,var(--green-deep) 0%,#0d2218 100%);position:relative;overflow:hidden;">
+<section class="section-pad" style="padding:100px 0;background:linear-gradient(135deg,var(--green-deep) 0%,#0d2218 100%);position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,169,110,0.12),transparent 70%);"></div>
-  <div class="max-w-5xl mx-auto px-6 text-center reveal" style="position:relative;">
+  <div class="max-w-5xl mx-auto px-5 text-center reveal" style="position:relative;">
     <div style="font-size:3rem;margin-bottom:16px;">🌿</div>
     <div class="section-badge" style="color:var(--gold-light);">Start Your Journey</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);color:white;font-weight:300;margin:16px 0 20px;line-height:1.1;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4.5rem);color:white;font-weight:300;margin:16px 0 20px;line-height:1.1;">
       Your Global Herbal<br/><em style="color:var(--gold);">Partnership Starts Here</em>
     </h2>
     <p style="color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto 40px;line-height:1.85;font-size:15px;">
-      From free samples to full OEM manufacturing — Safa Herbal is your trusted partner for bringing India's finest herbal products to the world. Let's talk today and explore how we can support your business growth with our premium quality, competitive pricing, and exceptional service.
+      From free samples to full OEM manufacturing — Safa Herbal is your trusted partner for bringing India's finest herbal products to the world. Let's talk today.
     </p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+    <div class="cta-btns" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
       <a href="https://wa.me/918279355649?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20business%20partnership%20for%20herbal%20products." target="_blank" class="btn-wa" style="padding:18px 44px;font-size:13px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Start on WhatsApp →
       </a>
-      <a href="products.html" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.3);color:white;padding:18px 44px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;text-decoration:none;">Browse Products First</a>
+      <a href="products.html" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(255,255,255,0.3);color:white;padding:18px 44px;border-radius:4px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all 0.3s;text-decoration:none;">Browse Products First</a>
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer style="padding:60px 0 0;background:#0a1f15;">
-  <div class="max-w-7xl mx-auto px-6">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:48px;" class="two-col">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="footer-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:48px;">
       <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-           <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-  <img src="SafaHerbalLogo.jpeg" alt="safa logo"
-       style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
+          <div style="width:38px; height:38px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+            <img src="SafaHerbalLogo.jpeg" alt="safa logo" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:white;">Safa Herbal</div>
         </div>
         <p style="color:rgba(255,255,255,0.38);font-size:13px;line-height:1.8;margin-bottom:18px;">Premium Herbal & Ayurvedic manufacturer and exporter from India. Delivering nature's best to the world.</p>
@@ -851,15 +950,27 @@
     </div>
   </div>
 </footer>
-
+ 
 <script>
+  // Mobile Menu
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+ 
   // Scroll Reveal
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   reveals.forEach(el => obs.observe(el));
-
+ 
   // FAQ Accordion
   function toggleFaq(el) {
     const answer = el.nextElementSibling;
@@ -869,7 +980,7 @@
     document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
     if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
   }
-
+ 
   // WhatsApp Submit
   function submitWhatsApp() {
     const fn = document.getElementById('fn').value.trim();
@@ -894,7 +1005,7 @@
     );
     window.open(`https://wa.me/918279355649?text=${text}`, '_blank');
   }
-
+ 
   // Email Submit
   function submitEmail() {
     const fn = document.getElementById('fn').value.trim();
